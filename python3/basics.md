@@ -48,22 +48,22 @@ __Numbers__ Python supports three types of numbers - integers, floating point nu
     ```
 
 __Strings__ Strings are defined either with a single quote or a double quotes. Use the following syntax to define a string:
-    ```
-    >>> mystring = 'hello'
-    >>> print(mystring)
-    hello
-    >>> mystring = "hello"
-    >>> print(mystring)
-    hello
-    ```
+```
+>>> mystring = 'hello'
+>>> print(mystring)
+hello
+>>> mystring = "hello"
+>>> print(mystring)
+hello
+```
 
-    The difference between using the quotes is that using double quotes makes it easy to includes apostrophes.
-    ```
-    >>> mystring = "Don't worry about apostrophes"
-    >>> print(mystring)
-    Don't worry about apostrophes
-    ```
-    There are additional variations on defining strings that make it easier to include things such as carriage returns, backslashes and Unicode characters.
+The difference between using the quotes is that using double quotes makes it easy to includes apostrophes.
+```
+>>> mystring = "Don't worry about apostrophes"
+>>> print(mystring)
+Don't worry about apostrophes
+```
+There are additional variations on defining strings that make it easier to include things such as carriage returns, backslashes and Unicode characters.
 
 __Lists__ Lists are very similar to arrays. They can contain any type of variable, and they can contain as many variables as you wish. Lists can also be iterated over in a very simple manner. Here is an example of how to define and iterate a list.
 
