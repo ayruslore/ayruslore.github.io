@@ -7,8 +7,6 @@ Welcome to the basics of Python Programming.
 * Variables and Types
 * Assignments
 * Operators
-* String Formatting
-* String Operations
 
 ## Hello, World!
 Python is a very simple language, and has a very straightforward syntax. The simplest directive in Python is the `print` directive - it simply prints out a line (and also includes a newline, unlike in C).
@@ -49,6 +47,8 @@ __Numbers__ Python supports three types of numbers - integers, floating point nu
     5.0
     ```
 
+* To define a complex number __*TODO*__
+
 __Strings__ Strings are defined either with a single quote or a double quotes. Use the following syntax to define a string:
 ```
 >>> mystring = 'hello'
@@ -87,7 +87,7 @@ __Lists__ Lists are very similar to arrays. They can contain any type of variabl
 3.4
 ```
 
-__Tuples__ A tuple is a fixed size list.
+__Tuples__ A tuple is a fixed size list. __*TODO*__
 
 ## Assignments
 * Assignments can be done on more than one variable "simultaneously" on the same line like this
@@ -104,12 +104,14 @@ __Tuples__ A tuple is a fixed size list.
     2.0
     ```
 
-* Another operator available is the __modulo (%) operator__, which returns the integer remainder of the division `dividend % divisor = remainder`.
+* Another operator available is the __modulo operator %__, which returns the integer remainder of the division `dividend % divisor = remainder`.
     ```
     >>> remainder = 11 % 3
     >>> print(remainder)
     2
     ```
+
+* Python follows order of operators. __*TODO*__
 
 * Use two consecutive multiplication symbol for a power operator.
     ```
@@ -166,38 +168,3 @@ __Tuples__ A tuple is a fixed size list.
     File "<stdin>", line 1, in <module>
     TypeError: unsupported operand type(s) for +: 'int' and 'str'
     ```
-
-## String Formatting
-Python uses C-style string formatting to create new, formatted strings. The "%" operator is used to format a set of variables, together with a format string, which contains normal text together with "argument specifiers", special symbols like "%s" and "%d".
-
-* __repr__ method
-
-* __string__ method
-
-* 
-    ```
-    >>> world = "World!"
-    >>> print("Hello, %s" % world)
-    Hello, World!
-    >>> name, age = "Bob", 23
-    >>> print("%s is %d years old." % (name, age))
-    Bob is 23 years old.
-    ```
-
-* Any object which is not a string can be formatted using the %s operator as well. The string which returns from the *repr* method of that object is formatted as the string. For example:
-    ```
-    >>> mylist = [1,2,3]
-    >>> print("A list: %s" % mylist)
-    A list: [1, 2, 3]
-    ```
-
-* Here are some basic argument specifiers to know about.
-    ```
-    %s - String (or any object with a string representation, like numbers)
-    %d - Integers
-    %f - Floating point numbers
-    %.<number of digits>f - Floating point numbers with a fixed amount of digits to the right of the dot.
-    %x/%X - Integers in hex representation (lowercase/uppercase)
-    ```
-
-## Basic String Operations
