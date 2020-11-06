@@ -16,6 +16,5 @@ __Python Programming Paradigms__
 
 ## Contents
 * ![Basics](basics.md)
-* ![String Operations/Formatting](strings.md)
-* ![Data Science Tutorials]()
-* ![Advanced Tutorials]()
+* Data Science Tutorials
+* Advanced Tutorials
