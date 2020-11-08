@@ -2,7 +2,10 @@
 layout: page
 permalink: /python/advanced
 ---
-<h1>Welcome to the advanced part of Python Programming</h1>
+<h1>Python Advanced</h1>
+========================
+
+Welcome to the advanced part of Python Programming
 
 ## Contents
 * Classes and Objects
