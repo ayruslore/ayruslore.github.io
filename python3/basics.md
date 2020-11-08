@@ -1,4 +1,8 @@
-# Python Basics
+---
+layout: page
+permalink: /python/basics
+---
+## Python Basics
 Welcome to the basics of Python Programming.
 
 ## Contents
@@ -20,8 +24,8 @@ Python is a very simple language, and has a very straightforward syntax. The sim
 
 To print a String, just write:
 ```python
->>> print("hello, world!!!")
-hello, world!!!
+>>> print("hello, world")
+hello, world
 ```
 
 ## Indentation
