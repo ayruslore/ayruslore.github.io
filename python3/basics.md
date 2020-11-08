@@ -3,9 +3,11 @@ layout: page
 permalink: /python/basics
 ---
 <h1>Python Basics</h1>
+
 Welcome to the basics part of Python Programming
 
 <h3>Contents</h3>
+
 * Hello, World!
 * Indentation
 * Variables and Types
@@ -20,6 +22,7 @@ Welcome to the basics part of Python Programming
 * Modules and Packages
 
 <h3>Hello, World!</h3>
+
 Python is a very simple language, and has a very straightforward syntax. The simplest directive in Python is the `print` directive - it simply prints out a line (and also includes a newline, unlike in C).
 
 To print a String, just write:
@@ -28,7 +31,8 @@ To print a String, just write:
 hello, world
 ```
 
-## Indentation
+<h3>Indentation</h3>
+
 Python uses indentation for blocks, instead of curly braces. Both tabs and spaces are supported, but standard indentation requires four spaces. For example:
 ```python
 >>> if True:
@@ -36,7 +40,8 @@ Python uses indentation for blocks, instead of curly braces. Both tabs and space
 True
 ```
 
-## Variables and Types
+<h3>Variables and Types</h3>
+
 As python is object oriented and not statically typed, you do not need to declare variables, or declare their type before using them. *Every variable in Python is an object.* Now let us cover the basic types of variables in python.
 
 __Numbers__ Python supports three types of numbers - integers, floating point numbers, complex numbers.
@@ -127,14 +132,16 @@ roll number 4 is lakshman
 {3: 'arjun', 4: 'lakshman'}
 ```
 
-## Assignments
+<h3>Assignments</h3>
+
 Assignments can be done on more than one variable "simultaneously" on the same line like this
 ```python
 >>> a, b = 3, 4
 >>> print(a,b)
 ```
 
-## Arithmetic Operators
+<h3>Arithmetic Operators</h3>
+
 * Just as any other programming languages, the addition, subtraction, multiplication, and division operators can be used with numbers
     ```python
     >>> number = 1 + 2 * 3 / 4.0 - 0.5
@@ -207,7 +214,8 @@ Assignments can be done on more than one variable "simultaneously" on the same l
     TypeError: unsupported operand type(s) for +: 'int' and 'str'
     ```
 
-## Basic String Operations
+<h3>Basic String Operations</h3>
+
 * To get the length of a string - use the `len` function
     ```python
     >>> mystring = "Hello world!"
@@ -280,7 +288,8 @@ Assignments can be done on more than one variable "simultaneously" on the same l
     ValueError: empty separator
     ```
 
-## String Formatting
+<h3>String Formatting</h3>
+
 Python uses C-style string formatting to create new, formatted strings. The "%" operator is used to format a set of variables, together with a format string, which contains normal text together with "argument specifiers", special symbols like "%s" and "%d".
 
 * __repr__ method __*TODO__
@@ -313,7 +322,8 @@ Python uses C-style string formatting to create new, formatted strings. The "%" 
     %x/%X - Integers in hex representation (lowercase/uppercase)
     ```
 
-## Conditions
+<h3>Conditions</h3>
+
 Python uses boolean variables to evaluate conditions. The boolean values True and False are returned when an expression is compared or evaluated.
 
 * For example
@@ -343,7 +353,8 @@ Python uses boolean variables to evaluate conditions. The boolean values True an
 
 * `Note : Variable assignment is done using a single equals operator "=", whereas comparison between two variables is done using the double equals operator "==". The "not equals" operator is marked as "!=".`
 
-## Boolean Operators
+<h3>Boolean Operators</h3>
+
 * The boolean operators in python are `and` and `or`. You can use them in the following way
     ```python
     >>> a, b = 1, 2
@@ -378,7 +389,8 @@ Python uses boolean variables to evaluate conditions. The boolean values True an
     True
     ```
 
-## Loops
+<h3>Loops</h3>
+
 Two types of loops in Python, `for` and `while`.
 
 * __*for* loop__ for loop is used to iterate over a given sequence of objects. It's syntax is very simple, here's an example
@@ -435,7 +447,8 @@ Two types of loops in Python, `for` and `while`.
     20
     ```
 
-## Functions in Python
+<h3>Functions in Python</h3>
+
 * As we all know that functions allow us to divide the code into useful blocks, make it more readable, reuse it. Functions in python are defined using the keyword `def`, followed with the function's name.
 
 * To call the above function, just call the function name followed by curved brackets, you may also pass arguments if required.
@@ -465,6 +478,7 @@ Two types of loops in Python, `for` and `while`.
 
 * As `def` keyword defines the beginning of a block, it is known as a block keyword. Other block keywords are `if`, `for` and `while`.
 
-## Modules and Packages
+<h3>Modules and Packages</h3>
+
 For information on building modules and packages follow the links:
 * [Learn Python Moduling](https://www.learnpython.org/en/Modules_and_Packages)
