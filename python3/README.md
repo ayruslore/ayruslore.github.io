@@ -21,4 +21,4 @@ __Python Programming Paradigms__
 ## Contents
 * [Basics Tutorial](/python/basics)
 * [Advanced Tutorial](/python/advanced)
-* Data Science Tutorials
+* Data Science Packages

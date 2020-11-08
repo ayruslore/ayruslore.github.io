@@ -127,11 +127,11 @@ roll number 4 is lakshman
 ```
 
 ## Assignments
-* Assignments can be done on more than one variable "simultaneously" on the same line like this
-    ```python
-    >>> a, b = 3, 4
-    >>> print(a,b)
-    ```
+Assignments can be done on more than one variable "simultaneously" on the same line like this
+```python
+>>> a, b = 3, 4
+>>> print(a,b)
+```
 
 ## Arithmetic Operators
 * Just as any other programming languages, the addition, subtraction, multiplication, and division operators can be used with numbers
@@ -228,7 +228,8 @@ roll number 4 is lakshman
     2
     ```
 
-* To print a slice of the string, the syntax is of the form `string[i:j]` - this prints the slice starting from index `i` and ends at index `j-1` or ends at `j`th character. `Note : If you just have one number in the brackets, it will give you the single character at that index. If you leave out the first number but keep the colon, it will give you a slice from the start to the number you left in. If you leave out the second number, it will give you a slice from the first number to the end. You can even put negative numbers inside the brackets. They are an easy way of starting at the end of the string instead of the beginning. This way, -4 means "4th character from the end"`
+* To print a slice of the string, the syntax is of the form `string[i:j]` - this prints the slice starting from index `i` and ends at index `j-1` or ends at `j`th character.
+`Note : If you just have one number in the brackets, it will give you the single character at that index. If you leave out the first number but keep the colon, it will give you a slice from the start to the number you left in. If you leave out the second number, it will give you a slice from the first number to the end. You can even put negative numbers inside the brackets. They are an easy way of starting at the end of the string instead of the beginning. This way, -4 means "4th character from the end"`
     ```python
     >>> mystring = "Hello world!"
     >>> print(mystring[2:9])
@@ -465,4 +466,4 @@ Two types of loops in Python, `for` and `while`.
 
 ## Modules and Packages
 For information on building modules and packages follow the links:
-* ![Learn Python Moduling](https://www.learnpython.org/en/Modules_and_Packages)
+* [Learn Python Moduling](https://www.learnpython.org/en/Modules_and_Packages)

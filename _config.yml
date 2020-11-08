@@ -16,8 +16,9 @@
 title: Ayrus's Lore
 email: suryasrikar1997@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  This repository is a blog of the things that I learn in my journey deep in to 
-  the ever growing software world. It contains tutorials, how-tos, know-how, and blog posts.
+  This repository is a blog of the things that I learn in my 
+  journey deep in to the ever growing software world. It contains 
+  tutorials, how-tos, know-how and blog posts.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: SuryaPeruri4
