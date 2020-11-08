@@ -35,27 +35,27 @@
 
 ## *else* clause in loops
 When the loop condition of `for` or `while` statement fails then code part in *else* is executed. If break statement is executed inside for loop then the *else* part is skipped. Note that *else* part is executed even if there is a continue statement. Here's an example
-    ```python
-    >>> count = 0
-    >>> while(count < 5):
-    ...     print(count)
-    ...     count += 1
-    ... else:
-    ...     print("count value reached %d" % (count))
-    0
-    1
-    2
-    3
-    4
-    count value reached 5
-    >>> for i in range(1, 10):
-    ...     if(i % 5 == 0):
-    ...         break
-    ...     print(i)
-    ... else:
-    ...     print("this is not printed because for loop is terminated because of break but not due to fail in condition")
-    1
-    2
-    3
-    4
-    ```
+```python
+>>> count = 0
+>>> while(count < 5):
+...     print(count)
+...     count += 1
+... else:
+...     print("count value reached %d" % (count))
+0
+1
+2
+3
+4
+count value reached 5
+>>> for i in range(1, 10):
+...     if(i % 5 == 0):
+...         break
+...     print(i)
+... else:
+...     print("this is not printed because for loop is terminated because of break but not due to fail in condition")
+1
+2
+3
+4
+```

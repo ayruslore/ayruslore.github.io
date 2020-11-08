@@ -418,7 +418,6 @@ Two types of loops in Python, `for` and `while`.
     ... 
     0
     1
-
     >>> for x in range(21):
     ...     if x % 4 != 0:
     ...             continue
