@@ -2,7 +2,7 @@
 layout: page
 permalink: /python/advanced
 ---
-[PYTHON-HOME](/python) &nbsp; &nbsp; &nbsp; [BASICS](/python/basics)
+[PYTHON-BASICS](/python/basics) &nbsp; &nbsp; &nbsp;
 
 <br>
 
@@ -79,4 +79,4 @@ __*TODO*__
 
 <br><br>
 
-[PYTHON-HOME](/python) &nbsp; &nbsp; &nbsp; [BASICS](/python/basics)
+[PYTHON-BASICS](/python/basics) &nbsp; &nbsp; &nbsp;

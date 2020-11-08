@@ -2,7 +2,7 @@
 layout: page
 permalink: /python/basics
 ---
-[PYTHON-HOME](/python) &nbsp; &nbsp; &nbsp; [ADVANCED](/python/advanced)
+[PYTHON-ADVANCED](/python/advanced) &nbsp; &nbsp; &nbsp;
 
 <br>
 
@@ -488,4 +488,4 @@ For information on building modules and packages follow the link - [Learn Python
 
 <br><br>
 
-[PYTHON-HOME](/python) &nbsp; &nbsp; &nbsp; [ADVANCED](/python/advanced)
+[PYTHON-ADVANCED](/python/advanced) &nbsp; &nbsp; &nbsp;
