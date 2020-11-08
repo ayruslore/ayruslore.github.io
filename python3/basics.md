@@ -5,7 +5,7 @@ permalink: /python/basics
 <h1>Python Basics</h1>
 Welcome to the basics part of Python Programming
 
-__<h2>Contents</h2>__
+<h2>Contents</h2>
 * Hello, World!
 * Indentation
 * Variables and Types
