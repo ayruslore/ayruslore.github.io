@@ -3,19 +3,19 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Ayrus’s Lore | This repository is a blog of the things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how, and blog posts.</title>
+<title>Ayrus’s Lore | This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts.</title>
 <meta name="generator" content="Jekyll v3.8.6" />
 <meta property="og:title" content="Ayrus’s Lore" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This repository is a blog of the things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how, and blog posts." />
-<meta property="og:description" content="This repository is a blog of the things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how, and blog posts." />
+<meta name="description" content="This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts." />
+<meta property="og:description" content="This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts." />
 <link rel="canonical" href="http://localhost:4000/python/basics" />
 <meta property="og:url" content="http://localhost:4000/python/basics" />
 <meta property="og:site_name" content="Ayrus’s Lore" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Ayrus’s Lore" />
 <script type="application/ld+json">
-{"@type":"WebPage","headline":"Ayrus’s Lore","url":"http://localhost:4000/python/basics","description":"This repository is a blog of the things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how, and blog posts.","@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"Ayrus’s Lore","url":"http://localhost:4000/python/basics","description":"This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Ayrus's Lore" /></head>
 <body><header class="site-header" role="banner">
@@ -30,7 +30,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/posts/">Posts</a><a class="page-link" href="/python/">Python</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -42,9 +42,16 @@
   </header>
 
   <div class="post-content">
-    <p>Welcome to the basics of Python Programming.</p>
+    <p><a href="/python">PYTHON-HOME</a>       <a href="/python/advanced">ADVANCED</a></p>
 
-<h2 id="contents">Contents</h2>
+<p><br /></p>
+
+<h2 id="python-basics">Python Basics</h2>
+
+<p>Welcome to the basics part of Python Programming</p>
+
+<h3 id="contents">Contents</h3>
+
 <ul>
   <li>Hello, World!</li>
   <li>Indentation</li>
@@ -60,7 +67,8 @@
   <li>Modules and Packages</li>
 </ul>
 
-<h2 id="hello-world">Hello, World!</h2>
+<h3 id="hello-world">Hello, World!</h3>
+
 <p>Python is a very simple language, and has a very straightforward syntax. The simplest directive in Python is the <code class="highlighter-rouge">print</code> directive - it simply prints out a line (and also includes a newline, unlike in C).</p>
 
 <p>To print a String, just write:</p>
@@ -68,14 +76,16 @@
 <span class="n">hello</span><span class="p">,</span> <span class="n">world</span>
 </code></pre></div></div>
 
-<h2 id="indentation">Indentation</h2>
+<h3 id="indentation">Indentation</h3>
+
 <p>Python uses indentation for blocks, instead of curly braces. Both tabs and spaces are supported, but standard indentation requires four spaces. For example:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="bp">True</span><span class="p">:</span>
 <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"True"</span><span class="p">)</span>
 <span class="bp">True</span>
 </code></pre></div></div>
 
-<h2 id="variables-and-types">Variables and Types</h2>
+<h3 id="variables-and-types">Variables and Types</h3>
+
 <p>As python is object oriented and not statically typed, you do not need to declare variables, or declare their type before using them. <em>Every variable in Python is an object.</em> Now let us cover the basic types of variables in python.</p>
 
 <p><strong>Numbers</strong> Python supports three types of numbers - integers, floating point numbers, complex numbers.</p>
@@ -162,16 +172,15 @@
 <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s">'arjun'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s">'lakshman'</span><span class="p">}</span>
 </code></pre></div></div>
 
-<h2 id="assignments">Assignments</h2>
-<ul>
-  <li>Assignments can be done on more than one variable “simultaneously” on the same line like this
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
+<h3 id="assignments">Assignments</h3>
 
-<h2 id="arithmetic-operators">Arithmetic Operators</h2>
+<p>Assignments can be done on more than one variable “simultaneously” on the same line like this</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
+
 <ul>
   <li>Just as any other programming languages, the addition, subtraction, multiplication, and division operators can be used with numbers
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">/</span> <span class="mf">4.0</span> <span class="o">-</span> <span class="mf">0.5</span>
@@ -240,7 +249,8 @@
   </li>
 </ul>
 
-<h2 id="basic-string-operations">Basic String Operations</h2>
+<h3 id="basic-string-operations">Basic String Operations</h3>
+
 <ul>
   <li>To get the length of a string - use the <code class="highlighter-rouge">len</code> function
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
@@ -260,7 +270,8 @@
   <span class="mi">2</span>
 </code></pre></div>    </div>
   </li>
-  <li>To print a slice of the string, the syntax is of the form <code class="highlighter-rouge">string[i:j]</code> - this prints the slice starting from index <code class="highlighter-rouge">i</code> and ends at index <code class="highlighter-rouge">j-1</code> or ends at <code class="highlighter-rouge">j</code>th character. <code class="highlighter-rouge">Note : If you just have one number in the brackets, it will give you the single character at that index. If you leave out the first number but keep the colon, it will give you a slice from the start to the number you left in. If you leave out the second number, it will give you a slice from the first number to the end. You can even put negative numbers inside the brackets. They are an easy way of starting at the end of the string instead of the beginning. This way, -4 means "4th character from the end"</code>
+  <li>To print a slice of the string, the syntax is of the form <code class="highlighter-rouge">string[i:j]</code> - this prints the slice starting from index <code class="highlighter-rouge">i</code> and ends at index <code class="highlighter-rouge">j-1</code> or ends at <code class="highlighter-rouge">j</code>th character.
+<code class="highlighter-rouge">Note : If you just have one number in the brackets, it will give you the single character at that index. If you leave out the first number but keep the colon, it will give you a slice from the start to the number you left in. If you leave out the second number, it will give you a slice from the first number to the end. You can even put negative numbers inside the brackets. They are an easy way of starting at the end of the string instead of the beginning. This way, -4 means "4th character from the end"</code>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">9</span><span class="p">])</span>
   <span class="n">llo</span> <span class="n">wor</span>
@@ -306,7 +317,8 @@
   </li>
 </ul>
 
-<h2 id="string-formatting">String Formatting</h2>
+<h3 id="string-formatting">String Formatting</h3>
+
 <p>Python uses C-style string formatting to create new, formatted strings. The “%” operator is used to format a set of variables, together with a format string, which contains normal text together with “argument specifiers”, special symbols like “%s” and “%d”.</p>
 
 <ul>
@@ -341,7 +353,8 @@
   </li>
 </ul>
 
-<h2 id="conditions">Conditions</h2>
+<h3 id="conditions">Conditions</h3>
+
 <p>Python uses boolean variables to evaluate conditions. The boolean values True and False are returned when an expression is compared or evaluated.</p>
 
 <ul>
@@ -371,7 +384,8 @@
   <li><code class="highlighter-rouge">Note : Variable assignment is done using a single equals operator "=", whereas comparison between two variables is done using the double equals operator "==". The "not equals" operator is marked as "!=".</code></li>
 </ul>
 
-<h2 id="boolean-operators">Boolean Operators</h2>
+<h3 id="boolean-operators">Boolean Operators</h3>
+
 <ul>
   <li>The boolean operators in python are <code class="highlighter-rouge">and</code> and <code class="highlighter-rouge">or</code>. You can use them in the following way
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
@@ -405,7 +419,8 @@
   </li>
 </ul>
 
-<h2 id="loops">Loops</h2>
+<h3 id="loops">Loops</h3>
+
 <p>Two types of loops in Python, <code class="highlighter-rouge">for</code> and <code class="highlighter-rouge">while</code>.</p>
 
 <ul>
@@ -461,7 +476,8 @@
   </li>
 </ul>
 
-<h2 id="functions-in-python">Functions in Python</h2>
+<h3 id="functions-in-python">Functions in Python</h3>
+
 <ul>
   <li>
     <p>As we all know that functions allow us to divide the code into useful blocks, make it more readable, reuse it. Functions in python are defined using the keyword <code class="highlighter-rouge">def</code>, followed with the function’s name.</p>
@@ -492,11 +508,13 @@
   <li>As <code class="highlighter-rouge">def</code> keyword defines the beginning of a block, it is known as a block keyword. Other block keywords are <code class="highlighter-rouge">if</code>, <code class="highlighter-rouge">for</code> and <code class="highlighter-rouge">while</code>.</li>
 </ul>
 
-<h2 id="modules-and-packages">Modules and Packages</h2>
-<p>For information on building modules and packages follow the links:</p>
-<ul>
-  <li><img src="https://www.learnpython.org/en/Modules_and_Packages" alt="Learn Python Moduling" /></li>
-</ul>
+<h3 id="modules-and-packages">Modules and Packages</h3>
+
+<p>For information on building modules and packages follow the link - <a href="https://www.learnpython.org/en/Modules_and_Packages">Learn Python Moduling</a></p>
+
+<p><br /><br /></p>
+
+<p><a href="/python">PYTHON-HOME</a>       <a href="/python/advanced">ADVANCED</a></p>
 
   </div>
 
@@ -520,7 +538,7 @@
 </div>
 
       <div class="footer-col footer-col-3">
-        <p>This repository is a blog of the things that I learn in my journey deep in to  the ever growing software world. It contains tutorials, how-tos, know-how, and blog posts.</p>
+        <p>This website is my lore which contains things that I learn in my  journey deep in to the ever growing software world. It contains  tutorials, how-tos, know-how and blog posts.</p>
       </div>
     </div>
 

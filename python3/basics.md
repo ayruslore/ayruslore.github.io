@@ -2,11 +2,15 @@
 layout: page
 permalink: /python/basics
 ---
-<h1>Python Basics</h1>
+[PYTHON-HOME](/python) &nbsp; &nbsp; &nbsp; [ADVANCED](/python/advanced)
+
+<br>
+
+## Python Basics
 
 Welcome to the basics part of Python Programming
 
-<h3>Contents</h3>
+### Contents
 
 * Hello, World!
 * Indentation
@@ -21,7 +25,7 @@ Welcome to the basics part of Python Programming
 * Functions
 * Modules and Packages
 
-<h3>Hello, World!</h3>
+### Hello, World!
 
 Python is a very simple language, and has a very straightforward syntax. The simplest directive in Python is the `print` directive - it simply prints out a line (and also includes a newline, unlike in C).
 
@@ -31,7 +35,7 @@ To print a String, just write:
 hello, world
 ```
 
-<h3>Indentation</h3>
+### Indentation
 
 Python uses indentation for blocks, instead of curly braces. Both tabs and spaces are supported, but standard indentation requires four spaces. For example:
 ```python
@@ -40,7 +44,7 @@ Python uses indentation for blocks, instead of curly braces. Both tabs and space
 True
 ```
 
-<h3>Variables and Types</h3>
+### Variables and Types
 
 As python is object oriented and not statically typed, you do not need to declare variables, or declare their type before using them. *Every variable in Python is an object.* Now let us cover the basic types of variables in python.
 
@@ -132,7 +136,7 @@ roll number 4 is lakshman
 {3: 'arjun', 4: 'lakshman'}
 ```
 
-<h3>Assignments</h3>
+### Assignments
 
 Assignments can be done on more than one variable "simultaneously" on the same line like this
 ```python
@@ -140,7 +144,7 @@ Assignments can be done on more than one variable "simultaneously" on the same l
 >>> print(a,b)
 ```
 
-<h3>Arithmetic Operators</h3>
+### Arithmetic Operators
 
 * Just as any other programming languages, the addition, subtraction, multiplication, and division operators can be used with numbers
     ```python
@@ -214,7 +218,7 @@ Assignments can be done on more than one variable "simultaneously" on the same l
     TypeError: unsupported operand type(s) for +: 'int' and 'str'
     ```
 
-<h3>Basic String Operations</h3>
+### Basic String Operations
 
 * To get the length of a string - use the `len` function
     ```python
@@ -288,7 +292,7 @@ Assignments can be done on more than one variable "simultaneously" on the same l
     ValueError: empty separator
     ```
 
-<h3>String Formatting</h3>
+### String Formatting
 
 Python uses C-style string formatting to create new, formatted strings. The "%" operator is used to format a set of variables, together with a format string, which contains normal text together with "argument specifiers", special symbols like "%s" and "%d".
 
@@ -322,7 +326,7 @@ Python uses C-style string formatting to create new, formatted strings. The "%" 
     %x/%X - Integers in hex representation (lowercase/uppercase)
     ```
 
-<h3>Conditions</h3>
+### Conditions
 
 Python uses boolean variables to evaluate conditions. The boolean values True and False are returned when an expression is compared or evaluated.
 
@@ -353,7 +357,7 @@ Python uses boolean variables to evaluate conditions. The boolean values True an
 
 * `Note : Variable assignment is done using a single equals operator "=", whereas comparison between two variables is done using the double equals operator "==". The "not equals" operator is marked as "!=".`
 
-<h3>Boolean Operators</h3>
+### Boolean Operators
 
 * The boolean operators in python are `and` and `or`. You can use them in the following way
     ```python
@@ -389,7 +393,7 @@ Python uses boolean variables to evaluate conditions. The boolean values True an
     True
     ```
 
-<h3>Loops</h3>
+### Loops
 
 Two types of loops in Python, `for` and `while`.
 
@@ -447,7 +451,7 @@ Two types of loops in Python, `for` and `while`.
     20
     ```
 
-<h3>Functions in Python</h3>
+### Functions in Python
 
 * As we all know that functions allow us to divide the code into useful blocks, make it more readable, reuse it. Functions in python are defined using the keyword `def`, followed with the function's name.
 
@@ -478,7 +482,10 @@ Two types of loops in Python, `for` and `while`.
 
 * As `def` keyword defines the beginning of a block, it is known as a block keyword. Other block keywords are `if`, `for` and `while`.
 
-<h3>Modules and Packages</h3>
+### Modules and Packages
 
-For information on building modules and packages follow the links:
-* [Learn Python Moduling](https://www.learnpython.org/en/Modules_and_Packages)
+For information on building modules and packages follow the link - [Learn Python Moduling](https://www.learnpython.org/en/Modules_and_Packages)
+
+<br><br>
+
+[PYTHON-HOME](/python) &nbsp; &nbsp; &nbsp; [ADVANCED](/python/advanced)
