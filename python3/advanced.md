@@ -41,7 +41,7 @@ Welcome to the advanced part of Python Programming
     ```
     In the above example we declared a class named `Circle`. We have created two objects of the `Circle` class called `c1` and `c2`. To call the methods you can use `c1.area()`. To access an attribute of the object, you can do that using `c2.radius`.
 
-<h3>else clause in loops<h3>
+<h3>else clause in loops</h3>
 
 When the loop condition of `for` or `while` statement fails then code part in *else* is executed. If break statement is executed inside for loop then the *else* part is skipped. Note that *else* part is executed even if there is a continue statement. Here's an example
 ```python
