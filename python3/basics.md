@@ -3,10 +3,9 @@ layout: page
 permalink: /python/basics
 ---
 <h1>Python Basics</h1>
-
 Welcome to the basics part of Python Programming
 
-## Contents
+__<h2>Contents</h2>__
 * Hello, World!
 * Indentation
 * Variables and Types
