@@ -2,7 +2,6 @@
 layout: page
 permalink: /python/basics
 ---
-## Python Basics
 Welcome to the basics of Python Programming.
 
 ## Contents

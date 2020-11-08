@@ -2,7 +2,6 @@
 layout: page
 permalink: /python/advanced
 ---
-## Python Advanced
 
 ## Contents
 * Classes and Objects
