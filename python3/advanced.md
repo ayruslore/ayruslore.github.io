@@ -3,7 +3,6 @@ layout: page
 permalink: /python/advanced
 ---
 <h1>Python Advanced</h1>
-========================
 
 Welcome to the advanced part of Python Programming
 
