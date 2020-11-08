@@ -5,7 +5,7 @@ permalink: /python/basics
 <h1>Python Basics</h1>
 Welcome to the basics part of Python Programming
 
-<h2>Contents</h2>
+<h3>Contents</h3>
 * Hello, World!
 * Indentation
 * Variables and Types
@@ -19,7 +19,7 @@ Welcome to the basics part of Python Programming
 * Functions
 * Modules and Packages
 
-## Hello, World!
+<h3>Hello, World!</h3>
 Python is a very simple language, and has a very straightforward syntax. The simplest directive in Python is the `print` directive - it simply prints out a line (and also includes a newline, unlike in C).
 
 To print a String, just write:
