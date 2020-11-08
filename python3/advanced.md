@@ -10,6 +10,7 @@ Welcome to the advanced part of Python Programming
 
 * Classes and Objects
 * *else* clause in loops
+* Generators
 
 <h3>Classes and Objects</h3>
 
