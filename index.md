@@ -13,4 +13,4 @@ This website is my lore which contains things that I learn in my journey deep in
 
 # About Me
 
-Hi, I'm Surya Peruri.
+Welcome to Ayrus's Lore. I am Surya Peruri. I am a continuous learner and I love to further my knowledge and explore the endless abyss of this software development world. I graduated from IIIT Bangalore in 2020 and my journey through the unexplored depths of knowledge has just begun. I am also very passionate about teaching others with the skills that I have amassed. Therefore, I have started Ayrus's Lore as a platform through which anyone who is enthusiatic enough to dive into this world derive the right set of skills.
