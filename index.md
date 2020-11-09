@@ -2,7 +2,7 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-layout: page
+layout: splash
 ---
 <img src="/images/risingsun.jpeg" width="720" height="200">
 
@@ -10,3 +10,7 @@ This website is my lore which contains things that I learn in my journey deep in
 
 # Contents
 * [Python](/python)
+
+# About Me
+
+Hi, I'm Surya Peruri.
