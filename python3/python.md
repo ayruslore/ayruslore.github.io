@@ -10,10 +10,10 @@ __What is Python?__ Python is a popular general purpose programming language use
 __Version__ : Python 3.8.5
 
 __Different Links to learn Python from?__
-* The following documentation is just like a pocket reference and can be used for placement preperations, but not for initial learning of python. It contains all the information for learning all the parts of it, Follow the original docs and keep this for reference.
 * Get a Udemy Python certificate by finishing the paid course : [udemy](https://www.udemy.com/course/python-the-complete-python-developer-course/)
 * Coursera Python certificate specializations : [coursera](https://www.coursera.org/search?query=python&index=prod_all_products_term_optimization&entityTypeDescription=Specializations&allLanguages=English&productDifficultyLevel=Beginner)
-* Going on Now : https://www.learnpython.org/
+
+<b>Note :</b> The following documentation is just like a pocket reference, placement preperations, etc.
 
 __Python Programming Paradigms__
 * Object Oriented

@@ -2,19 +2,17 @@
 layout: page
 permalink: /python/advanced
 ---
-[PYTHON-BASICS](/python/basics) &nbsp; &nbsp; &nbsp;
+[Back to Python Basics](/python/basics) &nbsp; &nbsp; &nbsp;
 
 <br>
-
-## Python Advanced
+<h1><b>Python Advanced</b></h1>
 
 Welcome to the advanced part of Python Programming
 
-### Contents
+<h1><b>Table Of Contents</b></h1>
 
-* Classes and Objects
-* *else* clause in loops
-* Generators
+* TOC
+{:toc}
 
 ### Classes and Objects
 
@@ -46,7 +44,7 @@ Welcome to the advanced part of Python Programming
     ```
     In the above example we declared a class named `Circle`. We have created two objects of the `Circle` class called `c1` and `c2`. To call the methods you can use `c1.area()`. To access an attribute of the object, you can do that using `c2.radius`.
 
-### else clause in loops
+### *else* clause in loops
 
 When the loop condition of `for` or `while` statement fails then code part in *else* is executed. If break statement is executed inside for loop then the *else* part is skipped. Note that *else* part is executed even if there is a continue statement. Here's an example
 ```python
@@ -76,7 +74,8 @@ count value reached 5
 
 ### Generators
 __*TODO*__
+https://www.learnpython.org/
 
 <br><br>
 
-[PYTHON-BASICS](/python/basics) &nbsp; &nbsp; &nbsp;
+[Back to Python Basics](/python/basics) &nbsp; &nbsp; &nbsp;
