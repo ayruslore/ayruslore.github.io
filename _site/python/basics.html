@@ -42,12 +42,11 @@
   </header>
 
   <div class="post-content">
-    <p><a href="/python/advanced">Next - Python Advanced</a></p>
+    <p><a href="/python/advanced">Next to Python Advanced</a></p>
 
 <p><br /></p>
 
 <h1><b>Python Basics</b></h1>
-
 <p>Welcome to the basics part of Python Programming</p>
 
 <h1><b>Table Of Contents</b></h1>
@@ -68,16 +67,12 @@
 </ul>
 
 <h3 id="hello-world">Hello, World!</h3>
-
-<p>Python is a very simple language, and has a very straightforward syntax. The simplest directive in Python is the <code class="highlighter-rouge">print</code> directive - it simply prints out a line (and also includes a newline, unlike in C).</p>
-
-<p>To print a String, just write:</p>
+<p>Python is a very simple language, and has a very straightforward syntax. The simplest directive in Python is the <code class="highlighter-rouge">print</code> directive - it simply prints out a line (and also includes a newline, unlike in C). To print a String, just write:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">"hello, world"</span><span class="p">)</span>
 <span class="n">hello</span><span class="p">,</span> <span class="n">world</span>
 </code></pre></div></div>
 
 <h3 id="indentation">Indentation</h3>
-
 <p>Python uses indentation for blocks, instead of curly braces. Both tabs and spaces are supported, but standard indentation requires four spaces. For example:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="bp">True</span><span class="p">:</span>
 <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"True"</span><span class="p">)</span>
@@ -85,7 +80,6 @@
 </code></pre></div></div>
 
 <h3 id="variables-and-types">Variables and Types</h3>
-
 <p>As python is object oriented and not statically typed, you do not need to declare variables, or declare their type before using them. <em>Every variable in Python is an object.</em> Now let us cover the basic types of variables in python.</p>
 
 <ul>
@@ -133,11 +127,11 @@
   <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
   <span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="mf">7j</span><span class="p">)</span>
 </code></pre></div>        </div>
-        <p>Note : Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like &lt;,&gt;,&lt;=,&gt;= and it will thow a <em>TypeError</em>.</p>
+        <p><code class="highlighter-rouge">Note :</code> Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like <code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&gt;</code>, <code class="highlighter-rouge">&lt;=</code>, <code class="highlighter-rouge">&gt;=</code> and it will throw a <em>TypeError</em>.</p>
       </li>
     </ul>
   </li>
-  <li><strong><em>Strings</em></strong> Strings are defined either with a single quote or a double quotes. Use the following syntax to define a string. It’s type is known as <code class="highlighter-rouge">str</code>
+  <li><strong><em>Strings</em></strong> are defined either with a single quote or a double quotes. Use the following syntax to define a string. It’s type is known as <code class="highlighter-rouge">str</code>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">'hello'</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">)</span>
   <span class="n">hello</span>
@@ -145,7 +139,6 @@
   <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">)</span>
   <span class="n">hello</span>
 </code></pre></div>    </div>
-
     <p>The difference between using the quotes is that using double quotes makes it easy to includes apostrophes.</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Don't worry about apostrophes"</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">)</span>
@@ -153,7 +146,7 @@
 </span></code></pre></div>    </div>
     <p>There are additional variations on defining strings that make it easier to include things such as carriage returns, backslashes and Unicode characters.</p>
   </li>
-  <li><strong><em>Lists</em></strong> Lists are very similar to arrays. They can contain any type of variable, and they can contain as many variables as you wish. List index starts from 0. Lists can also be iterated over in a very simple manner. To define, add items and iterate through a list, use the following code as reference. It’s type is known as a <code class="highlighter-rouge">list</code>.
+  <li><strong><em>Lists</em></strong> are very similar to arrays. They can contain any type of variable, and they can contain as many variables as you wish. List index starts from 0. Lists can also be iterated over in a very simple manner. To define, add items and iterate through a list, use the following code as reference. It’s type is known as a <code class="highlighter-rouge">list</code>.
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"2"</span><span class="p">)</span>
@@ -218,7 +211,7 @@
   <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div>    </div>
   </li>
-  <li><strong><em>Dictionaries</em></strong> A dictionary to similar to list and a tuple, but it works with key value pairs instead of indexes. Every value is associated with a key. A dictionary is not ordered and the keys are not associated with an index, hence indexing does not work in dictionaries. A Key or Value can be of any type. Let us consider a dictionary with students names as values and their roll numbers as keys.
+  <li><strong><em>Dictionaries</em></strong> are similar to list and a tuple, but it works with key value pairs instead of indexes. Every value is associated with a key. A dictionary is not ordered and the keys are not associated with an index, hence indexing does not work in dictionaries. A Key or Value can be of any type. Let us consider a dictionary with students names as values and their roll numbers as keys.
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="c1">#empty dictionary
 </span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">rollbook</span> <span class="o">=</span> <span class="p">{}</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1">#dictionary initialized with somevalues
@@ -247,14 +240,12 @@
 </ul>
 
 <h3 id="assignments">Assignments</h3>
-
 <p>Assignments can be done on more than one variable “simultaneously” on the same line like this</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h3 id="arithmetic-operators">Arithmetic Operators</h3>
-
 <ul>
   <li>Just as any other programming languages, the addition, subtraction, multiplication, and division operators can be used with numbers
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">number</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">/</span> <span class="mf">4.0</span> <span class="o">-</span> <span class="mf">0.5</span>
@@ -268,22 +259,12 @@
   <span class="mi">2</span>
 </code></pre></div>    </div>
   </li>
-  <li>
-    <p>Python follows order of operations :- When more than one operator appears in an expression, the order of evaluation depends on the rules of precedence. Python follows the same precedence rules for its mathematical operators that mathematics does.</p>
-
+  <li>Python follows order of operations :- When more than one operator appears in an expression, the order of evaluation depends on the rules of precedence. Python follows the same precedence rules for its mathematical operators that mathematics does.
     <ul>
-      <li>
-        <p>Parentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, <code class="highlighter-rouge">2 * (3-1) is 4</code>, and <code class="highlighter-rouge">(1+1)**(5-2) is 8</code>. You can also use parentheses to make an expression easier to read, as in <code class="highlighter-rouge">(minute * 100) / 60</code>, even though it doesn’t change the result.</p>
-      </li>
-      <li>
-        <p>Exponentiation has the next highest precedence, so <code class="highlighter-rouge">2**1+1 is 3 and not 4</code>, and <code class="highlighter-rouge">3*1**3 is 3 and not 27</code>. Can you explain why?</p>
-      </li>
-      <li>
-        <p>Multiplication and both division operators have the same precedence, which is higher than addition and subtraction, which also have the same precedence. So <code class="highlighter-rouge">2*3-1 yields 5 rather than 4</code>, and <code class="highlighter-rouge">5-2*2 is 1, not 6</code>.</p>
-      </li>
-      <li>
-        <p>Operators with the same precedence (except for **) are evaluated from left-to-right. In algebra we say they are left-associative. So in the expression <code class="highlighter-rouge">6-3+2</code>, the subtraction happens first, yielding 3. We then add 2 to get the result 5. If the operations had been evaluated from right to left, the result would have been <code class="highlighter-rouge">6-(3+2)</code>, which is 1.</p>
-      </li>
+      <li>Parentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, <code class="highlighter-rouge">2 * (3-1) is 4</code>, and <code class="highlighter-rouge">(1+1)**(5-2) is 8</code>. You can also use parentheses to make an expression easier to read, as in <code class="highlighter-rouge">(minute * 100) / 60</code>, even though it doesn’t change the result.</li>
+      <li>Exponentiation has the next highest precedence, so <code class="highlighter-rouge">2**1+1 is 3 and not 4</code>, and <code class="highlighter-rouge">3*1**3 is 3 and not 27</code>. Can you explain why?</li>
+      <li>Multiplication and both division operators have the same precedence, which is higher than addition and subtraction, which also have the same precedence. So <code class="highlighter-rouge">2*3-1 yields 5 rather than 4</code>, and <code class="highlighter-rouge">5-2*2 is 1, not 6</code>.</li>
+      <li>Operators with the same precedence (except for **) are evaluated from left-to-right. In algebra we say they are left-associative. So in the expression <code class="highlighter-rouge">6-3+2</code>, the subtraction happens first, yielding 3. We then add 2 to get the result 5. If the operations had been evaluated from right to left, the result would have been <code class="highlighter-rouge">6-(3+2)</code>, which is 1.</li>
     </ul>
   </li>
   <li>Use two consecutive multiplication symbols for a power operator
@@ -338,7 +319,6 @@
 </ul>
 
 <h3 id="basic-string-operations">Basic String Operations</h3>
-
 <ul>
   <li>To get the length of a string - use the <code class="highlighter-rouge">len</code> function
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
@@ -408,7 +388,6 @@
 </ul>
 
 <h3 id="string-formatting">String Formatting</h3>
-
 <p>Python uses C-style string formatting to create new, formatted strings. The “%” operator is used to format a set of variables, together with a format string, which contains normal text together with “argument specifiers”, special symbols like “%s” and “%d”.</p>
 
 <ul>
@@ -449,7 +428,6 @@
 </ul>
 
 <h3 id="conditions">Conditions</h3>
-
 <p>Python uses boolean variables to evaluate conditions. The boolean values True and False are returned when an expression is compared or evaluated.</p>
 
 <ul>
@@ -480,7 +458,6 @@
 </ul>
 
 <h3 id="boolean-operators">Boolean Operators</h3>
-
 <ul>
   <li>The boolean operators in python are <code class="highlighter-rouge">and</code> and <code class="highlighter-rouge">or</code>. You can use them in the following way
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
@@ -515,7 +492,6 @@
 </ul>
 
 <h3 id="loops">Loops</h3>
-
 <p>Two types of loops in Python, <code class="highlighter-rouge">for</code> and <code class="highlighter-rouge">while</code>.</p>
 
 <ul>
@@ -572,7 +548,6 @@
 </ul>
 
 <h3 id="functions-in-python">Functions in Python</h3>
-
 <ul>
   <li>
     <p>As we all know that functions allow us to divide the code into useful blocks, make it more readable, reuse it. Functions in python are defined using the keyword <code class="highlighter-rouge">def</code>, followed with the function’s name.</p>
@@ -604,12 +579,11 @@
 </ul>
 
 <h3 id="modules-and-packages">Modules and Packages</h3>
-
 <p>For information on building modules and packages follow the link - <a href="https://www.learnpython.org/en/Modules_and_Packages">Learn Python Moduling</a></p>
 
 <p><br /></p>
 
-<p><a href="/python/advanced">Next - Python Advanced</a></p>
+<p><a href="/python/advanced">Next to Python Advanced</a></p>
 
   </div>
 

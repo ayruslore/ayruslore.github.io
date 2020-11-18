@@ -2,12 +2,11 @@
 layout: page
 permalink: /python/basics
 ---
-[Next - Python Advanced](/python/advanced)
+[Next to Python Advanced](/python/advanced)
 
 <br>
 
 <h1><b>Python Basics</b></h1>
-
 Welcome to the basics part of Python Programming
 
 <h1><b>Table Of Contents</b></h1>
@@ -16,17 +15,13 @@ Welcome to the basics part of Python Programming
 {:toc}
 
 ### Hello, World!
-
-Python is a very simple language, and has a very straightforward syntax. The simplest directive in Python is the `print` directive - it simply prints out a line (and also includes a newline, unlike in C).
-
-To print a String, just write:
+Python is a very simple language, and has a very straightforward syntax. The simplest directive in Python is the `print` directive - it simply prints out a line (and also includes a newline, unlike in C). To print a String, just write:
 ```python
 >>> print("hello, world")
 hello, world
 ```
 
 ### Indentation
-
 Python uses indentation for blocks, instead of curly braces. Both tabs and spaces are supported, but standard indentation requires four spaces. For example:
 ```python
 >>> if True:
@@ -35,7 +30,6 @@ True
 ```
 
 ### Variables and Types
-
 As python is object oriented and not statically typed, you do not need to declare variables, or declare their type before using them. *Every variable in Python is an object.* Now let us cover the basic types of variables in python.
 
 * __*Numbers*__ Python supports three types of numbers - integers, floating point numbers, complex numbers.
@@ -83,9 +77,9 @@ As python is object oriented and not statically typed, you do not need to declar
         >>> c2.conjugate()
         (4-7j)
         ```
-        Note : Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like <,>,<=,>= and it will thow a *TypeError*.
+        `Note :` Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like `<`, `>`, `<=`, `>=` and it will throw a *TypeError*.
 
-* __*Strings*__ Strings are defined either with a single quote or a double quotes. Use the following syntax to define a string. It's type is known as `str`
+* __*Strings*__ are defined either with a single quote or a double quotes. Use the following syntax to define a string. It's type is known as `str`
     ```python
     >>> mystring = 'hello'
     >>> print(mystring)
@@ -94,7 +88,6 @@ As python is object oriented and not statically typed, you do not need to declar
     >>> print(mystring)
     hello
     ```
-    
     The difference between using the quotes is that using double quotes makes it easy to includes apostrophes.
     ```python
     >>> mystring = "Don't worry about apostrophes"
@@ -103,7 +96,7 @@ As python is object oriented and not statically typed, you do not need to declar
     ```
     There are additional variations on defining strings that make it easier to include things such as carriage returns, backslashes and Unicode characters.
 
-* __*Lists*__ Lists are very similar to arrays. They can contain any type of variable, and they can contain as many variables as you wish. List index starts from 0. Lists can also be iterated over in a very simple manner. To define, add items and iterate through a list, use the following code as reference. It's type is known as a `list`.
+* __*Lists*__ are very similar to arrays. They can contain any type of variable, and they can contain as many variables as you wish. List index starts from 0. Lists can also be iterated over in a very simple manner. To define, add items and iterate through a list, use the following code as reference. It's type is known as a `list`.
     ```python
     >>> mylist = [0]
     >>> mylist.append(1)
@@ -170,7 +163,7 @@ As python is object oriented and not statically typed, you do not need to declar
     (1, 2, 3)
     ```
 
-* __*Dictionaries*__ A dictionary to similar to list and a tuple, but it works with key value pairs instead of indexes. Every value is associated with a key. A dictionary is not ordered and the keys are not associated with an index, hence indexing does not work in dictionaries. A Key or Value can be of any type. Let us consider a dictionary with students names as values and their roll numbers as keys.
+* __*Dictionaries*__ are similar to list and a tuple, but it works with key value pairs instead of indexes. Every value is associated with a key. A dictionary is not ordered and the keys are not associated with an index, hence indexing does not work in dictionaries. A Key or Value can be of any type. Let us consider a dictionary with students names as values and their roll numbers as keys.
     ```python
     >>> #empty dictionary
     >>> rollbook = {}
@@ -198,7 +191,6 @@ As python is object oriented and not statically typed, you do not need to declar
     ```
 
 ### Assignments
-
 Assignments can be done on more than one variable "simultaneously" on the same line like this
 ```python
 >>> a, b = 3, 4
@@ -206,7 +198,6 @@ Assignments can be done on more than one variable "simultaneously" on the same l
 ```
 
 ### Arithmetic Operators
-
 * Just as any other programming languages, the addition, subtraction, multiplication, and division operators can be used with numbers
     ```python
     >>> number = 1 + 2 * 3 / 4.0 - 0.5
@@ -222,13 +213,9 @@ Assignments can be done on more than one variable "simultaneously" on the same l
     ```
 
 * Python follows order of operations :- When more than one operator appears in an expression, the order of evaluation depends on the rules of precedence. Python follows the same precedence rules for its mathematical operators that mathematics does.
-
     * Parentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, `2 * (3-1) is 4`, and `(1+1)**(5-2) is 8`. You can also use parentheses to make an expression easier to read, as in `(minute * 100) / 60`, even though it doesn’t change the result.
-    
     * Exponentiation has the next highest precedence, so `2**1+1 is 3 and not 4`, and `3*1**3 is 3 and not 27`. Can you explain why?
-    
     * Multiplication and both division operators have the same precedence, which is higher than addition and subtraction, which also have the same precedence. So `2*3-1 yields 5 rather than 4`, and `5-2*2 is 1, not 6`.
-    
     * Operators with the same precedence (except for **) are evaluated from left-to-right. In algebra we say they are left-associative. So in the expression `6-3+2`, the subtraction happens first, yielding 3. We then add 2 to get the result 5. If the operations had been evaluated from right to left, the result would have been `6-(3+2)`, which is 1.
 
 * Use two consecutive multiplication symbols for a power operator
@@ -287,7 +274,6 @@ Assignments can be done on more than one variable "simultaneously" on the same l
     ```
 
 ### Basic String Operations
-
 * To get the length of a string - use the `len` function
     ```python
     >>> mystring = "Hello world!"
@@ -310,7 +296,7 @@ Assignments can be done on more than one variable "simultaneously" on the same l
     ```
 
 * To print a slice of the string, the syntax is of the form `string[i:j]` - this prints the slice starting from index `i` and ends at index `j-1` or ends at `j`th character.
-
+    
     __Note :__ If you just have one number in the brackets, it will give you the single character at that index. If you leave out the first number but keep the colon, it will give you a slice from the start to the number you left in. If you leave out the second number, it will give you a slice from the first number to the end. You can even put negative numbers inside the brackets. They are an easy way of starting at the end of the string instead of the beginning. This way, -4 means "4th character from the end"
     ```python
     >>> mystring = "Hello world!"
@@ -362,7 +348,6 @@ Assignments can be done on more than one variable "simultaneously" on the same l
     ```
 
 ### String Formatting
-
 Python uses C-style string formatting to create new, formatted strings. The "%" operator is used to format a set of variables, together with a format string, which contains normal text together with "argument specifiers", special symbols like "%s" and "%d".
 
 * __*repr*__ method __*TODO*__
@@ -400,7 +385,6 @@ Python uses C-style string formatting to create new, formatted strings. The "%" 
     ```
 
 ### Conditions
-
 Python uses boolean variables to evaluate conditions. The boolean values True and False are returned when an expression is compared or evaluated.
 
 * For example
@@ -431,7 +415,6 @@ Python uses boolean variables to evaluate conditions. The boolean values True an
 * __Note :__ Variable assignment is done using a single equals operator `"="`, whereas comparison between two variables is done using the double equals operator `"=="`. The `"not equals"` operator is marked as `"!="`.
 
 ### Boolean Operators
-
 * The boolean operators in python are `and` and `or`. You can use them in the following way
     ```python
     >>> a, b = 1, 2
@@ -467,7 +450,6 @@ Python uses boolean variables to evaluate conditions. The boolean values True an
     ```
 
 ### Loops
-
 Two types of loops in Python, `for` and `while`.
 
 * __*for* loop__ for loop is used to iterate over a given sequence of objects. It's syntax is very simple, here's an example
@@ -525,7 +507,6 @@ Two types of loops in Python, `for` and `while`.
     ```
 
 ### Functions in Python
-
 * As we all know that functions allow us to divide the code into useful blocks, make it more readable, reuse it. Functions in python are defined using the keyword `def`, followed with the function's name.
 
 * To call the above function, just call the function name followed by curved brackets, you may also pass arguments if required.
@@ -556,9 +537,8 @@ Two types of loops in Python, `for` and `while`.
 * As `def` keyword defines the beginning of a block, it is known as a block keyword. Other block keywords are `if`, `for` and `while`.
 
 ### Modules and Packages
-
 For information on building modules and packages follow the link - [Learn Python Moduling](https://www.learnpython.org/en/Modules_and_Packages)
 
 <br>
 
-[Next - Python Advanced](/python/advanced)
+[Next to Python Advanced](/python/advanced)

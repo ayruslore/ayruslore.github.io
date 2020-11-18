@@ -42,7 +42,56 @@
   </header>
 
   <div class="post-content">
-    
+    <p><a href="/js/advanced">Go Next Javascript Advanced</a></p>
+
+<p><br /></p>
+<h1><b>Javascript Basics</b></h1>
+<p>Welcome to the basics part of Javascript Programming. Here we are gonna cover learning the language part.</p>
+
+<h1><b>Table Of Contents</b></h1>
+
+<ul id="markdown-toc">
+  <li><a href="#hello-world" id="markdown-toc-hello-world">Hello, World!</a></li>
+  <li><a href="#consolelog-says-undefined" id="markdown-toc-consolelog-says-undefined">console.log says undefined</a></li>
+  <li><a href="#variables-and-types" id="markdown-toc-variables-and-types">Variables and Types</a></li>
+</ul>
+
+<h3 id="hello-world">Hello, World!</h3>
+<p>To print something, use the <code class="highlighter-rouge">console.log</code> function.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello, World!</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="o">!</span>
+<span class="kc">undefined</span>
+</code></pre></div></div>
+
+<h3 id="consolelog-says-undefined">console.log says undefined</h3>
+<p>The console will print the result of evaluating an expression. The result of evaluating <code class="highlighter-rouge">console.log()</code> is <code class="highlighter-rouge">undefined</code> since <code class="highlighter-rouge">console.log</code> does not explicitly return something. It has the side effect of printing to the console. You can observe the same behaviour with many expressions:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kc">undefined</span><span class="p">;</span>
+</code></pre></div></div>
+<p>A variable declaration does not produce a value so again undefined is printed to the console. As a counter-example, expressions containing mathematical operators do produce a value which is printed to the console instead of undefined:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+<span class="mi">8</span>
+</code></pre></div></div>
+<p>Another example - define two functions, one returns a value and the other does not return anything. Call them and see what happens.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">funcA</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">...</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">...</span> <span class="p">}</span>
+<span class="kc">undefined</span>
+<span class="o">&gt;</span> <span class="kd">function</span> <span class="nx">funcB</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">...</span> <span class="k">return</span><span class="p">;</span>
+<span class="p">...</span> <span class="p">}</span>
+<span class="kc">undefined</span>
+<span class="o">&gt;</span> <span class="nx">funcA</span><span class="p">();</span>
+<span class="mi">1</span>
+<span class="o">&gt;</span> <span class="nx">funcB</span><span class="p">();</span>
+<span class="kc">undefined</span>
+</code></pre></div></div>
+
+<h3 id="variables-and-types">Variables and Types</h3>
+
+<p><br /></p>
+
+<p><a href="/js/advanced">Go Next Javascript Advanced</a></p>
 
   </div>
 

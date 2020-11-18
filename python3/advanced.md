@@ -5,8 +5,8 @@ permalink: /python/advanced
 [Back to Python Basics](/python/basics) &nbsp; &nbsp; &nbsp;
 
 <br>
-<h1><b>Python Advanced</b></h1>
 
+<h1><b>Python Advanced</b></h1>
 Welcome to the advanced part of Python Programming
 
 <h1><b>Table Of Contents</b></h1>
@@ -15,7 +15,6 @@ Welcome to the advanced part of Python Programming
 {:toc}
 
 ### Classes and Objects
-
 * Objects are an encapsulation of variables and functions into a single entity. Objects get their variables and functions from classes. Classes are essentially a template to create your objects.
 
 * `self` keyword is passed as a parameter to the methods of an class. This is passed in the declaration so as to access the current attibutes of the instance created.
@@ -45,7 +44,6 @@ Welcome to the advanced part of Python Programming
     In the above example we declared a class named `Circle`. We have created two objects of the `Circle` class called `c1` and `c2`. To call the methods you can use `c1.area()`. To access an attribute of the object, you can do that using `c2.radius`.
 
 ### *else* clause in loops
-
 When the loop condition of `for` or `while` statement fails then code part in *else* is executed. If break statement is executed inside for loop then the *else* part is skipped. Note that *else* part is executed even if there is a continue statement. Here's an example
 ```python
 >>> count = 0
