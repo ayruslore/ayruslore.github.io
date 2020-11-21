@@ -2,7 +2,7 @@
 layout: page
 permalink: /python/basics
 ---
-[Next to Python Advanced](/python/advanced)
+[Go Next to Python Advanced](/python/advanced)
 
 <br>
 
@@ -28,6 +28,9 @@ Python uses indentation for blocks, instead of curly braces. Both tabs and space
 ...     print("True")
 True
 ```
+
+### Naming Variables in Python
+CamelCase ------------------ __*TODO*__
 
 ### Variables and Types
 As python is object oriented and not statically typed, you do not need to declare variables, or declare their type before using them. *Every variable in Python is an object.* Now let us cover the basic types of variables in python.
@@ -541,4 +544,4 @@ For information on building modules and packages follow the link - [Learn Python
 
 <br>
 
-[Next to Python Advanced](/python/advanced)
+[Go Next to Python Advanced](/python/advanced)

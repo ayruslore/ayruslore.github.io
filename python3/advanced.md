@@ -2,7 +2,7 @@
 layout: page
 permalink: /python/advanced
 ---
-[Back to Python Basics](/python/basics) &nbsp; &nbsp; &nbsp;
+[Go Back to Python Basics](/python/basics) &nbsp; &nbsp; &nbsp;
 
 <br>
 
@@ -74,6 +74,9 @@ count value reached 5
 __*TODO*__
 https://www.learnpython.org/
 
+### Object Oriented Python
+__*TODO*__
+
 <br><br>
 
-[Back to Python Basics](/python/basics) &nbsp; &nbsp; &nbsp;
+[Go Back to Python Basics](/python/basics) &nbsp; &nbsp; &nbsp;
