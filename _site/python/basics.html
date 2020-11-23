@@ -55,7 +55,15 @@
   <li><a href="#hello-world" id="markdown-toc-hello-world">Hello, World!</a></li>
   <li><a href="#indentation" id="markdown-toc-indentation">Indentation</a></li>
   <li><a href="#naming-variables-in-python" id="markdown-toc-naming-variables-in-python">Naming Variables in Python</a></li>
-  <li><a href="#variables-and-types" id="markdown-toc-variables-and-types">Variables and Types</a></li>
+  <li><a href="#variables-and-types" id="markdown-toc-variables-and-types">Variables and Types</a>    <ul>
+      <li><a href="#numbers" id="markdown-toc-numbers">Numbers</a></li>
+      <li><a href="#strings" id="markdown-toc-strings">Strings</a></li>
+      <li><a href="#lists" id="markdown-toc-lists">Lists</a></li>
+      <li><a href="#tuples" id="markdown-toc-tuples">Tuples</a></li>
+      <li><a href="#dictionaries" id="markdown-toc-dictionaries">Dictionaries</a></li>
+      <li><a href="#sets" id="markdown-toc-sets">Sets</a></li>
+    </ul>
+  </li>
   <li><a href="#assignments" id="markdown-toc-assignments">Assignments</a></li>
   <li><a href="#arithmetic-operators" id="markdown-toc-arithmetic-operators">Arithmetic Operators</a></li>
   <li><a href="#basic-string-operations" id="markdown-toc-basic-string-operations">Basic String Operations</a></li>
@@ -64,6 +72,7 @@
   <li><a href="#boolean-operators" id="markdown-toc-boolean-operators">Boolean Operators</a></li>
   <li><a href="#loops" id="markdown-toc-loops">Loops</a></li>
   <li><a href="#functions-in-python" id="markdown-toc-functions-in-python">Functions in Python</a></li>
+  <li><a href="#json-serialization" id="markdown-toc-json-serialization">JSON Serialization</a></li>
   <li><a href="#modules-and-packages" id="markdown-toc-modules-and-packages">Modules and Packages</a></li>
 </ul>
 
@@ -81,87 +90,146 @@
 </code></pre></div></div>
 
 <h3 id="naming-variables-in-python">Naming Variables in Python</h3>
-<p>CamelCase —————— <strong><em>TODO</em></strong></p>
+<p>Rules for naming Python variables:</p>
+<ul>
+  <li>A variable name must start with a letter or the underscore character</li>
+  <li>A variable name cannot start with a number</li>
+  <li>A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )</li>
+  <li>Variable names are case-sensitive (age, Age and AGE are three different variables)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="c1">#Legal variable names:
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">myvar</span> <span class="o">=</span> <span class="s">"John"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_var</span> <span class="o">=</span> <span class="s">"John"</span> <span class="c1"># we are going to stick to this pattern throughout the tutorial
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">_my_var</span> <span class="o">=</span> <span class="s">"John"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myVar</span> <span class="o">=</span> <span class="s">"John"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">MYVAR</span> <span class="o">=</span> <span class="s">"John"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myvar2</span> <span class="o">=</span> <span class="s">"John"</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="c1">#Illegal variable names:
+</span><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="n">myvar</span> <span class="o">=</span> <span class="s">"John"</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="mi">2</span><span class="n">myvar</span> <span class="o">=</span> <span class="s">"John"</span>
+     <span class="o">^</span>
+<span class="nb">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my</span><span class="o">-</span><span class="n">var</span> <span class="o">=</span> <span class="s">"John"</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="nb">SyntaxError</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">assign</span> <span class="n">to</span> <span class="n">operator</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my</span> <span class="n">var</span> <span class="o">=</span> <span class="s">"John"</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">my</span> <span class="n">var</span> <span class="o">=</span> <span class="s">"John"</span>
+       <span class="o">^</span>
+<span class="nb">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</code></pre></div></div>
 
 <h3 id="variables-and-types">Variables and Types</h3>
-<p>As python is object oriented and not statically typed, you do not need to declare variables, or declare their type before using them. <em>Every variable in Python is an object.</em> Now let us cover the basic types of variables in python.</p>
-
+<p>Python has no command for declaring a variable, it is created the moment you first assign a value to it. Variables do not need to be declared with any particular type, and can even change type after they have been set.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">int</span><span class="s">'&gt;</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; x = '</span><span class="n">John</span><span class="s">'</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; type(x)</span><span class="err">
+</span><span class="s">&lt;class '</span><span class="nb">str</span><span class="s">'&gt;</span><span class="err">
+</span></code></pre></div></div>
+<p>The <code class="highlighter-rouge">type</code> function is used to find out the type of a variable. Let’s take a look at the different types of variables in Python.</p>
 <ul>
   <li>
-    <p><strong><em>Numbers</em></strong> Python supports three types of numbers - integers, floating point numbers, complex numbers.</p>
-
+    <h4 id="numbers">Numbers</h4>
+    <p>Python supports three types of numbers - integers, floating point numbers, complex numbers.</p>
     <ul>
-      <li>To define an integer, use the following syntax. It’s type is known as an <code class="highlighter-rouge">int</code>
-        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">myint</span> <span class="o">=</span> <span class="mi">5</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">myint</span><span class="p">)</span>
+      <li>To define an integer, use the following code as reference. It’s type is known as an <code class="highlighter-rouge">int</code>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_int</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_int</span><span class="p">)</span>
   <span class="mi">5</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">my_int</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">int</span><span class="err">`</span><span class="o">&gt;</span>
 </code></pre></div>        </div>
       </li>
-      <li>To define a floating point number, use the following syntax. It’s type is known as a <code class="highlighter-rouge">float</code>
-        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">myfloat</span> <span class="o">=</span> <span class="mf">5.0</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">myfloat</span><span class="p">)</span>
+      <li>To define a floating point number, use the following code as reference. It’s type is known as a <code class="highlighter-rouge">float</code>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_float</span> <span class="o">=</span> <span class="mf">5.0</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_float</span><span class="p">)</span>
   <span class="mf">5.0</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">myfloat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">myfloat</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">my_float</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">float</span><span class="err">`</span><span class="o">&gt;</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_float</span><span class="p">)</span>
   <span class="mf">5.0</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">my_float</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">float</span><span class="err">`</span><span class="o">&gt;</span>
 </code></pre></div>        </div>
       </li>
-      <li>To define a complex number, use the following syntax. It’s type is know as <code class="highlighter-rouge">complex</code>
-        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">6j</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span>
-  <span class="o">&lt;</span><span class="k">class</span> <span class="nc">complex</span><span class="o">&gt;</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span>
+      <li>To define a complex number, use the following code as reference. It’s type is know as <code class="highlighter-rouge">complex</code>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_1</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mf">6j</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">c_1</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">complex</span><span class="err">`</span><span class="o">&gt;</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">c_2</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">complex</span><span class="err">`</span><span class="o">&gt;</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_1</span>
   <span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mf">6j</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span>
   <span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mf">7j</span><span class="p">)</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1"># Each complex has two parts real and imaginary.
 </span>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># Hence the type complex offers two attributes - real, imag
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># It also offers a method - conjugate() -- returns the conjugate value
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span><span class="o">.</span><span class="n">real</span>
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># It also offers a method - conjugate()
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># It returns the conjugate value
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_1</span><span class="o">.</span><span class="n">real</span>
   <span class="mf">3.0</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span><span class="o">.</span><span class="n">imag</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_1</span><span class="o">.</span><span class="n">imag</span>
   <span class="mf">6.0</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">real</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span><span class="o">.</span><span class="n">real</span>
   <span class="mf">4.0</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">imag</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span><span class="o">.</span><span class="n">imag</span>
   <span class="mf">7.0</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_1</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
   <span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mf">6j</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
   <span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="mf">7j</span><span class="p">)</span>
 </code></pre></div>        </div>
-        <p><code class="highlighter-rouge">Note :</code> Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like <code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&gt;</code>, <code class="highlighter-rouge">&lt;=</code>, <code class="highlighter-rouge">&gt;=</code> and it will throw a <em>TypeError</em>.</p>
+        <p><strong>Note :</strong> Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like <code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&gt;</code>, <code class="highlighter-rouge">&lt;=</code>, <code class="highlighter-rouge">&gt;=</code> and it will throw a <em>TypeError</em>.</p>
       </li>
     </ul>
   </li>
-  <li><strong><em>Strings</em></strong> are defined either with a single quote or a double quotes. Use the following syntax to define a string. It’s type is known as <code class="highlighter-rouge">str</code>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">'hello'</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">)</span>
+  <li>
+    <h4 id="strings">Strings</h4>
+    <p>They are defined either with a single quote or a double quotes. Use the following code as reference to define a string. It’s type is known as <code class="highlighter-rouge">str</code></p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">'hello'</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
   <span class="n">hello</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"hello"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">str</span><span class="err">`</span><span class="o">&gt;</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"hello"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
   <span class="n">hello</span>
 </code></pre></div>    </div>
     <p>The difference between using the quotes is that using double quotes makes it easy to includes apostrophes.</p>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Don't worry about apostrophes"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">)</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Don't worry about apostrophes"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
   <span class="n">Don</span><span class="s">'t worry about apostrophes</span><span class="err">
 </span></code></pre></div>    </div>
     <p>There are additional variations on defining strings that make it easier to include things such as carriage returns, backslashes and Unicode characters.</p>
   </li>
-  <li><strong><em>Lists</em></strong> are very similar to arrays. They can contain any type of variable, and they can contain as many variables as you wish. List index starts from 0. Lists can also be iterated over in a very simple manner. To define, add items and iterate through a list, use the following code as reference. It’s type is known as a <code class="highlighter-rouge">list</code>.
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"2"</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.4</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mylist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <li>
+    <h4 id="lists">Lists</h4>
+    <p>They are very similar to arrays. They can contain any type of variable, and they can contain as many variables as you wish. List index starts from 0. Lists can also be iterated over in a very simple manner. To define, add items and iterate through a list, use the following code as reference. It’s type is known as a <code class="highlighter-rouge">list</code>.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># initializes a list with one element
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># now let's add more elements to the list using the append function
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># The append function adds elements at the end of the list
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">list</span><span class="err">`</span><span class="o">&gt;</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"2"</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.4</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'2'</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">]</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># accessing the list, indexing starts at 0
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
   <span class="mi">1</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mylist</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
   <span class="mi">2</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mylist</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
   <span class="mf">3.4</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
   <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
   <span class="mi">0</span>
   <span class="mi">1</span>
@@ -169,55 +237,64 @@
   <span class="mf">3.4</span>
 </code></pre></div>    </div>
   </li>
-  <li><strong><em>Tuples</em></strong> A tuple is a collection of objects which ordered and immutable. Tuples are sequences, just like lists. The differences between tuples and lists are, the tuples cannot be changed unlike lists and tuples use parentheses, whereas lists use square brackets. It’s type is known as a <code class="highlighter-rouge">tuple</code>.
+  <li>
+    <h4 id="tuples">Tuples</h4>
+    <p>A tuple is a collection of objects which is ordered and immutable. Tuples are sequences, just like lists. The differences between tuples and lists are, the tuples cannot be changed unlike lists and tuples use parentheses, whereas lists use square brackets. To define a tuple and perform operations on it use the following code as reference. It’s type is known as a <code class="highlighter-rouge">tuple</code>.</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># you can create a tuple in the following way
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple1</span> <span class="o">=</span> <span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple3</span> <span class="o">=</span> <span class="s">"a"</span><span class="p">,</span><span class="s">"b"</span><span class="p">,</span><span class="s">"c"</span>
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple_1</span> <span class="o">=</span> <span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">tuple_1</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">tuple</span><span class="err">`</span><span class="o">&gt;</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple_2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple_3</span> <span class="o">=</span> <span class="s">"a"</span><span class="p">,</span><span class="s">"b"</span><span class="p">,</span><span class="s">"c"</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="n">empty_tuple</span> <span class="o">=</span> <span class="p">()</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple_with_one_value</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,)</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1"># access value in tuple
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple_2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
   <span class="mi">3</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># changing the values of a tuple is not allowed
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple_2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
   <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
     <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
   <span class="nb">TypeError</span><span class="p">:</span> <span class="s">'tuple'</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assignment</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple4</span> <span class="o">=</span> <span class="n">tuple1</span> <span class="o">+</span> <span class="n">tuple2</span> <span class="o">+</span> <span class="n">tuple3</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple4</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple_4</span> <span class="o">=</span> <span class="n">tuple_1</span> <span class="o">+</span> <span class="n">tuple_2</span> <span class="o">+</span> <span class="n">tuple_3</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple_4</span>
   <span class="p">(</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">)</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1"># removing an element in tuple is not allowed
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">tuple4</span>
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">del</span> <span class="n">tuple_4</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1"># this deletes the tuple itself
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple4</span>
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">tuple_4</span>
   <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
     <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-  <span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'tuple4'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+  <span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'tuple_4'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1"># tuples support length, concatenation, repitition, membership and iteration
 </span>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># built-in tuple functions
 </span>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># 1. len - gives total length of tuple
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tuple2</span><span class="p">)</span>
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tuple_2</span><span class="p">)</span>
   <span class="mi">5</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1"># 2. max - returns item in the tuple with max value
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">tuple2</span><span class="p">)</span>
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">tuple_2</span><span class="p">)</span>
   <span class="mi">5</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">tuple1</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">tuple_1</span><span class="p">)</span>
   <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
     <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
   <span class="nb">TypeError</span><span class="p">:</span> <span class="s">'&gt;'</span> <span class="ow">not</span> <span class="n">supported</span> <span class="n">between</span> <span class="n">instances</span> <span class="n">of</span> <span class="s">'int'</span> <span class="ow">and</span> <span class="s">'str'</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1"># 3. min - returns item in the tuple with min value
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">tuple2</span><span class="p">)</span>
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">tuple_2</span><span class="p">)</span>
   <span class="mi">1</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">tuple3</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">tuple_3</span><span class="p">)</span>
   <span class="s">'a'</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1"># 4. tuple - converts a list to a tuple
 </span>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">tuple</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
   <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div>    </div>
   </li>
-  <li><strong><em>Dictionaries</em></strong> are similar to list and a tuple, but it works with key value pairs instead of indexes. Every value is associated with a key. A dictionary is not ordered and the keys are not associated with an index, hence indexing does not work in dictionaries. A Key or Value can be of any type. Let us consider a dictionary with students names as values and their roll numbers as keys.
+  <li>
+    <h4 id="dictionaries">Dictionaries</h4>
+    <p>They are similar to list and a tuple, but it works with key value pairs instead of indexes. Every value is associated with a key. A dictionary is not ordered and the keys are not associated with an index, hence indexing does not work in dictionaries. A Key or Value can be of any type. Let us consider a dictionary with students names as values and their roll numbers as keys.</p>
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="c1">#empty dictionary
 </span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">rollbook</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">rollbook</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">dict</span><span class="err">`</span><span class="o">&gt;</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1">#dictionary initialized with somevalues
 </span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">rollbook</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s">"sweety"</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">"preeti"</span><span class="p">}</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1">#now we'll add more values in to the dictionary
@@ -239,6 +316,53 @@
   <span class="s">'preeti'</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">rollbook</span><span class="p">)</span>
   <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s">'arjun'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s">'lakshman'</span><span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <h4 id="sets">Sets</h4>
+    <p>They are just lists with no duplicate entries. The <code class="highlighter-rouge">set</code> function is used to create a set from a list. Use the following for reference for creating a set</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">set</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+  <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">nums</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">set</span><span class="err">`</span><span class="o">&gt;</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># accessing a set is not as the same as list
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+    <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="nb">TypeError</span><span class="p">:</span> <span class="s">'set'</span> <span class="nb">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">subscriptable</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+  <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+  <span class="mi">1</span>
+  <span class="mi">2</span>
+  <span class="mi">3</span>
+  <span class="mi">4</span>
+  <span class="mi">5</span>
+</code></pre></div>    </div>
+    <p>Sets are a powerful tool in Python since they have the ability to calculate differences and intersections between other sets, let’s look at an example</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">set_a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">set_b</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># intersection : members attended both events
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">set_a</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set_b</span><span class="p">))</span>
+  <span class="p">{</span><span class="mi">2</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">set_b</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set_a</span><span class="p">))</span>
+  <span class="p">{</span><span class="mi">2</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># symmetric_difference : members attended only one of the events
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">set_a</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">set_b</span><span class="p">))</span>
+  <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">set_b</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="n">set_a</span><span class="p">))</span>
+  <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># difference : members attended only one event and not the other
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">set_a</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">set_b</span><span class="p">))</span>
+  <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">set_b</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">set_a</span><span class="p">))</span>
+  <span class="p">{</span><span class="mi">4</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># union : receive a list of all participants
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">set_a</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">set_b</span><span class="p">))</span>
+  <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">set_b</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">set_a</span><span class="p">))</span>
+  <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -263,14 +387,6 @@
   <span class="mi">2</span>
 </code></pre></div>    </div>
   </li>
-  <li>Python follows order of operations :- When more than one operator appears in an expression, the order of evaluation depends on the rules of precedence. Python follows the same precedence rules for its mathematical operators that mathematics does.
-    <ul>
-      <li>Parentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, <code class="highlighter-rouge">2 * (3-1) is 4</code>, and <code class="highlighter-rouge">(1+1)**(5-2) is 8</code>. You can also use parentheses to make an expression easier to read, as in <code class="highlighter-rouge">(minute * 100) / 60</code>, even though it doesn’t change the result.</li>
-      <li>Exponentiation has the next highest precedence, so <code class="highlighter-rouge">2**1+1 is 3 and not 4</code>, and <code class="highlighter-rouge">3*1**3 is 3 and not 27</code>. Can you explain why?</li>
-      <li>Multiplication and both division operators have the same precedence, which is higher than addition and subtraction, which also have the same precedence. So <code class="highlighter-rouge">2*3-1 yields 5 rather than 4</code>, and <code class="highlighter-rouge">5-2*2 is 1, not 6</code>.</li>
-      <li>Operators with the same precedence (except for **) are evaluated from left-to-right. In algebra we say they are left-associative. So in the expression <code class="highlighter-rouge">6-3+2</code>, the subtraction happens first, yielding 3. We then add 2 to get the result 5. If the operations had been evaluated from right to left, the result would have been <code class="highlighter-rouge">6-(3+2)</code>, which is 1.</li>
-    </ul>
-  </li>
   <li>Use two consecutive multiplication symbols for a power operator
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">square</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">**</span> <span class="mi">2</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="n">cube</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">**</span> <span class="mi">3</span>
@@ -279,6 +395,14 @@
   <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
   <span class="mi">64</span>
 </code></pre></div>    </div>
+  </li>
+  <li>Python follows order of operations :- When more than one operator appears in an expression, the order of evaluation depends on the rules of precedence. Python follows the same precedence rules for its mathematical operators that mathematics does.
+    <ul>
+      <li>Parentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, <code class="highlighter-rouge">2 * (3-1) is 4</code>, and <code class="highlighter-rouge">(1+1)**(5-2) is 8</code>. You can also use parentheses to make an expression easier to read, as in <code class="highlighter-rouge">(minute * 100) / 60</code>, even though it doesn’t change the result.</li>
+      <li>Exponentiation has the next highest precedence, so <code class="highlighter-rouge">2**1+1 is 3 and not 4</code>, and <code class="highlighter-rouge">3*1**3 is 3 and not 27</code>.</li>
+      <li>Multiplication and both division operators have the same precedence, which is higher than addition and subtraction, which also have the same precedence. So <code class="highlighter-rouge">2*3-1 yields 5 rather than 4</code>, and <code class="highlighter-rouge">5-2*2 is 1, not 6</code>.</li>
+      <li>Operators with the same precedence (except for **) are evaluated from left-to-right. In algebra we say they are left-associative. So in the expression <code class="highlighter-rouge">6-3+2</code>, the subtraction happens first, yielding 3. We then add 2 to get the result 5. If the operations had been evaluated from right to left, the result would have been <code class="highlighter-rouge">6-(3+2)</code>, which is 1.</li>
+    </ul>
   </li>
   <li>Simple operators can be executed on numbers and strings. Use addition to concatenate strings
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">one</span> <span class="o">=</span> <span class="mi">1</span>
@@ -325,65 +449,62 @@
 <h3 id="basic-string-operations">Basic String Operations</h3>
 <ul>
   <li>To get the length of a string - use the <code class="highlighter-rouge">len</code> function
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mystring</span><span class="p">))</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_string</span><span class="p">))</span>
   <span class="mi">12</span>
 </code></pre></div>    </div>
   </li>
   <li>To print the index of the first occurence of a character - use the <code class="highlighter-rouge">index</code> method
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">'l'</span><span class="p">))</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">'l'</span><span class="p">))</span>
   <span class="mi">2</span>
 </code></pre></div>    </div>
   </li>
   <li>To count the number of times a character is repeated in a string - use the <code class="highlighter-rouge">count</code> method
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'o'</span><span class="p">))</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">'o'</span><span class="p">))</span>
   <span class="mi">2</span>
 </code></pre></div>    </div>
   </li>
-  <li>
-    <p>To print a slice of the string, the syntax is of the form <code class="highlighter-rouge">string[i:j]</code> - this prints the slice starting from index <code class="highlighter-rouge">i</code> and ends at index <code class="highlighter-rouge">j-1</code> or ends at <code class="highlighter-rouge">j</code>th character.</p>
-
-    <p><strong>Note :</strong> If you just have one number in the brackets, it will give you the single character at that index. If you leave out the first number but keep the colon, it will give you a slice from the start to the number you left in. If you leave out the second number, it will give you a slice from the first number to the end. You can even put negative numbers inside the brackets. They are an easy way of starting at the end of the string instead of the beginning. This way, -4 means “4th character from the end”</p>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">9</span><span class="p">])</span>
+  <li>To print a slice of the string, the syntax is of the form <code class="highlighter-rouge">string[i:j]</code> - this prints the slice starting from index <code class="highlighter-rouge">i</code> and ends at index <code class="highlighter-rouge">j-1</code> or ends at <code class="highlighter-rouge">j</code>th character. <strong>Note :</strong> If you just have one number in the brackets, it will give you the single character at that index. If you leave out the first number but keep the colon, it will give you a slice from the start to the number you left in.If you leave out the second number, it will give you a slice from the first number to the end. You can even put negative numbers inside the brackets. They are an easy way of starting at the end of the string instead of the beginning. This way, -4 means “4th character from the end”
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">9</span><span class="p">])</span>
   <span class="n">llo</span> <span class="n">wor</span>
 </code></pre></div>    </div>
   </li>
   <li>Extended slice syntax <code class="highlighter-rouge">[start:stop:step]</code>, the step skips characters. Let’s skip one character and see
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
   <span class="n">lowrd</span>
 </code></pre></div>    </div>
   </li>
   <li>To reverse a string
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Hello world"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
   <span class="n">dlrow</span> <span class="n">olleH</span>
 </code></pre></div>    </div>
   </li>
   <li>To convert a string to all uppercase characters and lowercase characters, use the <code class="highlighter-rouge">upper</code> and <code class="highlighter-rouge">lower</code> methods
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Hello world"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
   <span class="n">HELLO</span> <span class="n">WORLD</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
   <span class="n">hello</span> <span class="n">world</span>
 </code></pre></div>    </div>
   </li>
   <li>To determine whether a string starts with something and ends with something, use the <code class="highlighter-rouge">startswith</code> and <code class="highlighter-rouge">endswith</code> methods
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">))</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">))</span>
   <span class="bp">True</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">))</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">))</span>
   <span class="bp">False</span>
 </code></pre></div>    </div>
   </li>
   <li>To split a string into a bunch of strings based on a particular character or string, use the <code class="highlighter-rouge">split</code> method. It thows a <code class="highlighter-rouge">ValueError</code> if an empty seperator is provided
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">mystring</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">))</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s">"Hello world!"</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">" "</span><span class="p">))</span>
   <span class="p">[</span><span class="s">'Hello'</span><span class="p">,</span> <span class="s">'world!'</span><span class="p">]</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">""</span><span class="p">))</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">my_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">""</span><span class="p">))</span>
   <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
     <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
   <span class="nb">ValueError</span><span class="p">:</span> <span class="n">empty</span> <span class="n">separator</span>
@@ -433,7 +554,6 @@
 
 <h3 id="conditions">Conditions</h3>
 <p>Python uses boolean variables to evaluate conditions. The boolean values True and False are returned when an expression is compared or evaluated.</p>
-
 <ul>
   <li>For example
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
@@ -478,19 +598,33 @@
   <span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">]:</span>
   <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"the value of a is in present in the list"</span><span class="p">)</span>
   <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">a</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">present</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">list</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+  <span class="bp">True</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s">'a'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s">'c'</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="s">'e'</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span><span class="s">'g'</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span><span class="s">'i'</span><span class="p">}</span>
+  <span class="bp">True</span>
 </code></pre></div>    </div>
   </li>
   <li>The <code class="highlighter-rouge">is</code> operator matches the instances themselves, unlike the equals operator <code class="highlighter-rouge">==</code> which matches the values of the variables.
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
   <span class="bp">True</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">x</span> <span class="ow">is</span> <span class="n">y</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
+  <span class="bp">True</span>
+  <span class="o">&gt;&gt;&gt;</span> 
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="ow">is</span> <span class="n">y</span>
   <span class="bp">False</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
+  <span class="bp">True</span>
 </code></pre></div>    </div>
   </li>
   <li>The <code class="highlighter-rouge">not</code> operator, inverts a boolean expression.
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="ow">not</span> <span class="bp">False</span><span class="p">)</span>
   <span class="bp">True</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="bp">True</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="ow">not</span> <span class="n">a</span>
+  <span class="bp">False</span>
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -499,17 +633,43 @@
 <p>Two types of loops in Python, <code class="highlighter-rouge">for</code> and <code class="highlighter-rouge">while</code>.</p>
 
 <ul>
-  <li><strong><em>for</em> loop</strong> for loop is used to iterate over a given sequence of objects. It’s syntax is very simple, here’s an example
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]:</span>
+  <li><strong><em>for loop</em></strong> is used to iterate over a given sequence of objects. It’s syntax is very simple, here’s an example
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># iterating a list
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]:</span>
   <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
   <span class="mi">1</span>
   <span class="mi">2</span>
   <span class="mi">3</span>
   <span class="mi">4</span>
   <span class="mi">5</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># iterating a tuple
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+  <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="mi">1</span>
+  <span class="mi">2</span>
+  <span class="mi">3</span>
+  <span class="mi">4</span>
+  <span class="mi">5</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># iterating keys in a dictionary
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s">'a'</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="s">'b'</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="s">'c'</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="s">'d'</span><span class="p">,</span><span class="mi">5</span><span class="p">:</span><span class="s">'e'</span><span class="p">}:</span>
+  <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="mi">1</span>
+  <span class="mi">2</span>
+  <span class="mi">3</span>
+  <span class="mi">4</span>
+  <span class="mi">5</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="c1"># iterating and accessing a dictionary
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">my_dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s">'a'</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="s">'b'</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="s">'c'</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="s">'d'</span><span class="p">,</span><span class="mi">5</span><span class="p">:</span><span class="s">'e'</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">my_dictionary</span><span class="p">:</span>
+  <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">my_dictionary</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+  <span class="mi">1</span> <span class="n">a</span>
+  <span class="mi">2</span> <span class="n">b</span>
+  <span class="mi">3</span> <span class="n">c</span>
+  <span class="mi">4</span> <span class="n">d</span>
+  <span class="mi">5</span> <span class="n">e</span>
 </code></pre></div>    </div>
   </li>
-  <li><strong><em>while</em> loop</strong> while loop repeats as long as the boolean condition is true. Here’s an example
+  <li><strong><em>while loop</em></strong> repeats as long as the boolean condition is true. Here’s an example
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
   <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
@@ -518,7 +678,7 @@
   <span class="mi">1</span>
 </code></pre></div>    </div>
   </li>
-  <li><strong>range</strong> and <strong>xrange</strong> functions : range function returns a new list with numbers of that specified range, whereas xrange returns an iterator, which is more efficient. (Python 3 uses the range function, which acts like xrange. In Python 3 xrange does not exist). Note that the range function is zero based.
+  <li><em><strong>range</strong> and <strong>xrange</strong> functions :</em> range function returns a new list with numbers of that specified range, whereas xrange returns an iterator, which is more efficient. (Python 3 uses the range function, which acts like xrange. In Python 3 xrange does not exist). Note that the range function is zero based.
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
   <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
@@ -527,7 +687,7 @@
   <span class="mi">1</span>
 </code></pre></div>    </div>
   </li>
-  <li><strong><em>break</em> and <em>continue</em> statement</strong> : break is used to exit a for loop or a while loop, whereas continue is used to skip the current block, and return to the “for” or “while” statement.
+  <li><strong><em>break and continue statement :</em></strong>  break is used to exit a for loop or a while loop, whereas continue is used to skip the current block, and return to the “for” or “while” statement.
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
   <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
@@ -553,9 +713,7 @@
 
 <h3 id="functions-in-python">Functions in Python</h3>
 <ul>
-  <li>
-    <p>As we all know that functions allow us to divide the code into useful blocks, make it more readable, reuse it. Functions in python are defined using the keyword <code class="highlighter-rouge">def</code>, followed with the function’s name.</p>
-  </li>
+  <li>Functions allow us to divide the code into useful blocks, make it more readable, reuse it. Functions in python are defined using the keyword <code class="highlighter-rouge">def</code>, followed with the function’s name.</li>
   <li>To call the above function, just call the function name followed by curved brackets, you may also pass arguments if required.
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_func</span><span class="p">():</span>
   <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"this is my first function"</span><span class="p">)</span>
@@ -579,8 +737,123 @@
   <span class="mi">8</span>
 </code></pre></div>    </div>
   </li>
-  <li>As <code class="highlighter-rouge">def</code> keyword defines the beginning of a block, it is known as a block keyword. Other block keywords are <code class="highlighter-rouge">if</code>, <code class="highlighter-rouge">for</code> and <code class="highlighter-rouge">while</code>.</li>
+  <li>As <code class="highlighter-rouge">def</code> keyword defines the beginning of a block, it is known as a block keyword. Other block keywords we have seen till now are <code class="highlighter-rouge">if</code>, <code class="highlighter-rouge">for</code> and <code class="highlighter-rouge">while</code>.</li>
 </ul>
+
+<p><strong><em>Multiple Function Arguments</em></strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="c1"># Every function in Python receives a predefined number of arguments, if
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># declared normally, like this
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="o">...</span>     <span class="c1"># do something with the two variables
+</span><span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">"-"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># It is possible to declare functions which receive a variable number of
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># arguments, using the following syntax
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_var_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">remaining</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">"-"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">remaining</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_var_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_var_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_var_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># It is also possible to send functions arguments by keyword, so that the
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1">#  order of the argument does not matter, using the following syntax.
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_var_key_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">"-"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_var_key_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="p">{}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_var_key_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="p">{</span><span class="s">'c'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_var_key_func_2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s">"-"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+<span class="o">...</span>     <span class="c1"># accessing the keywords
+</span><span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">'c :'</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'c'</span><span class="p">))</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">'d :'</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'d'</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_var_key_func_2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span>
+<span class="p">{</span><span class="s">'c'</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">'d'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">'e'</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">c</span> <span class="p">:</span> <span class="mi">3</span>
+<span class="n">d</span> <span class="p">:</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<p><strong><em>Closures</em></strong>
+A Closure is a function object that remembers values in enclosing scopes even if they are not present in memory. Firstly, a Nested Function is a function defined inside another function. It’s very important to note that the nested functions can access the variables of the enclosing scope. However, at least in python, they are only readonly. However, one can use the “nonlocal” keyword explicitly with these variables in order to modify them.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="c1"># nested functions
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">outerFunction</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="o">...</span>     <span class="n">t</span> <span class="o">=</span> <span class="n">text</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">innerFunction</span><span class="p">():</span>
+<span class="o">...</span>             <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="o">...</span>     <span class="n">innerFunction</span><span class="p">()</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">outerFunction</span><span class="p">(</span><span class="s">'Hey!'</span><span class="p">)</span>
+<span class="n">Hey</span><span class="err">!</span>
+</code></pre></div></div>
+<p>A Closure is a function object that remembers values in enclosing scopes even if they are not present in memory.</p>
+<ul>
+  <li>It is a record that stores a function together with an environment: a mapping associating each free variable of the function (variables that are used locally, but defined in an enclosing scope) with the value or reference to which the name was bound when the closure was created.</li>
+  <li>A closure—unlike a plain function—allows the function to access those captured variables through the closure’s copies of their values or references, even when the function is invoked outside their scope.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="c1"># closures
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">outerFunction</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="o">...</span>     <span class="n">t</span> <span class="o">=</span> <span class="n">text</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">innerFunction</span><span class="p">():</span>
+<span class="o">...</span>             <span class="k">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">innerFunction</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myFunction</span> <span class="o">=</span> <span class="n">outerFunction</span><span class="p">(</span><span class="s">"Hey!"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myFunction</span><span class="p">()</span>
+<span class="n">Hey</span><span class="err">!</span>
+</code></pre></div></div>
+
+<p><strong><em>Partial Functions</em></strong>
+You can create partial functions in python by using the partial function from the functools library. Partial functions allow one to derive a function with x parameters to a function with fewer parameters and fixed values set for the more limited function.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c</span><span class="o">**</span><span class="mi">3</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">32</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">partial_func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">partial_func</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">32</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">partial_func</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="mi">74</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">partial_func_2</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">partial_func_2</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">32</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">partial_func_2</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">TypeError</span><span class="p">:</span> <span class="n">func</span><span class="p">()</span> <span class="n">takes</span> <span class="mi">3</span> <span class="n">positional</span> <span class="n">arguments</span> <span class="n">but</span> <span class="mi">4</span> <span class="n">were</span> <span class="n">given</span>
+</code></pre></div></div>
+
+<h3 id="json-serialization">JSON Serialization</h3>
+<p>Python provides built-in JSON libraries to encode and decode JSON. There are two basic formats for JSON data. Either in a string or the object datastructure. The object datastructure, in Python, consists of lists and dictionaries nested inside each other. The object datastructure allows one to use python methods (for lists and dictionaries) to add, list, search and remove elements from the datastructure. The String format is mainly used to pass the data into another program or load into a datastructure. To load JSON back to a data structure, use the <code class="highlighter-rouge">loads</code> method. This method takes a string and turns it back into the json object datastructure. To encode a data structure to JSON, use the <code class="highlighter-rouge">dumps</code> method. This method takes an object and returns a String.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">json_string</span> <span class="o">=</span> <span class="s">'{"John":"Doe_1", "Jane":"Doe_2"}'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">json_object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_string</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
+<span class="p">{</span><span class="s">'John'</span><span class="p">:</span> <span class="s">'Doe_1'</span><span class="p">,</span> <span class="s">'Jane'</span><span class="p">:</span> <span class="s">'Doe_2'</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">dict</span><span class="s">'&gt;</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; json_string = ''</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; json_string = json.dumps(json_object)</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; print(json_string)</span><span class="err">
+</span><span class="s">'</span><span class="p">{</span><span class="s">"John"</span><span class="p">:</span> <span class="s">"Doe_1"</span><span class="p">,</span> <span class="s">"Jane"</span><span class="p">:</span> <span class="s">"Doe_2"</span><span class="p">}</span><span class="s">'</span><span class="err">
+</span></code></pre></div></div>
 
 <h3 id="modules-and-packages">Modules and Packages</h3>
 <p>For information on building modules and packages follow the link - <a href="https://www.learnpython.org/en/Modules_and_Packages">Learn Python Moduling</a></p>

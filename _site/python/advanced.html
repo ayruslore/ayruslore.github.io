@@ -52,45 +52,115 @@
 <h1><b>Table Of Contents</b></h1>
 
 <ul id="markdown-toc">
-  <li><a href="#classes-and-objects" id="markdown-toc-classes-and-objects">Classes and Objects</a></li>
+  <li><a href="#map-filter-reduce" id="markdown-toc-map-filter-reduce">Map, Filter, Reduce</a></li>
+  <li><a href="#pass-statement" id="markdown-toc-pass-statement">pass Statement</a></li>
+  <li><a href="#object-oriented-python---classes-and-objects" id="markdown-toc-object-oriented-python---classes-and-objects">Object Oriented Python - Classes and Objects</a></li>
+  <li><a href="#inheritance" id="markdown-toc-inheritance">Inheritance</a></li>
   <li><a href="#else-clause-in-loops" id="markdown-toc-else-clause-in-loops"><em>else</em> clause in loops</a></li>
   <li><a href="#generators" id="markdown-toc-generators">Generators</a></li>
-  <li><a href="#object-oriented-python" id="markdown-toc-object-oriented-python">Object Oriented Python</a></li>
+  <li><a href="#list-comprehensions" id="markdown-toc-list-comprehensions">List Comprehensions</a></li>
+  <li><a href="#exception-handling" id="markdown-toc-exception-handling">Exception Handling</a></li>
+  <li><a href="#decorators" id="markdown-toc-decorators">Decorators</a></li>
 </ul>
 
-<h3 id="classes-and-objects">Classes and Objects</h3>
+<h3 id="map-filter-reduce">Map, Filter, Reduce</h3>
+<p>Map, Filter, and Reduce are paradigms of functional programming. They allow the programmer (you) to write simpler, shorter code, without neccessarily needing to bother about intricacies like loops and branching. Essentially, these three functions allow you to apply a function across a number of iterables, in one full swoop. map and filter come built-in with Python (in the <code class="highlighter-rouge">__builtins__</code> module) and require no importing. reduce, however, needs to be imported as it resides in the functools module.</p>
+
+<p><strong><em>map(func, iter)</em></strong> function returns a map object(which is an iterator) of the results after applying the given function to each item of a given iterable (list, tuple etc.) <code class="highlighter-rouge">func</code> s a function to which map passes each element of given iterable. <code class="highlighter-rouge">iter</code> is an iterable which is to be mapped.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">double</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nb">map</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f2f2f47e3a0</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">map</span><span class="s">'&gt;</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; print(list(result))</span><span class="err">
+</span><span class="s">[2, 4, 6, 8, 10]</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; # we can also use lambda expressions to achieve the above result</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; result = map(lambda n : 2*n, numbers)</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; print(result)</span><span class="err">
+</span><span class="s">&lt;map object at 0x7f2f2fc79b50&gt;</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; type(result)</span><span class="err">
+</span><span class="s">&lt;class '</span><span class="nb">map</span><span class="s">'&gt;</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; print(list(result))</span><span class="err">
+</span><span class="s">[2, 4, 6, 8, 10]</span><span class="err">
+</span></code></pre></div></div>
+
+<p><strong><em>filter(func, seq)</em></strong> This method filters the given sequence with the help of a function that tests each element in the sequence to be true or not. The <code class="highlighter-rouge">func</code> that tests if each element of a sequence true or not. The <code class="highlighter-rouge">seq</code> which needs to be filtered, it can be sets, lists, tuples, or containers of any iterators. The filter method returns an iterator that is already filtered.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">vowel</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="s">'u'</span><span class="p">]:</span>
+<span class="o">...</span>             <span class="k">return</span> <span class="bp">True</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">,</span> <span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'f'</span><span class="p">,</span> <span class="s">'g'</span><span class="p">,</span> <span class="s">'h'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'j'</span><span class="p">,</span> <span class="s">'k'</span><span class="p">,</span> <span class="s">'l'</span><span class="p">,</span> <span class="s">'m'</span><span class="p">,</span> <span class="s">'n'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">filtered_seq</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">vowel</span><span class="p">,</span> <span class="n">seq</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">filtered_seq</span>
+<span class="o">&lt;</span><span class="nb">filter</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f2f2f47e400</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">filtered_seq</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">filter</span><span class="s">'&gt;</span><span class="err">
+</span><span class="s">&gt;&gt;&gt; list(filtered_seq)</span><span class="err">
+</span><span class="s">['</span><span class="n">a</span><span class="s">', '</span><span class="n">e</span><span class="s">', '</span><span class="n">i</span><span class="s">', '</span><span class="n">o</span><span class="s">']</span><span class="err">
+</span></code></pre></div></div>
+
+<p><strong><em>reduce(fun,seq)</em></strong> This function is used to apply a particular function passed in its argument to all of the list elements mentioned in the sequence passed along.This function is defined in <code class="highlighter-rouge">functools</code> module.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="mi">15</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="mi">120</span>
+</code></pre></div></div>
+
+<h3 id="pass-statement">pass Statement</h3>
+<p>This is a null statement which does nothing when executed, useful as a placeholder</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">New_Class</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">pass</span>
+<span class="o">&gt;&gt;&gt;</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">New_func</span><span class="p">():</span>
+<span class="o">...</span>     <span class="k">pass</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="bp">True</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">pass</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">New_func</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">New_Class</span><span class="p">()</span>
+<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">New_Class</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f637b442940</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<h3 id="object-oriented-python---classes-and-objects">Object Oriented Python - Classes and Objects</h3>
 <ul>
-  <li>
-    <p>Objects are an encapsulation of variables and functions into a single entity. Objects get their variables and functions from classes. Classes are essentially a template to create your objects.</p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">self</code> keyword is passed as a parameter to the methods of an class. This is passed in the declaration so as to access the current attibutes of the instance created.</p>
-  </li>
-  <li>
-    <p>Here’s an example of a class</p>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
-  <span class="o">...</span>     <span class="n">radius</span> <span class="o">=</span> <span class="mi">5</span>
-  <span class="o">...</span>     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-  <span class="o">...</span>             <span class="k">print</span><span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
-  <span class="o">...</span>     <span class="k">def</span> <span class="nf">circumference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-  <span class="o">...</span>             <span class="k">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
-  <span class="mf">78.5</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span><span class="o">.</span><span class="n">circumference</span><span class="p">()</span>
-  <span class="mf">31.400000000000002</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">4</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
-  <span class="mf">50.24</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">circumference</span><span class="p">()</span>
-  <span class="mf">25.12</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="n">c2</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
-  <span class="mi">5</span>   <span class="mi">4</span>
-</code></pre></div>    </div>
-    <p>In the above example we declared a class named <code class="highlighter-rouge">Circle</code>. We have created two objects of the <code class="highlighter-rouge">Circle</code> class called <code class="highlighter-rouge">c1</code> and <code class="highlighter-rouge">c2</code>. To call the methods you can use <code class="highlighter-rouge">c1.area()</code>. To access an attribute of the object, you can do that using <code class="highlighter-rouge">c2.radius</code>.</p>
-  </li>
+  <li>Objects are an encapsulation of variables and functions into a single entity. Objects get their variables and functions from classes. Classes are essentially a template to create your objects.</li>
+  <li><code class="highlighter-rouge">self</code> keyword is passed as a parameter to the methods of an class. This is passed in the declaration so as to access the current attibutes of the instance created.</li>
 </ul>
+
+<p>Let’s take a look at an example of a class. Use this code as reference to define a class.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="c1"># define a Circle class
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># with one attribute radius and two methods area and circumference
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+<span class="o">...</span>     <span class="n">radius</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="o">...</span>             <span class="k">return</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">circumference</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="o">...</span>             <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># create two objects of Circle class c_1 and c_2
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">c_1</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c_1</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+<span class="mf">78.5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c_1</span><span class="o">.</span><span class="n">circumference</span><span class="p">()</span>
+<span class="mf">31.400000000000002</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+<span class="mf">50.24</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span><span class="o">.</span><span class="n">circumference</span><span class="p">()</span>
+<span class="mf">25.12</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">c_1</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="n">c_2</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
+<span class="mi">5</span>   <span class="mi">4</span>
+</code></pre></div></div>
+<p>In the above example we declared a class named <code class="highlighter-rouge">Circle</code>. We have created two objects of the <code class="highlighter-rouge">Circle</code> class called <code class="highlighter-rouge">c_1</code> and <code class="highlighter-rouge">c_2</code>. To call the methods you can use <code class="highlighter-rouge">c_1.area()</code>. To access an attribute of the object, you can do that using <code class="highlighter-rouge">c_2.radius</code>.</p>
+
+<h3 id="inheritance">Inheritance</h3>
+<p><strong><em>TODO</em></strong></p>
 
 <h3 id="else-clause-in-loops"><em>else</em> clause in loops</h3>
 <p>When the loop condition of <code class="highlighter-rouge">for</code> or <code class="highlighter-rouge">while</code> statement fails then code part in <em>else</em> is executed. If break statement is executed inside for loop then the <em>else</em> part is skipped. Note that <em>else</em> part is executed even if there is a continue statement. Here’s an example</p>
@@ -119,11 +189,120 @@
 </code></pre></div></div>
 
 <h3 id="generators">Generators</h3>
-<p><strong><em>TODO</em></strong>
-https://www.learnpython.org/</p>
+<p>Generators are used to create iterators. They are simple functions which return an iterable set of items, one at a time, in a special way. When an iteration over a set of item starts using the <code class="highlighter-rouge">for</code> statement, the generator is run. Once the generator’s function code reaches a <code class="highlighter-rouge">yield</code> statement, the generator yields its execution back to the <code class="highlighter-rouge">for</code> loop, returning a new value from the set. The generator function can generate as many values (possibly infinite) as it wants, yielding each one in its turn.</p>
 
-<h3 id="object-oriented-python">Object Oriented Python</h3>
-<p><strong><em>TODO</em></strong></p>
+<p>Let’s create a generator which returns values of a list. To create generators use the following code for reference</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">generator_func</span><span class="p">(</span><span class="n">arg_list</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arg_list</span><span class="p">:</span>
+<span class="o">...</span>             <span class="k">yield</span> <span class="n">i</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">gen</span> <span class="o">=</span> <span class="n">generator_func</span><span class="p">(</span><span class="n">list_1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">gen</span>
+<span class="o">&lt;</span><span class="n">generator</span> <span class="nb">object</span> <span class="n">generator_func</span> <span class="n">at</span> <span class="mh">0x7f637a3cbe40</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">ans</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+</code></pre></div></div>
+
+<h3 id="list-comprehensions">List Comprehensions</h3>
+<p>List Comprehensions is a very powerful tool, which creates a new list based on another list, in a single, readable line. Let’s  say we need to create a list of natural numbers from a list of integers, we’d normally do it the following way</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">integers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">natural</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">integers</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="o">...</span>             <span class="n">natural</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">integers</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">natural</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+<p>Using a list comprehension, we could simplify the above code in to a single line.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">integers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">natural</span> <span class="o">=</span> <span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">integers</span> <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">natural</span><span class="p">)</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="exception-handling">Exception Handling</h3>
+<p>When programming, errors happen. Python’s solution to errors are exceptions. But sometimes you don’t want exceptions to completely stop the program. You might want to do something special when an exception is raised. This is done in a <em>try/except</em> block. The <code class="highlighter-rouge">try</code> block lets you test a block of code for errors. The <code class="highlighter-rouge">except</code> block lets you handle the error. The <code class="highlighter-rouge">finally</code> block lets you execute code, regardless of the result of the try and except blocks.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s">'x'</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># exception handling
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"An exception occurred"</span><span class="p">)</span>
+<span class="n">An</span> <span class="n">exception</span> <span class="n">occurred</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># many exceptions : you can define as many exception blocks as you want,
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># e.g. if you want to execute a special block of code for a special
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># kind of error
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span> <span class="nb">NameError</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"Variable x is not defined"</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"Something else went wrong"</span><span class="p">)</span>
+<span class="n">Variable</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># else : you can use the else keyword to define a block of code to be
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># executed if no errors were raised:
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"else example"</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"something went wrong"</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"nothing went wrong"</span><span class="p">)</span>
+<span class="k">else</span> <span class="n">example</span>
+<span class="n">nothing</span> <span class="n">went</span> <span class="n">wrong</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># finally : The finally block, if specified, will be executed regardless
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># if the try block raises an error or not.
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">try</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">except</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"something went wrong"</span><span class="p">)</span>
+<span class="o">...</span> <span class="k">finally</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"the 'try except' is finished"</span><span class="p">)</span>
+<span class="n">something</span> <span class="n">went</span> <span class="n">wrong</span>
+<span class="n">the</span> <span class="s">'try except'</span> <span class="ow">is</span> <span class="n">finished</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># raise an exception : As a Python developer you can choose to throw an
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># exception if a condition occurs. To throw (or raise) an exception,
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># use the raise keyword.
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">"Number below zero"</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nb">Exception</span><span class="p">:</span> <span class="n">Number</span> <span class="n">below</span> <span class="n">zero</span>
+</code></pre></div></div>
+
+<h3 id="decorators">Decorators</h3>
+<p>Decorators allow you to make simple modifications to callable objects like functions, methods, or classes. The syntax is as follows</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="o">@</span><span class="n">decorator</span>
+<span class="o">...</span> <span class="k">def</span> <span class="nf">functions</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="s">"value"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># is equivalent to
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">return</span> <span class="s">"value"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">function</span> <span class="o">=</span> <span class="n">decorator</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># this passes the function to the decorator, and reassigns it
+</span><span class="o">&gt;&gt;&gt;</span> <span class="c1"># to the functions
+</span></code></pre></div></div>
+<p>Let’s take a look at an example</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">repeate_twice</span><span class="p">(</span><span class="n">input_func</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">def</span> <span class="nf">output_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+<span class="o">...</span>         <span class="n">input_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span> <span class="c1"># we run the old function
+</span><span class="o">...</span>         <span class="n">input_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span> <span class="c1"># we do it twice
+</span><span class="o">...</span>     <span class="c1"># we have to return the new_function, or it wouldn't reassign it to the value
+</span><span class="o">...</span>     <span class="k">return</span> <span class="n">output_func</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="o">@</span><span class="n">repeate_twice</span>
+<span class="o">...</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="mi">7</span>
+<span class="mi">7</span>
+</code></pre></div></div>
 
 <p><br /><br /></p>
 

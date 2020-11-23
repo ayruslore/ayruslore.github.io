@@ -16,6 +16,8 @@ __Different Links to learn Python from?__
 __Python Programming Paradigms__
 * Object Oriented
 * Not Statically Typed
+* Functional
+* Procedural
 
 __Delimiter__ - There's no delimiter used to end a line, but we can use semicolon to indicate the end of a line.
 
@@ -26,4 +28,4 @@ __Delimiter__ - There's no delimiter used to end a line, but we can use semicolo
 
 <br>
 
-<b>Note :</b> The following documentation is just like a pocket reference, placement preperations, etc.
+<b>Note :</b> The following documentation is just for pocket reference, placement preperations, etc.
