@@ -2,10 +2,9 @@
 layout: page
 permalink: /js/language
 ---
-[Go Next to JS Browser Language](/js/browser)
 
-<br>
 <h1><b>Javascript Language</b></h1>
+
 Welcome to the language of Javascript Programming.
 
 <h1><b>Table Of Contents</b></h1>
@@ -1014,7 +1013,3 @@ undefined
 > teacher1.describe2();
 'Hi. My name is John Doe. I am 19 years old. I teach Maths'
 ```
-
-<br>
-
-[Go Next to JS Browser Language](/js/browser)

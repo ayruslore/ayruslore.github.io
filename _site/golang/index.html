@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>GoLang | Ayrus’s Lore</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="GoLang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts." />
+<meta property="og:description" content="This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts." />
+<link rel="canonical" href="http://localhost:4000/golang/" />
+<meta property="og:url" content="http://localhost:4000/golang/" />
+<meta property="og:site_name" content="Ayrus’s Lore" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GoLang" />
+<script type="application/ld+json">
+{"@type":"WebPage","headline":"GoLang","description":"This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts.","url":"http://localhost:4000/golang/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Ayrus's Lore" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Ayrus&#39;s Lore</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/posts/">Posts</a><a class="page-link" href="/golang/">GoLang</a><a class="page-link" href="/js/">Javascript</a><a class="page-link" href="/python/">Python</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">GoLang</h1>
+  </header>
+
+  <div class="post-content">
+    <p><img src="/images/python.png" width="720" height="200" /></p>
+
+<p><strong>What is GoLang?</strong> Go is a compiled, statically typed language with a C-like syntax and garbage collection. What does that mean?</p>
+
+<p><strong><em>Compilation</em></strong> is the process of translating the source code that you write into a lower level language – either assembly (as is the case with Go), or some other intermediary language (as with Java and C#). Compiled languages can be unpleasant to work with because compilation can be slow. It’s hard to iterate quickly if you have to spend minutes or hours waiting for code to compile. Compilation speed is one of the major design goals of Go. This is good news for people working on large projects as well as those of us used to a quick feedback cycle offered by interpreted languages. Compiled languages tend to run faster and the executable can be run without additional dependencies (at least, that’s true for languages like C, C++ and Go which compile directly to assembly).</p>
+
+<p>Being <strong><em>statically typed</em></strong> means that variables must be of a specific type (int, string, bool, []byte, etc.). This is either achieved by specifying the type when the variable is declared or, in many cases, letting the compiler infer the type.</p>
+
+<p><strong><em>Garbage Collected</em></strong> : Some variables, when created, have an easy-to-define life. A variable local to a function, for example, disappears when the function exits. In other cases, it isn’t so obvious – at least to a compiler. For example, the lifetime of a variable returned by a function or referenced by other variables and objects can be tricky to determine. Without garbage collection, it’s up to developers to free the memory associated with such variables at a point where the developer knows the variable isn’t needed. How? In C, you’d literally free(str); the variable. Languages with garbage collectors (e.g., Ruby, Python, Java, JavaScript, C#, Go) are able to keep track of these and free them when they’re no longer used. Garbage collection adds overhead, but it also eliminates a number of devastating bugs.</p>
+
+<p><strong>Getting Started :</strong> If you’re looking to play a little with Go, you should check out the <a href="https://play.golang.org/">Go Playground</a> which lets you run code online without having to install anything. This is also the most common way to share Go code when seeking help in <a href="https://groups.google.com/forum/#!forum/golang-nuts">Go’s discussion forum</a> and places like StackOverflow. Installing Go is straightforward. You can install it from source, When you <a href="https://golang.org/dl/">go to the download page</a>, you’ll see installers for various platforms. Follow the instructions to install go in Linux:</p>
+<ul>
+  <li>Visit the <a href="https://golang.org/dl/">Go Download Page</a> and click on Download Go for Linux.</li>
+  <li>
+    <p>Download the archive and extract it into /usr/local, creating a Go tree in /usr/local/go.</p>
+
+    <p><code class="highlighter-rouge">sudo tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz</code></p>
+  </li>
+  <li>
+    <p>Add /usr/local/go/bin to the PATH environment variable.</p>
+
+    <p><code class="highlighter-rouge">export PATH=$PATH:/usr/local/go/bin</code></p>
+  </li>
+  <li>
+    <p>Verify that you’ve installed Go by opening a command prompt and typing the following command</p>
+
+    <p><code class="highlighter-rouge">go version</code></p>
+  </li>
+  <li>Confirm that the command prints the installed version of Go.</li>
+</ul>
+
+<p><strong>Version :</strong> <code class="highlighter-rouge">go version go1.15.5 linux/amd64</code></p>
+
+<p><strong>Different Links to learn GoLang from?</strong></p>
+<ul>
+  <li>GoLang <a href="https://www.tutorialspoint.com/go/go_overview.htm">Tutorials Point</a></li>
+  <li><a href="https://quii.gitbook.io/learn-go-with-tests/">Learn Go With Tests</a> Book</li>
+  <li><a href="https://hackr.io/tutorials/learn-golang/page/2">Many Other Sources</a></li>
+</ul>
+
+<p><strong>GoLang Programming Paradigms</strong></p>
+<ul>
+  <li>Compiled</li>
+  <li>Statically Typed</li>
+</ul>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="/golang/basics">Basics Tutorial</a></li>
+</ul>
+
+<p><br /></p>
+
+<p><b>Note :</b> The following documentation is just for pocket reference, placement preperations, etc.</p>
+
+<p>Links I Use:</p>
+<ul>
+  <li>https://gobyexample.com/</li>
+  <li>http://www.golang-book.com/books/intro</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Ayrus&#39;s Lore</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Ayrus&#39;s Lore</li><li><a class="u-email" href="mailto:suryasrikar1997@gmail.com">suryasrikar1997@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ayruslore"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ayruslore</span></a></li><li><a href="https://www.twitter.com/SuryaPeruri4"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">SuryaPeruri4</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This website is my lore which contains things that I learn in my  journey deep in to the ever growing software world. It contains  tutorials, how-tos, know-how and blog posts.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

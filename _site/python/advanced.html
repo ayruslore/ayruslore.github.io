@@ -30,7 +30,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/posts/">Posts</a><a class="page-link" href="/js/">Javascript</a><a class="page-link" href="/python/">Python</a></div>
+        <div class="trigger"><a class="page-link" href="/posts/">Posts</a><a class="page-link" href="/golang/">GoLang</a><a class="page-link" href="/js/">Javascript</a><a class="page-link" href="/python/">Python</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -66,26 +66,26 @@
 <h3 id="map-filter-reduce">Map, Filter, Reduce</h3>
 <p>Map, Filter, and Reduce are paradigms of functional programming. They allow the programmer (you) to write simpler, shorter code, without neccessarily needing to bother about intricacies like loops and branching. Essentially, these three functions allow you to apply a function across a number of iterables, in one full swoop. map and filter come built-in with Python (in the <code class="highlighter-rouge">__builtins__</code> module) and require no importing. reduce, however, needs to be imported as it resides in the functools module.</p>
 
-<p><strong><em>map(func, iter)</em></strong> function returns a map object(which is an iterator) of the results after applying the given function to each item of a given iterable (list, tuple etc.) <code class="highlighter-rouge">func</code> s a function to which map passes each element of given iterable. <code class="highlighter-rouge">iter</code> is an iterable which is to be mapped.</p>
+<p><strong><em>map(func, iter)</em></strong> : This function returns a map object(which is an iterator) of the results after applying the given function to each item of a given iterable (list, tuple etc.) <code class="highlighter-rouge">func</code> s a function to which map passes each element of given iterable. <code class="highlighter-rouge">iter</code> is an iterable which is to be mapped.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">double</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="nb">map</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f2f2f47e3a0</span><span class="o">&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">map</span><span class="s">'&gt;</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; print(list(result))</span><span class="err">
-</span><span class="s">[2, 4, 6, 8, 10]</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; # we can also use lambda expressions to achieve the above result</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; result = map(lambda n : 2*n, numbers)</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; print(result)</span><span class="err">
-</span><span class="s">&lt;map object at 0x7f2f2fc79b50&gt;</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; type(result)</span><span class="err">
-</span><span class="s">&lt;class '</span><span class="nb">map</span><span class="s">'&gt;</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; print(list(result))</span><span class="err">
-</span><span class="s">[2, 4, 6, 8, 10]</span><span class="err">
-</span></code></pre></div></div>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">map</span><span class="err">`</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># we can also use lambda expressions to achieve the above result
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span> <span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="nb">map</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f2f2fc79b50</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">map</span><span class="err">`</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</code></pre></div></div>
 
-<p><strong><em>filter(func, seq)</em></strong> This method filters the given sequence with the help of a function that tests each element in the sequence to be true or not. The <code class="highlighter-rouge">func</code> that tests if each element of a sequence true or not. The <code class="highlighter-rouge">seq</code> which needs to be filtered, it can be sets, lists, tuples, or containers of any iterators. The filter method returns an iterator that is already filtered.</p>
+<p><strong><em>filter(func, seq)</em></strong> : This method filters the given sequence with the help of a function that tests each element in the sequence to be true or not. The <code class="highlighter-rouge">func</code> that tests if each element of a sequence true or not. The <code class="highlighter-rouge">seq</code> which needs to be filtered, it can be sets, lists, tuples, or containers of any iterators. The filter method returns an iterator that is already filtered.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">vowel</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
 <span class="o">...</span>     <span class="k">if</span> <span class="n">ch</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">,</span> <span class="s">'u'</span><span class="p">]:</span>
 <span class="o">...</span>             <span class="k">return</span> <span class="bp">True</span>
@@ -95,12 +95,12 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">filtered_seq</span>
 <span class="o">&lt;</span><span class="nb">filter</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f2f2f47e400</span><span class="o">&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">filtered_seq</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">filter</span><span class="s">'&gt;</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; list(filtered_seq)</span><span class="err">
-</span><span class="s">['</span><span class="n">a</span><span class="s">', '</span><span class="n">e</span><span class="s">', '</span><span class="n">i</span><span class="s">', '</span><span class="n">o</span><span class="s">']</span><span class="err">
-</span></code></pre></div></div>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">filter</span><span class="err">`</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">filtered_seq</span><span class="p">)</span>
+<span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">]</span>
+</code></pre></div></div>
 
-<p><strong><em>reduce(fun,seq)</em></strong> This function is used to apply a particular function passed in its argument to all of the list elements mentioned in the sequence passed along.This function is defined in <code class="highlighter-rouge">functools</code> module.</p>
+<p><strong><em>reduce(fun,seq)</em></strong> : This function is used to apply a particular function passed in its argument to all of the list elements mentioned in the sequence passed along.This function is defined in <code class="highlighter-rouge">functools</code> module.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
@@ -294,7 +294,8 @@
 <span class="o">...</span>     <span class="k">def</span> <span class="nf">output_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
 <span class="o">...</span>         <span class="n">input_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span> <span class="c1"># we run the old function
 </span><span class="o">...</span>         <span class="n">input_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span> <span class="c1"># we do it twice
-</span><span class="o">...</span>     <span class="c1"># we have to return the new_function, or it wouldn't reassign it to the value
+</span><span class="o">...</span>     <span class="c1"># we have to return the new_function, or it wouldn't
+</span><span class="o">...</span>     <span class="c1"># reassign it to the value
 </span><span class="o">...</span>     <span class="k">return</span> <span class="n">output_func</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="o">@</span><span class="n">repeate_twice</span>
 <span class="o">...</span> <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>

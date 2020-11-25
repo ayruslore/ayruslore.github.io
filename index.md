@@ -8,7 +8,7 @@ This website is my lore which contains things that I learn in my journey deep in
 # Programming Languages
 * [Python](/python)
 * [Javascript](/js)
-* GoLang - *coming soon*
+* [GoLang](/golang)
 * Scala - *coming soon*
 
 <br>

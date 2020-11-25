@@ -17,14 +17,14 @@ Welcome to the advanced part of Python Programming
 ### Map, Filter, Reduce
 Map, Filter, and Reduce are paradigms of functional programming. They allow the programmer (you) to write simpler, shorter code, without neccessarily needing to bother about intricacies like loops and branching. Essentially, these three functions allow you to apply a function across a number of iterables, in one full swoop. map and filter come built-in with Python (in the `__builtins__` module) and require no importing. reduce, however, needs to be imported as it resides in the functools module.
 
-__*map(func, iter)*__ function returns a map object(which is an iterator) of the results after applying the given function to each item of a given iterable (list, tuple etc.) `func` s a function to which map passes each element of given iterable. `iter` is an iterable which is to be mapped.
+__*map(func, iter)*__ : This function returns a map object(which is an iterator) of the results after applying the given function to each item of a given iterable (list, tuple etc.) `func` s a function to which map passes each element of given iterable. `iter` is an iterable which is to be mapped.
 ```python
 >>> numbers = [1,2,3,4,5]
 >>> result = map(double, numbers)
 >>> print(result)
 <map object at 0x7f2f2f47e3a0>
 >>> type(result)
-<class 'map'>
+<class `map`>
 >>> print(list(result))
 [2, 4, 6, 8, 10]
 >>> # we can also use lambda expressions to achieve the above result
@@ -32,12 +32,12 @@ __*map(func, iter)*__ function returns a map object(which is an iterator) of the
 >>> print(result)
 <map object at 0x7f2f2fc79b50>
 >>> type(result)
-<class 'map'>
+<class `map`>
 >>> print(list(result))
 [2, 4, 6, 8, 10]
 ```
 
-__*filter(func, seq)*__ This method filters the given sequence with the help of a function that tests each element in the sequence to be true or not. The `func` that tests if each element of a sequence true or not. The `seq` which needs to be filtered, it can be sets, lists, tuples, or containers of any iterators. The filter method returns an iterator that is already filtered.
+__*filter(func, seq)*__ : This method filters the given sequence with the help of a function that tests each element in the sequence to be true or not. The `func` that tests if each element of a sequence true or not. The `seq` which needs to be filtered, it can be sets, lists, tuples, or containers of any iterators. The filter method returns an iterator that is already filtered.
 ```python
 >>> def vowel(ch):
 ...     if ch in ['a', 'e', 'i', 'o', 'u']:
@@ -48,12 +48,12 @@ __*filter(func, seq)*__ This method filters the given sequence with the help of 
 >>> filtered_seq
 <filter object at 0x7f2f2f47e400>
 >>> type(filtered_seq)
-<class 'filter'>
+<class `filter`>
 >>> list(filtered_seq)
 ['a', 'e', 'i', 'o']
 ```
 
-__*reduce(fun,seq)*__ This function is used to apply a particular function passed in its argument to all of the list elements mentioned in the sequence passed along.This function is defined in `functools` module.
+__*reduce(fun,seq)*__ : This function is used to apply a particular function passed in its argument to all of the list elements mentioned in the sequence passed along.This function is defined in `functools` module.
 ```python
 >>> from functools import reduce
 >>> numbers = [1,2,3,4,5]
@@ -255,7 +255,8 @@ Let's take a look at an example
 ...     def output_func(*args, **kwds):
 ...         input_func(*args, **kwds) # we run the old function
 ...         input_func(*args, **kwds) # we do it twice
-...     # we have to return the new_function, or it wouldn't reassign it to the value
+...     # we have to return the new_function, or it wouldn't
+...     # reassign it to the value
 ...     return output_func
 >>> @repeate_twice
 ... def add(a, b):

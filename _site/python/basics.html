@@ -30,7 +30,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/posts/">Posts</a><a class="page-link" href="/js/">Javascript</a><a class="page-link" href="/python/">Python</a></div>
+        <div class="trigger"><a class="page-link" href="/posts/">Posts</a><a class="page-link" href="/golang/">GoLang</a><a class="page-link" href="/js/">Javascript</a><a class="page-link" href="/python/">Python</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -126,11 +126,11 @@
 <p>Python has no command for declaring a variable, it is created the moment you first assign a value to it. Variables do not need to be declared with any particular type, and can even change type after they have been set.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">int</span><span class="s">'&gt;</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; x = '</span><span class="n">John</span><span class="s">'</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; type(x)</span><span class="err">
-</span><span class="s">&lt;class '</span><span class="nb">str</span><span class="s">'&gt;</span><span class="err">
-</span></code></pre></div></div>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">int</span><span class="err">`</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="s">'John'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">str</span><span class="err">`</span><span class="o">&gt;</span>
+</code></pre></div></div>
 <p>The <code class="highlighter-rouge">type</code> function is used to find out the type of a variable. Let’s take a look at the different types of variables in Python.</p>
 <ul>
   <li>
@@ -848,12 +848,12 @@ You can create partial functions in python by using the partial function from th
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
 <span class="p">{</span><span class="s">'John'</span><span class="p">:</span> <span class="s">'Doe_1'</span><span class="p">,</span> <span class="s">'Jane'</span><span class="p">:</span> <span class="s">'Doe_2'</span><span class="p">}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">dict</span><span class="s">'&gt;</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; json_string = ''</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; json_string = json.dumps(json_object)</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; print(json_string)</span><span class="err">
-</span><span class="s">'</span><span class="p">{</span><span class="s">"John"</span><span class="p">:</span> <span class="s">"Doe_1"</span><span class="p">,</span> <span class="s">"Jane"</span><span class="p">:</span> <span class="s">"Doe_2"</span><span class="p">}</span><span class="s">'</span><span class="err">
-</span></code></pre></div></div>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">`</span><span class="nc">dict</span><span class="err">`</span><span class="o">&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">json_string</span> <span class="o">=</span> <span class="s">''</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">json_string</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">json_string</span><span class="p">)</span>
+<span class="s">'{"John": "Doe_1", "Jane": "Doe_2"}'</span>
+</code></pre></div></div>
 
 <h3 id="modules-and-packages">Modules and Packages</h3>
 <p>For information on building modules and packages follow the link - <a href="https://www.learnpython.org/en/Modules_and_Packages">Learn Python Moduling</a></p>

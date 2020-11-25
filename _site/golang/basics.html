@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Ayrus’s Lore | This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts.</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Ayrus’s Lore" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts." />
+<meta property="og:description" content="This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts." />
+<link rel="canonical" href="http://localhost:4000/golang/basics" />
+<meta property="og:url" content="http://localhost:4000/golang/basics" />
+<meta property="og:site_name" content="Ayrus’s Lore" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Ayrus’s Lore" />
+<script type="application/ld+json">
+{"@type":"WebPage","headline":"Ayrus’s Lore","description":"This website is my lore which contains things that I learn in my journey deep in to the ever growing software world. It contains tutorials, how-tos, know-how and blog posts.","url":"http://localhost:4000/golang/basics","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Ayrus's Lore" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Ayrus&#39;s Lore</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/posts/">Posts</a><a class="page-link" href="/golang/">GoLang</a><a class="page-link" href="/js/">Javascript</a><a class="page-link" href="/python/">Python</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+
+  <div class="post-content">
+    <p><br /></p>
+
+<h1><b>GoLang Basics</b></h1>
+<p>Welcome to the basics part of GoLang Programming</p>
+
+<h1><b>Table Of Contents</b></h1>
+
+<ul id="markdown-toc">
+  <li><a href="#running-go-code" id="markdown-toc-running-go-code">Running Go Code</a></li>
+  <li><a href="#variables---declarations-and-types" id="markdown-toc-variables---declarations-and-types">Variables - Declarations and Types</a></li>
+  <li><a href="#functions" id="markdown-toc-functions">Functions</a></li>
+  <li><a href="#structures" id="markdown-toc-structures">Structures</a></li>
+</ul>
+
+<h3 id="running-go-code">Running Go Code</h3>
+<p>Let’s start our journey by creating a simple program and learning how to compile and execute it. Open your favorite text editor and write the following code, save the file as <code class="highlighter-rouge">main.go</code></p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="c">// In Go, the entry point to a program has to be a</span>
+<span class="c">// function called `main` within a package `main`</span>
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">println</span><span class="p">(</span><span class="s">"Hello, World"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Finally, run the program by entering the following command</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run main.go
+Hello, World
+</code></pre></div></div>
+<p>What about compilation though? <code class="highlighter-rouge">go run</code> is a handy command that compiles and runs your code. It uses a temporary directory to build the program, executes it and then cleans itself up. You can see the location of the temporary file by running</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run <span class="nt">--work</span> main.go
+</code></pre></div></div>
+<p>To explicitly compile code, use go build</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go build main.go
+</code></pre></div></div>
+<p>This will generate an executable main which you can run. On Linux, don’t forget that you need to prefix the executable with dot-slash, so you need to type <code class="highlighter-rouge">./main</code>. While developing, you can use either <code class="highlighter-rouge">go run</code> or <code class="highlighter-rouge">go build</code>. When you deploy your code however, you’ll want to deploy a binary via <code class="highlighter-rouge">go build</code> and execute that.</p>
+
+<p><em>We’ll talk more about packages in a later chapter. For now, while we focus on understanding the basics of Go, we’ll always write our code within the main package.</em></p>
+
+<p><strong><em>Imports :</em></strong> In Go, the import keyword is used to declare the packages that are used by the code. We’re using one of Go’s standard packages - <code class="highlighter-rouge">fmt</code>. You’ve probably noticed we prefix the function name with the package, e.g., <code class="highlighter-rouge">fmt.Println</code>. Go is strict about importing packages. It will not compile if you import a package but don’t use it. Try to run the following</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Output</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run main.go
+<span class="c"># command-line-arguments</span>
+main.go:4:2: imported and not used: <span class="s2">"fmt"</span>
+</code></pre></div></div>
+<p><strong>go get :</strong> Go is strict about this because unused imports can slow compilation; admittedly a problem most of us don’t have to this degree. Another thing to note is that Go’s standard library is well documented. You can head over to <a href="https://golang.org/pkg/fmt/#Println">https://golang.org/pkg/fmt/#Println</a> to learn more about the <code class="highlighter-rouge">Println</code> function that we used. To install <code class="highlighter-rouge">godoc</code> use the <code class="highlighter-rouge">go get</code> command</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go get <span class="nt">-v</span> golang.org/x/tools/cmd/godoc
+<span class="nv">$ </span>go doc fmt.Println
+package <span class="nb">fmt</span> // import <span class="s2">"fmt"</span>
+
+func Println<span class="o">(</span>a ...interface<span class="o">{})</span> <span class="o">(</span>n int, err error<span class="o">)</span>
+    Println formats using the default formats <span class="k">for </span>its operands and writes to
+    standard output. Spaces are always added between operands and a newline is
+    appended. It returns the number of bytes written and any write error
+    encountered.
+</code></pre></div></div>
+<p>If you’re ever stuck without internet access, you can get the documentation running locally via <code class="highlighter-rouge">godoc</code></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>golang-golang-x-tools
+<span class="nv">$ </span>godoc
+</code></pre></div></div>
+<p>And Navigate to <code class="highlighter-rouge">http://localhost:6060</code> on browser</p>
+
+<h3 id="variables---declarations-and-types">Variables - Declarations and Types</h3>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">variableA</span> <span class="kt">int</span>
+    <span class="n">variableA</span> <span class="o">=</span> <span class="m">20</span>
+    <span class="n">variableB</span> <span class="o">:=</span> <span class="m">30</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">variableA</span><span class="p">,</span> <span class="s">" "</span><span class="p">,</span> <span class="n">variableB</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Here, we declare two variables <code class="highlighter-rouge">variableA</code> and <code class="highlighter-rouge">variableB</code> using to different declarations. The first one we declare a variable <code class="highlighter-rouge">variableA</code> of type <code class="highlighter-rouge">int</code>. By default, Go assigns a zero value to variables. Integers are assigned <code class="highlighter-rouge">0</code>, booleans <code class="highlighter-rouge">false</code>, strings <code class="highlighter-rouge">""</code> and so on. Next, we assign <code class="highlighter-rouge">20</code> to our <code class="highlighter-rouge">variableA</code>. We can merge the first two lines</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">variableA</span> <span class="kt">int</span> <span class="o">=</span> <span class="m">20</span>
+</code></pre></div></div>
+<p>Still, that’s a lot of typing. Go has a handy short variable declaration operator, <code class="highlighter-rouge">:=</code>, which can infer the type</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">variableB</span> <span class="o">:=</span> <span class="m">30</span>
+</code></pre></div></div>
+<p><strong>Types :</strong> Go has various types including strings, integers, floats, booleans, etc. The <code class="highlighter-rouge">TypeOf()</code> method of the reflect package is used to determine the datatype of the variables. Here’s an example</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"reflect"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c">// strings can be added together with +</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"go"</span> <span class="o">+</span> <span class="s">"lang"</span><span class="p">,</span> <span class="n">reflect</span><span class="o">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="s">"go"</span><span class="p">))</span>
+    <span class="c">// integers</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"1 + 2 ="</span><span class="p">,</span> <span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="p">,</span> <span class="n">reflect</span><span class="o">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="m">1</span><span class="p">))</span>
+    <span class="c">// floats</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="m">7.0</span><span class="o">/</span><span class="m">2</span><span class="p">,</span> <span class="n">reflect</span><span class="o">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="m">7.0</span><span class="o">/</span><span class="m">2</span><span class="p">))</span>
+    <span class="c">// booleans</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="no">true</span> <span class="o">&amp;&amp;</span> <span class="no">false</span><span class="p">,</span> <span class="no">true</span> <span class="o">||</span> <span class="no">false</span><span class="p">,</span> <span class="o">!</span><span class="no">true</span><span class="p">,</span> <span class="n">reflect</span><span class="o">.</span><span class="n">TypeOf</span><span class="p">(</span><span class="no">true</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Output</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run golang/codes/main.go 
+golang string
+1 + 2 <span class="o">=</span> 3 int
+3.5 float64
+<span class="nb">false true false </span>bool
+</code></pre></div></div>
+
+<p><strong>Constants :</strong> Go supports <em>constants</em> of character, string, boolean, and numberic values. <code class="highlighter-rouge">const</code> declares a constant value. A numberic constant has no type until it’s given one, such as by an explicit conversion</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="n">s</span> <span class="kt">string</span> <span class="o">=</span> <span class="s">"string constant"</span>
+<span class="k">const</span> <span class="n">i1</span> <span class="kt">int</span> <span class="o">=</span> <span class="m">30</span>
+<span class="k">const</span> <span class="n">i2</span> <span class="o">=</span> <span class="m">40</span>
+</code></pre></div></div>
+
+<p><strong>Note #1 :</strong> It’s important that you remember that <code class="highlighter-rouge">:=</code> is used to declare the variable as well as assign a value to it. Why? Becausea variable can’t be declared twice (not in the same scope anyway). If you try to run the following, you’ll get an error.</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">varA</span> <span class="o">:=</span> <span class="m">20</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">varA</span><span class="p">);</span>
+    <span class="n">varA</span> <span class="o">:=</span> <span class="m">30</span> <span class="c">// will throw error</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printlb</span><span class="p">(</span><span class="n">varB</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Output</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run main.go
+<span class="c"># command-line-arguments</span>
+main.go:10:10: no new variables on left side of :<span class="o">=</span>
+</code></pre></div></div>
+<p>The above error means that when we first declare a variable,we use <code class="highlighter-rouge">:=</code> but on subsequent assignment, we use the assignment operator <code class="highlighter-rouge">=</code>. If you read the error message closely, you’ll notice that <em>variables</em> is plural. That’s because Go lets you assign multiple variables (using either = or :=).</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// as long as one of the variables is new := can be used</span>
+<span class="n">varA</span><span class="p">,</span> <span class="n">varB</span> <span class="o">:=</span> <span class="m">20</span><span class="p">,</span> <span class="m">30</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">varA</span><span class="p">,</span> <span class="n">varB</span><span class="p">)</span>
+<span class="n">varB</span><span class="p">,</span> <span class="n">varC</span> <span class="o">:=</span> <span class="m">25</span><span class="p">,</span> <span class="m">35</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">varB</span><span class="p">,</span> <span class="n">varC</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Note #2 :</strong> Go won’t let you have unused variables. Like unused imports it’ll throw an error when unused variables are present. Let’s look at an example</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">varA</span><span class="p">,</span> <span class="n">varB</span> <span class="o">:=</span> <span class="m">20</span><span class="p">,</span> <span class="m">30</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">varA</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Output</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run main.go
+<span class="c"># command-line-arguments</span>
+main.go:8:11: varB declared and not used
+</code></pre></div></div>
+
+<h3 id="functions">Functions</h3>
+<p>Like many other languages, functions in Golang allow us to divide code into useful blocks, make it more readable, reuse it. Like in Python, functions in Golang can return multiple values. We declare functions in Golang using the <code class="highlighter-rouge">func</code> keyword. Let’s look at some example</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// takes in one argument of int type and no return value</span>
+<span class="k">func</span> <span class="n">function1</span><span class="p">(</span><span class="n">arg1</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="c">// takes in two arguments, one of int and the other is a string</span>
+<span class="c">// and returns an int value</span>
+<span class="k">func</span> <span class="n">function2</span><span class="p">(</span><span class="n">arg1</span> <span class="kt">int</span><span class="p">,</span> <span class="n">arg2</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="m">1</span>
+<span class="p">}</span>
+
+<span class="c">// takes in two arguments, both of type int and returns two</span>
+<span class="c">// values one is int and the other is a string</span>
+<span class="k">func</span> <span class="n">function3</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="m">1</span><span class="p">,</span> <span class="s">"1"</span>
+<span class="p">}</span>
+<span class="c">// see the shorthand for argument types, if they are of the</span>
+<span class="c">// same type then we can do the above instead of explicitly specifying the type</span>
+</code></pre></div></div>
+<p>In the last case we can use</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:=</span> <span class="n">function3</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+<span class="c">// if we want to ignore the first value then we can do so by using _</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">b</span> <span class="o">:=</span> <span class="n">function3</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This is more than a convention. <code class="highlighter-rouge">_, the blank identifier</code>, is special in that the return value isn’t actually assigned This lets you use <code class="highlighter-rouge">_</code> over and over again regardless of the returned type.</p>
+
+<h2 id="structures">Structures</h2>
+<p>GoLang isn’t an object-oriented (OO) language like C++ and Java. It doesn’t have objects nor inheritance and thus, doesn’t have the many concepts associated with OO such as polymorphism and overloading. But GoLang does have structures , which can be associated with methods. It supports a simple but effective form of composition. Although Go doesn’t do OO like you may be used to, you’ll notice a lot of similarities between the definition of a structureand that of a class. The following is the syntax for declaring a <code class="highlighter-rouge">struct</code> in Go</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// type and struct are keywords</span>
+<span class="c">// Person is the name of the structure</span>
+<span class="c">// Name and Age are attributes of the Person structure</span>
+<span class="k">type</span> <span class="n">Person</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Name</span> <span class="kt">string</span>
+    <span class="n">Age</span> <span class="kt">int</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Let’s take a look at Declaring and Initializing the struct</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="k">type</span> <span class="n">Person</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Name</span> <span class="kt">string</span>
+    <span class="n">Age</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">p1</span> <span class="o">:=</span> <span class="n">Person</span><span class="p">{</span>
+        <span class="n">Name</span><span class="o">:</span> <span class="s">"John"</span><span class="p">,</span>
+        <span class="n">Age</span><span class="o">:</span> <span class="m">22</span><span class="p">,</span>
+    <span class="p">}</span> <span class="c">// the trailing , in the above structure is required</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+
+    <span class="n">p2</span> <span class="o">:=</span> <span class="n">Person</span><span class="p">{}</span>
+    <span class="c">// Just like unassigned variables have a zero value, so do fields.</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+    <span class="c">// or</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">Person</span><span class="p">{</span><span class="n">Name</span><span class="o">:</span> <span class="s">"Jane"</span><span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+    <span class="n">p2</span><span class="o">.</span><span class="n">Age</span> <span class="o">=</span> <span class="m">24</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Output</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run golang/codes/main.go 
+<span class="o">{</span>John 22<span class="o">}</span>
+<span class="o">{</span> 0<span class="o">}</span>
+<span class="o">{</span>Jane 0<span class="o">}</span>
+<span class="o">{</span>Jane 24<span class="o">}</span>
+</code></pre></div></div>
+<p><strong>Pointers :</strong> Many times though, we don’t want a variable that is directly associated with our value but rather  variable that has a <em>pointer</em> to our value. A <em>pointer</em> is a memory address; it’s the location of where to find the actual value. Why do we need pointers, lets look at an example</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">p1</span> <span class="o">:=</span> <span class="n">Person</span><span class="p">(</span><span class="s">"John"</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
+    <span class="n">increaseAge</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+
+    <span class="n">p2</span> <span class="o">:=</span> <span class="n">Person</span><span class="p">(</span><span class="s">"John"</span><span class="p">,</span> <span class="m">20</span><span class="p">)</span>
+    <span class="n">increaseAge1</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p2</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">increaseAge</span><span class="p">(</span><span class="n">p</span> <span class="n">Person</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">p1</span><span class="o">.</span><span class="n">Age</span> <span class="o">+=</span> <span class="m">1</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">increaseAge1</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span><span class="n">Person</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">p1</span><span class="o">.</span><span class="n">Age</span> <span class="o">+=</span> <span class="m">1</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Output</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run main.go 
+<span class="o">{</span>John 20<span class="o">}</span>
+<span class="o">{</span>John 21<span class="o">}</span>
+</code></pre></div></div>
+<p>The above happens because <em>increaseAge</em> makes changes to the copy of the <em>p1</em> and thus, changes made in <em>increaseAge</em> weren’t reflected in the caller. To make this work, we need to pass a pointer to the function as is the case for <em>increaseAge1</em> and <em>p2</em>.</p>
+
+<p><strong>Note #1 :</strong> The <code class="highlighter-rouge">&amp;</code> operator is used to get the address of a value, whereas <code class="highlighter-rouge">*x</code> means <em>pointer to the value of type X</em>.</p>
+
+<p><strong>Creating Structures :</strong> Despite the lack of constructors, Go does have a built-in <code class="highlighter-rouge">new</code> function which is used to allocate the memory required by the type.</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p1</span> <span class="o">:=</span> <span class="nb">new</span><span class="p">(</span><span class="n">Person</span><span class="p">)</span>
+<span class="c">// is the same as</span>
+<span class="n">p1</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">Person</span><span class="p">{}</span>
+</code></pre></div></div>
+<p>Which you use is upto you, but you’ll find that most people prefer the latter. A structures don’t have constructors, many prefer to create a function that returns an instance of the desired type</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">NewPerson</span><span class="p">(</span><span class="n">name</span> <span class="kt">string</span><span class="p">,</span> <span class="n">age</span> <span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="n">Person</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="n">Person</span><span class="p">{</span>
+        <span class="n">Name</span><span class="o">:</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">Age</span><span class="o">:</span> <span class="n">age</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Methods on Structures :</strong> We can associate a method with a structure, like the way we associate methods in classes.</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Person</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Name</span> <span class="kt">string</span>
+    <span class="n">Age</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span><span class="n">Person</span><span class="p">)</span> <span class="n">increaseAge</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">Age</span> <span class="o">+=</span> <span class="m">1</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>In the above code, we say that the type <em>*Person</em> is the <em>receiver</em> of the <em>increaseAge</em> method. We call <em>increaseAge</em> as follows</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p1</span> <span class="o">=</span> <span class="n">Person</span><span class="p">{</span><span class="s">"John"</span><span class="p">,</span> <span class="m">20</span><span class="p">}</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">increaseAge</span><span class="p">()</span>
+<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">p1</span><span class="o">.</span><span class="n">Age</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Note #2 :</strong> The fields of a <code class="highlighter-rouge">struct</code> can be of any type - including arrays, maps, interfaces and functions.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Ayrus&#39;s Lore</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Ayrus&#39;s Lore</li><li><a class="u-email" href="mailto:suryasrikar1997@gmail.com">suryasrikar1997@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ayruslore"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ayruslore</span></a></li><li><a href="https://www.twitter.com/SuryaPeruri4"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">SuryaPeruri4</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This website is my lore which contains things that I learn in my  journey deep in to the ever growing software world. It contains  tutorials, how-tos, know-how and blog posts.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

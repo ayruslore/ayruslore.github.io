@@ -66,10 +66,10 @@ Python has no command for declaring a variable, it is created the moment you fir
 ```python
 >>> x = 6
 >>> type(x)
-<class 'int'>
+<class `int`>
 >>> x = 'John'
 >>> type(x)
-<class 'str'>
+<class `str`>
 ```
 The `type` function is used to find out the type of a variable. Let's take a look at the different types of variables in Python.
 * #### Numbers
@@ -773,7 +773,7 @@ Python provides built-in JSON libraries to encode and decode JSON. There are two
 >>> print(json_object)
 {'John': 'Doe_1', 'Jane': 'Doe_2'}
 >>> type(json_object)
-<class 'dict'>
+<class `dict`>
 >>> json_string = ''
 >>> json_string = json.dumps(json_object)
 >>> print(json_string)
