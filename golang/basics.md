@@ -75,9 +75,10 @@ If you’re ever stuck without internet access, you can get the documentation ru
 $ sudo apt install golang-golang-x-tools
 $ godoc
 ```
-And Navigate to `http://localhost:6060` on browser
+And Navigate to `http://localhost:6060` on the browser
 
 ### Variables - Declarations and Types
+Example code
 ```go
 package main
 
@@ -98,7 +99,7 @@ Still, that's a lot of typing. Go has a handy short variable declaration operato
 ```go
 variableB := 30
 ```
-__Types :__ Go has various types including strings, integers, floats, booleans, etc. The `TypeOf()` method of the reflect package is used to determine the datatype of the variables. Here's an example
+__Types :__ Go has various types including strings, integers, floats, booleans, etc. The `TypeOf()` method of the reflect package is used to determine the datatype of the variables. Here's an example code
 ```go
 package main
 
@@ -120,14 +121,157 @@ func main() {
 ```
 Output
 ```shell
-$ go run golang/codes/main.go 
+$ go run main.go 
 golang string
 1 + 2 = 3 int
 3.5 float64
 false true false bool
 ```
 
-__Constants :__ Go supports *constants* of character, string, boolean, and numberic values. `const` declares a constant value. A numberic constant has no type until it's given one, such as by an explicit conversion
+* #### Basic Types
+    Go's basic types are
+
+    ```go
+    * bool
+    * string
+    * int - int8 - int16 - int 32 - int64
+    * uint - uint8 - uint16 - uint 32 - uint64 - uintptr
+    * byte // alias for uint8
+    * rune // alias for int32, represents a Unicode code point
+    * float32 - float64
+    * complex64 - complex128
+    ```
+    Example
+    ```go
+    package main
+
+    import "fmt"
+
+    func main() {
+        var (
+            boolVariable bool = false
+            stringVariable string = "string"
+            int64Variable int64 = 1<<63 - 1
+            uint64Variable uint64 = 1<<64 - 1
+            byteVariable byte = 'A'
+            runeVariable rune = '\a'
+            float64Variable float64 = 345677.9876
+            complex128Variable complex128 = -5 + 12i
+        )
+
+        fmt.Printf("Type: %T       Value: %v\n", boolVariable, boolVariable)
+        fmt.Printf("Type: %T     Value: %v\n", stringVariable, stringVariable)
+        fmt.Printf("Type: %T      Value: %v\n", int64Variable, int64Variable)
+        fmt.Printf("Type: %T     Value: %v\n", uint64Variable, uint64Variable)
+        fmt.Printf("Type: %T      Value: %v\n", byteVariable, byteVariable)
+        fmt.Printf("Type: %T      Value: %v   Unicode: %U\n", runeVariable, runeVariable, runeVariable)
+        fmt.Printf("Type: %T    Value: %v\n", float64Variable, float64Variable)
+        fmt.Printf("Type: %T Value: %v\n", complex128Variable, complex128Variable)
+    }
+    ```
+    Output
+    ```shell
+    $ go run main.go 
+    Type: bool       Value: false
+    Type: string     Value: string
+    Type: int64      Value: 9223372036854775807
+    Type: uint64     Value: 18446744073709551615
+    Type: uint8      Value: 65
+    Type: int32      Value: 7   Unicode: U+0007
+    Type: float64    Value: 345677.9876
+    Type: complex128 Value: (-5+12i)
+    ```
+
+* #### Maps
+    Maps in Go are what other languages call hashtables or dictionaries. They work as you expect: you define a key and value, and can get, set and delete values from it. Let's look at an example
+    ```go
+    package main
+
+    import "fmt"
+
+    func main() {
+        // declaring a map, maps grow dynamically
+        mapVariable := make(map[string]int)
+
+        // assigning values to a map
+        mapVariable["a"] = 1
+        mapVariable["b"] = 2
+        fmt.Println(mapVariable)
+        fmt.Println(len(mapVariable))
+
+        // we can also specify an initial size for better performance
+        mapVariable1 := make(map[string]int, 2)
+        fmt.Println(mapVariable1)
+        fmt.Println(len(mapVariable1))
+
+        // we can also assign values while declaring it
+        mapVariable2 := map[string]int{"a":1, "b":2}
+
+        // accessing values in a map
+        value, exists := mapVariable2["a"]
+        fmt.Println(value, exists)
+
+        value, exists = mapVariable2["c"]
+        fmt.Println(value, exists)
+
+        // deleting a value in a map
+        delete(mapVariable2, "b")
+        // deleting a value that does not exist does not throw an error
+        delete(mapVariable2, "c")
+
+        // Iteration over maps isn’t ordered. Each iteration over
+        // a lookup will return the key value pair in a random order
+        for key, value := range mapVariable {
+            fmt.Println(key, " : ", value)
+        }
+    }
+    ```
+    Output
+    ```shell
+    $ go run golang/codes/main.go 
+    map[a:1 b:2]
+    2
+    map[]
+    0
+    1 true
+    0 false
+    a  :  1
+    b  :  2
+    ```
+
+* #### Arrays
+    In Go, like C, C++ arrays size is fixed. Declaring an array requires that we specify the size, and once the size is specified, it cannot grow. ttempts to access an outof range index in the array will result in a compiler or runtime error. Let's look at an example for declaring, assigning and accessing an array
+    ```go
+    package main
+
+    import "fmt"
+
+    func main() {
+        var subjects[7]string
+        subjects[0] = "maths"
+        subjects[1] = "english"
+
+        // length of an array
+        fmt.Printf("subjects length is %v\n", len(subjects))
+
+        fmt.Println(subjects)
+
+        // initialize an array with values
+        subjects1 := [2]string{"maths", "english"}
+
+        // iterating through an array
+        for index, value := range subjects1 {
+            fmt.Printf("index: %d value: %s\n", index, value)
+        }
+    }
+    ```
+    Arrays are efficient but rigid. We often don’t know the number of elements we’ll be dealing with upfront. For this, we turn to slices.
+
+* #### Slices
+    ```go
+    ```
+
+__Constants :__ Go supports *constants* of different types. `const` declares a constant value. A constant has no type until it's given one, such as by an explicit conversion
 ```go
 const s string = "string constant"
 const i1 int = 30
@@ -325,3 +469,168 @@ fmt.Println(p1.Age)
 ```
 
 __Note #2 :__ The fields of a `struct` can be of any type - including arrays, maps, interfaces and functions.
+
+__Note #3 :__ Composition in Go is similar to Java, except that we don't have to duplicate every method.
+```go
+package main
+
+import "fmt"
+
+type Person struct {
+    Name string
+    Age int
+}
+
+func (p *Person) getName() {
+    fmt.Println("Hi!! I am " + p.Name)
+}
+
+
+type Teacher struct {
+    // The Teacher structure has a field of type *Person. Because we didn’t
+    // give it an explicit field name, we can implicitly access the fields
+    // and functions of the composed type
+    *Person
+    Subject string
+}
+
+func main() {
+    t1 = &Teacher{
+        Person: &Person{"John", 22},
+        Subject: "Maths",
+    }
+
+    t1.getName()
+    
+    // both will print the same
+    fmt.Println(t1.Name)
+    fmt.Println(t1.Person.Name)
+}
+```
+Output
+```shell
+$ go run main.go
+Hi!! I am John
+John
+John
+```
+Implicit composition is really just a compiler trick, we can “overwrite” the functions of a composed type - Teacher can have it's own getName method
+```go
+func (t *Teacher) getName() {
+    fmt.Println("Hi!! I am " + p.Name + " the Teacher")
+}
+// can access this by t.getName()
+// to access the original person function - t.Person.getName()
+```
+
+### Interfaces
+Interfaces are types that define a structure and it's methods but not an implementation. Let's look at an example
+```go
+type Parser interface {
+    Parse() string
+}
+```
+You might be wondering what purpose this could possibly serve. Interfaces help decouple your code from specificimplementations. For example, we might have various types of parsers:
+```go
+type StringParser struct { ... }
+type IntegerParser struct { ... }
+type BooleanParser struct { ... }
+```
+Yet by programming against the interface, rather than these concrete implementations we can easily change (and test) which we use without any impact to our code. In Java, we have to be explicit when a class implements an interface, in Go this happens implicitly. If your structure has a function named *Parse* with a *string* return value, then it can be used as a *Parser*.
+```go
+type IntegerParser struct {
+    Message int
+}
+func (p StringParser) Parse() string {
+    return string(p.Message)
+}
+```
+Interfaces can also participate in composition. And, interfaces themselves can be composed of other interfaces. Finally, interfaces are commonly used to avoid cyclical imports. Since they don’t have implementations, they’ll havelimited dependencies. Let's look at complete example of interfaces
+```go
+package main
+
+import (
+    "fmt"
+    "strconv"
+)
+
+type Parser interface {
+    Parse() string
+}
+
+type IntegerParser struct {
+    Message int
+}
+
+func (ip IntegerParser) Parse() string {
+    return strconv.Itoa(ip.Message)
+}
+
+type BooleanParser struct {
+    Message bool
+}
+
+func (ip BooleanParser) Parse() string {
+    return strconv.FormatBool(ip.Message)
+}
+
+func main() {
+    var example Parser = IntegerParser{Message: 200}
+    fmt.Println(example.Parse())
+
+    var example1 Parser = BooleanParser{Message: false}
+    fmt.Println(example1.Parse())
+}
+```
+Output
+```shell
+$ go run main.go 
+200
+false
+```
+
+### Code Organization
+* #### Package
+    To keep more complicated libraries and systems organized, we need to learn about packages. In Go, package names follow the directory structure of your Go workspace. When you name a package, via the *package* keyword, you provide a single value, not a complete hierarchy. When you import a package, you specify the complete path.
+
+    Sample project structure
+    ```
+    - person
+      - person.go
+      - teacher
+        - teacher.go
+      - student
+        - student.go
+    - main
+      - main.go
+    ```
+    To import *teacher* package functions in the *main*, we need to specify the full path - __*person/teacher*__. To import *student* package functions in *person* package, just specify the package name - __*person/student*__.
+
+* #### Visibility
+    Go uses a simple rule to define what types and functions are visible outside of a package. If the name of the type or function starts with an *uppercase letter*, it’s visible. If it starts with a *lowercase letter*, it isn’t. This also applies to structure fields. If a structure field name starts with a lowercase letter, only code within the same package will be able to access them.
+    ```go
+    package example
+
+    func NewFunc() { ... }
+    ```
+    It could be called via *example.NewFunc()*. But if the function was named *newFunc*, we wouldn't be able to access it from a different package.
+
+* #### Package Management
+    The `go get` command which is used to fetch third-party libraries, also supports various protocols like in this example - we’ll be getting a library from Github, meaning,you’ll need *git* installed on your computer. Assuming you already have git installed, from a shell/command prompt, enter:
+    ```go
+    go get github.com/mattn/go-sqlite3
+    ```
+    `go get` fetches the remote files and stores them in your workspace. Go ahead and check your `$GOPATH/src`. You’ll now see a *github.com* folder. Within, you’ll see a *mattn* folder which contains a *go-sqlite3* folder. We just talked about how to import packages that live in our workspace. To use our newly gotten *go-sqlite3* package, we’d import as follows
+    ```go
+    import (
+        "github.com/mattn/go-sqlite3"
+    )
+    ```
+    This looks like a URL but in reality, it’ll simply import the *go-sqlite3* package which it expects to find in `$GOPATH/src/github.com/mattn/go-sqlite3`.
+
+    __Note # :__ As you start writing more complex systems, you’re bound to run into cyclical imports. This happens when package A imports package B but package B imports package A (either directly or indirectly through another package). This is something the compiler won’t allow.
+
+* #### Dependency Management
+    As discussed above, If we `go get` with in a project, it’ll scan all the files, looking for imports to third-party libraries and will download them. In a way, our own source code becomes a `Gemfile or package.json`. If you call `go get -u` it’ll update the packages (or you can update a specific package via `go get -u FULL_PACKAGE_NAME`). Eventually, you might find go get inadequate. For one thing, there’s no way to specify a revision, it always points to the `master/head/trunk/default`. This is an even larger problem if you have two projects needing different versions of the same library.
+
+* #### Project Layout

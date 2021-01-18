@@ -51,9 +51,26 @@
 
 <ul id="markdown-toc">
   <li><a href="#running-go-code" id="markdown-toc-running-go-code">Running Go Code</a></li>
-  <li><a href="#variables---declarations-and-types" id="markdown-toc-variables---declarations-and-types">Variables - Declarations and Types</a></li>
+  <li><a href="#variables---declarations-and-types" id="markdown-toc-variables---declarations-and-types">Variables - Declarations and Types</a>    <ul>
+      <li><a href="#basic-types" id="markdown-toc-basic-types">Basic Types</a></li>
+      <li><a href="#maps" id="markdown-toc-maps">Maps</a></li>
+      <li><a href="#arrays" id="markdown-toc-arrays">Arrays</a></li>
+      <li><a href="#slices" id="markdown-toc-slices">Slices</a></li>
+    </ul>
+  </li>
   <li><a href="#functions" id="markdown-toc-functions">Functions</a></li>
-  <li><a href="#structures" id="markdown-toc-structures">Structures</a></li>
+  <li><a href="#structures" id="markdown-toc-structures">Structures</a>    <ul>
+      <li><a href="#interfaces" id="markdown-toc-interfaces">Interfaces</a></li>
+      <li><a href="#code-organization" id="markdown-toc-code-organization">Code Organization</a>        <ul>
+          <li><a href="#package" id="markdown-toc-package">Package</a></li>
+          <li><a href="#visibility" id="markdown-toc-visibility">Visibility</a></li>
+          <li><a href="#package-management" id="markdown-toc-package-management">Package Management</a></li>
+          <li><a href="#dependency-management" id="markdown-toc-dependency-management">Dependency Management</a></li>
+          <li><a href="#project-layout" id="markdown-toc-project-layout">Project Layout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <h3 id="running-go-code">Running Go Code</h3>
@@ -110,9 +127,10 @@ func Println<span class="o">(</span>a ...interface<span class="o">{})</span> <sp
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>golang-golang-x-tools
 <span class="nv">$ </span>godoc
 </code></pre></div></div>
-<p>And Navigate to <code class="highlighter-rouge">http://localhost:6060</code> on browser</p>
+<p>And Navigate to <code class="highlighter-rouge">http://localhost:6060</code> on the browser</p>
 
 <h3 id="variables---declarations-and-types">Variables - Declarations and Types</h3>
+<p>Example code</p>
 <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="s">"fmt"</span>
@@ -130,7 +148,7 @@ func Println<span class="o">(</span>a ...interface<span class="o">{})</span> <sp
 <p>Still, that’s a lot of typing. Go has a handy short variable declaration operator, <code class="highlighter-rouge">:=</code>, which can infer the type</p>
 <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">variableB</span> <span class="o">:=</span> <span class="m">30</span>
 </code></pre></div></div>
-<p><strong>Types :</strong> Go has various types including strings, integers, floats, booleans, etc. The <code class="highlighter-rouge">TypeOf()</code> method of the reflect package is used to determine the datatype of the variables. Here’s an example</p>
+<p><strong>Types :</strong> Go has various types including strings, integers, floats, booleans, etc. The <code class="highlighter-rouge">TypeOf()</code> method of the reflect package is used to determine the datatype of the variables. Here’s an example code</p>
 <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -150,14 +168,157 @@ func Println<span class="o">(</span>a ...interface<span class="o">{})</span> <sp
 <span class="p">}</span>
 </code></pre></div></div>
 <p>Output</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run golang/codes/main.go 
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run main.go 
 golang string
 1 + 2 <span class="o">=</span> 3 int
 3.5 float64
 <span class="nb">false true false </span>bool
 </code></pre></div></div>
 
-<p><strong>Constants :</strong> Go supports <em>constants</em> of character, string, boolean, and numberic values. <code class="highlighter-rouge">const</code> declares a constant value. A numberic constant has no type until it’s given one, such as by an explicit conversion</p>
+<ul>
+  <li>
+    <h4 id="basic-types">Basic Types</h4>
+    <p>Go’s basic types are</p>
+
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">*</span> <span class="kt">bool</span>
+  <span class="o">*</span> <span class="kt">string</span>
+  <span class="o">*</span> <span class="kt">int</span> <span class="o">-</span> <span class="kt">int8</span> <span class="o">-</span> <span class="kt">int16</span> <span class="o">-</span> <span class="kt">int</span> <span class="m">32</span> <span class="o">-</span> <span class="kt">int64</span>
+  <span class="o">*</span> <span class="kt">uint</span> <span class="o">-</span> <span class="kt">uint8</span> <span class="o">-</span> <span class="kt">uint16</span> <span class="o">-</span> <span class="kt">uint</span> <span class="m">32</span> <span class="o">-</span> <span class="kt">uint64</span> <span class="o">-</span> <span class="kt">uintptr</span>
+  <span class="o">*</span> <span class="kt">byte</span> <span class="c">// alias for uint8</span>
+  <span class="o">*</span> <span class="kt">rune</span> <span class="c">// alias for int32, represents a Unicode code point</span>
+  <span class="o">*</span> <span class="kt">float32</span> <span class="o">-</span> <span class="kt">float64</span>
+  <span class="o">*</span> <span class="kt">complex64</span> <span class="o">-</span> <span class="kt">complex128</span>
+</code></pre></div>    </div>
+    <p>Example</p>
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">package</span> <span class="n">main</span>
+
+  <span class="k">import</span> <span class="s">"fmt"</span>
+
+  <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">var</span> <span class="p">(</span>
+          <span class="n">boolVariable</span> <span class="kt">bool</span> <span class="o">=</span> <span class="no">false</span>
+          <span class="n">stringVariable</span> <span class="kt">string</span> <span class="o">=</span> <span class="s">"string"</span>
+          <span class="n">int64Variable</span> <span class="kt">int64</span> <span class="o">=</span> <span class="m">1</span><span class="o">&lt;&lt;</span><span class="m">63</span> <span class="o">-</span> <span class="m">1</span>
+          <span class="n">uint64Variable</span> <span class="kt">uint64</span> <span class="o">=</span> <span class="m">1</span><span class="o">&lt;&lt;</span><span class="m">64</span> <span class="o">-</span> <span class="m">1</span>
+          <span class="n">byteVariable</span> <span class="kt">byte</span> <span class="o">=</span> <span class="sc">'A'</span>
+          <span class="n">runeVariable</span> <span class="kt">rune</span> <span class="o">=</span> <span class="sc">'\a'</span>
+          <span class="n">float64Variable</span> <span class="kt">float64</span> <span class="o">=</span> <span class="m">345677.9876</span>
+          <span class="n">complex128Variable</span> <span class="kt">complex128</span> <span class="o">=</span> <span class="o">-</span><span class="m">5</span> <span class="o">+</span> <span class="m">12i</span>
+      <span class="p">)</span>
+
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Type: %T       Value: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">boolVariable</span><span class="p">,</span> <span class="n">boolVariable</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Type: %T     Value: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stringVariable</span><span class="p">,</span> <span class="n">stringVariable</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Type: %T      Value: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">int64Variable</span><span class="p">,</span> <span class="n">int64Variable</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Type: %T     Value: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">uint64Variable</span><span class="p">,</span> <span class="n">uint64Variable</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Type: %T      Value: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">byteVariable</span><span class="p">,</span> <span class="n">byteVariable</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Type: %T      Value: %v   Unicode: %U</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">runeVariable</span><span class="p">,</span> <span class="n">runeVariable</span><span class="p">,</span> <span class="n">runeVariable</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Type: %T    Value: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">float64Variable</span><span class="p">,</span> <span class="n">float64Variable</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Type: %T Value: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">complex128Variable</span><span class="p">,</span> <span class="n">complex128Variable</span><span class="p">)</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+    <p>Output</p>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>go run main.go 
+  Type: bool       Value: <span class="nb">false
+  </span>Type: string     Value: string
+  Type: int64      Value: 9223372036854775807
+  Type: uint64     Value: 18446744073709551615
+  Type: uint8      Value: 65
+  Type: int32      Value: 7   Unicode: U+0007
+  Type: float64    Value: 345677.9876
+  Type: complex128 Value: <span class="o">(</span><span class="nt">-5</span>+12i<span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <h4 id="maps">Maps</h4>
+    <p>Maps in Go are what other languages call hashtables or dictionaries. They work as you expect: you define a key and value, and can get, set and delete values from it. Let’s look at an example</p>
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">package</span> <span class="n">main</span>
+
+  <span class="k">import</span> <span class="s">"fmt"</span>
+
+  <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c">// declaring a map, maps grow dynamically</span>
+      <span class="n">mapVariable</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+
+      <span class="c">// assigning values to a map</span>
+      <span class="n">mapVariable</span><span class="p">[</span><span class="s">"a"</span><span class="p">]</span> <span class="o">=</span> <span class="m">1</span>
+      <span class="n">mapVariable</span><span class="p">[</span><span class="s">"b"</span><span class="p">]</span> <span class="o">=</span> <span class="m">2</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">mapVariable</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mapVariable</span><span class="p">))</span>
+
+      <span class="c">// we can also specify an initial size for better performance</span>
+      <span class="n">mapVariable1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">mapVariable1</span><span class="p">)</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mapVariable1</span><span class="p">))</span>
+
+      <span class="c">// we can also assign values while declaring it</span>
+      <span class="n">mapVariable2</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="s">"a"</span><span class="o">:</span><span class="m">1</span><span class="p">,</span> <span class="s">"b"</span><span class="o">:</span><span class="m">2</span><span class="p">}</span>
+
+      <span class="c">// accessing values in a map</span>
+      <span class="n">value</span><span class="p">,</span> <span class="n">exists</span> <span class="o">:=</span> <span class="n">mapVariable2</span><span class="p">[</span><span class="s">"a"</span><span class="p">]</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">exists</span><span class="p">)</span>
+
+      <span class="n">value</span><span class="p">,</span> <span class="n">exists</span> <span class="o">=</span> <span class="n">mapVariable2</span><span class="p">[</span><span class="s">"c"</span><span class="p">]</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">exists</span><span class="p">)</span>
+
+      <span class="c">// deleting a value in a map</span>
+      <span class="nb">delete</span><span class="p">(</span><span class="n">mapVariable2</span><span class="p">,</span> <span class="s">"b"</span><span class="p">)</span>
+      <span class="c">// deleting a value that does not exist does not throw an error</span>
+      <span class="nb">delete</span><span class="p">(</span><span class="n">mapVariable2</span><span class="p">,</span> <span class="s">"c"</span><span class="p">)</span>
+
+      <span class="c">// Iteration over maps isn’t ordered. Each iteration over</span>
+      <span class="c">// a lookup will return the key value pair in a random order</span>
+      <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">mapVariable</span> <span class="p">{</span>
+          <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s">" : "</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+    <p>Output</p>
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>go run golang/codes/main.go 
+  map[a:1 b:2]
+  2
+  map[]
+  0
+  1 <span class="nb">true
+  </span>0 <span class="nb">false
+  </span>a  :  1
+  b  :  2
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <h4 id="arrays">Arrays</h4>
+    <p>In Go, like C, C++ arrays size is fixed. Declaring an array requires that we specify the size, and once the size is specified, it cannot grow. ttempts to access an outof range index in the array will result in a compiler or runtime error. Let’s look at an example for declaring, assigning and accessing an array</p>
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">package</span> <span class="n">main</span>
+
+  <span class="k">import</span> <span class="s">"fmt"</span>
+
+  <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">var</span> <span class="n">subjects</span><span class="p">[</span><span class="m">7</span><span class="p">]</span><span class="kt">string</span>
+      <span class="n">subjects</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">"maths"</span>
+      <span class="n">subjects</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">"english"</span>
+
+      <span class="c">// length of an array</span>
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"subjects length is %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">subjects</span><span class="p">))</span>
+
+      <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">subjects</span><span class="p">)</span>
+
+      <span class="c">// initialize an array with values</span>
+      <span class="n">subjects1</span> <span class="o">:=</span> <span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">"maths"</span><span class="p">,</span> <span class="s">"english"</span><span class="p">}</span>
+
+      <span class="c">// iterating through an array</span>
+      <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">subjects1</span> <span class="p">{</span>
+          <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"index: %d value: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+    <p>Arrays are efficient but rigid. We often don’t know the number of elements we’ll be dealing with upfront. For this, we turn to slices.</p>
+  </li>
+  <li>
+    <h4 id="slices">Slices</h4>
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code></code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>Constants :</strong> Go supports <em>constants</em> of different types. <code class="highlighter-rouge">const</code> declares a constant value. A constant has no type until it’s given one, such as by an explicit conversion</p>
 <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="n">s</span> <span class="kt">string</span> <span class="o">=</span> <span class="s">"string constant"</span>
 <span class="k">const</span> <span class="n">i1</span> <span class="kt">int</span> <span class="o">=</span> <span class="m">30</span>
 <span class="k">const</span> <span class="n">i2</span> <span class="o">=</span> <span class="m">40</span>
@@ -338,6 +499,167 @@ main.go:8:11: varB declared and not used
 </code></pre></div></div>
 
 <p><strong>Note #2 :</strong> The fields of a <code class="highlighter-rouge">struct</code> can be of any type - including arrays, maps, interfaces and functions.</p>
+
+<p><strong>Note #3 :</strong> Composition in Go is similar to Java, except that we don’t have to duplicate every method.</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"fmt"</span>
+
+<span class="k">type</span> <span class="n">Person</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Name</span> <span class="kt">string</span>
+    <span class="n">Age</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span><span class="n">Person</span><span class="p">)</span> <span class="n">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Hi!! I am "</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="k">type</span> <span class="n">Teacher</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="c">// The Teacher structure has a field of type *Person. Because we didn’t</span>
+    <span class="c">// give it an explicit field name, we can implicitly access the fields</span>
+    <span class="c">// and functions of the composed type</span>
+    <span class="o">*</span><span class="n">Person</span>
+    <span class="n">Subject</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Teacher</span><span class="p">{</span>
+        <span class="n">Person</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">Person</span><span class="p">{</span><span class="s">"John"</span><span class="p">,</span> <span class="m">22</span><span class="p">},</span>
+        <span class="n">Subject</span><span class="o">:</span> <span class="s">"Maths"</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">t1</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+    
+    <span class="c">// both will print the same</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">Person</span><span class="o">.</span><span class="n">Name</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Output</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run main.go
+Hi!! I am John
+John
+John
+</code></pre></div></div>
+<p>Implicit composition is really just a compiler trick, we can “overwrite” the functions of a composed type - Teacher can have it’s own getName method</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="p">(</span><span class="n">t</span> <span class="o">*</span><span class="n">Teacher</span><span class="p">)</span> <span class="n">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Hi!! I am "</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">Name</span> <span class="o">+</span> <span class="s">" the Teacher"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c">// can access this by t.getName()</span>
+<span class="c">// to access the original person function - t.Person.getName()</span>
+</code></pre></div></div>
+
+<h3 id="interfaces">Interfaces</h3>
+<p>Interfaces are types that define a structure and it’s methods but not an implementation. Let’s look at an example</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Parser</span> <span class="k">interface</span> <span class="p">{</span>
+    <span class="n">Parse</span><span class="p">()</span> <span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>You might be wondering what purpose this could possibly serve. Interfaces help decouple your code from specificimplementations. For example, we might have various types of parsers:</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">StringParser</span> <span class="k">struct</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="k">type</span> <span class="n">IntegerParser</span> <span class="k">struct</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="k">type</span> <span class="n">BooleanParser</span> <span class="k">struct</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+</code></pre></div></div>
+<p>Yet by programming against the interface, rather than these concrete implementations we can easily change (and test) which we use without any impact to our code. In Java, we have to be explicit when a class implements an interface, in Go this happens implicitly. If your structure has a function named <em>Parse</em> with a <em>string</em> return value, then it can be used as a <em>Parser</em>.</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">IntegerParser</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Message</span> <span class="kt">int</span>
+<span class="p">}</span>
+<span class="k">func</span> <span class="p">(</span><span class="n">p</span> <span class="n">StringParser</span><span class="p">)</span> <span class="n">Parse</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kt">string</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Interfaces can also participate in composition. And, interfaces themselves can be composed of other interfaces. Finally, interfaces are commonly used to avoid cyclical imports. Since they don’t have implementations, they’ll havelimited dependencies. Let’s look at complete example of interfaces</p>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="s">"strconv"</span>
+<span class="p">)</span>
+
+<span class="k">type</span> <span class="n">Parser</span> <span class="k">interface</span> <span class="p">{</span>
+    <span class="n">Parse</span><span class="p">()</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="k">type</span> <span class="n">IntegerParser</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Message</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="p">(</span><span class="n">ip</span> <span class="n">IntegerParser</span><span class="p">)</span> <span class="n">Parse</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">strconv</span><span class="o">.</span><span class="n">Itoa</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">type</span> <span class="n">BooleanParser</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Message</span> <span class="kt">bool</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="p">(</span><span class="n">ip</span> <span class="n">BooleanParser</span><span class="p">)</span> <span class="n">Parse</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">strconv</span><span class="o">.</span><span class="n">FormatBool</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">example</span> <span class="n">Parser</span> <span class="o">=</span> <span class="n">IntegerParser</span><span class="p">{</span><span class="n">Message</span><span class="o">:</span> <span class="m">200</span><span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">Parse</span><span class="p">())</span>
+
+    <span class="k">var</span> <span class="n">example1</span> <span class="n">Parser</span> <span class="o">=</span> <span class="n">BooleanParser</span><span class="p">{</span><span class="n">Message</span><span class="o">:</span> <span class="no">false</span><span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">example1</span><span class="o">.</span><span class="n">Parse</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Output</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>go run main.go 
+200
+<span class="nb">false</span>
+</code></pre></div></div>
+
+<h3 id="code-organization">Code Organization</h3>
+<ul>
+  <li>
+    <h4 id="package">Package</h4>
+    <p>To keep more complicated libraries and systems organized, we need to learn about packages. In Go, package names follow the directory structure of your Go workspace. When you name a package, via the <em>package</em> keyword, you provide a single value, not a complete hierarchy. When you import a package, you specify the complete path.</p>
+
+    <p>Sample project structure</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  - person
+    - person.go
+    - teacher
+      - teacher.go
+    - student
+      - student.go
+  - main
+    - main.go
+</code></pre></div>    </div>
+    <p>To import <em>teacher</em> package functions in the <em>main</em>, we need to specify the full path - <strong><em>person/teacher</em></strong>. To import <em>student</em> package functions in <em>person</em> package, just specify the package name - <strong><em>person/student</em></strong>.</p>
+  </li>
+  <li>
+    <h4 id="visibility">Visibility</h4>
+    <p>Go uses a simple rule to define what types and functions are visible outside of a package. If the name of the type or function starts with an <em>uppercase letter</em>, it’s visible. If it starts with a <em>lowercase letter</em>, it isn’t. This also applies to structure fields. If a structure field name starts with a lowercase letter, only code within the same package will be able to access them.</p>
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">package</span> <span class="n">example</span>
+
+  <span class="k">func</span> <span class="n">NewFunc</span><span class="p">()</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+</code></pre></div>    </div>
+    <p>It could be called via <em>example.NewFunc()</em>. But if the function was named <em>newFunc</em>, we wouldn’t be able to access it from a different package.</p>
+  </li>
+  <li>
+    <h4 id="package-management">Package Management</h4>
+    <p>The <code class="highlighter-rouge">go get</code> command which is used to fetch third-party libraries, also supports various protocols like in this example - we’ll be getting a library from Github, meaning,you’ll need <em>git</em> installed on your computer. Assuming you already have git installed, from a shell/command prompt, enter:</p>
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">go</span> <span class="n">get</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mattn</span><span class="o">/</span><span class="k">go</span><span class="o">-</span><span class="n">sqlite3</span>
+</code></pre></div>    </div>
+    <p><code class="highlighter-rouge">go get</code> fetches the remote files and stores them in your workspace. Go ahead and check your <code class="highlighter-rouge">$GOPATH/src</code>. You’ll now see a <em>github.com</em> folder. Within, you’ll see a <em>mattn</em> folder which contains a <em>go-sqlite3</em> folder. We just talked about how to import packages that live in our workspace. To use our newly gotten <em>go-sqlite3</em> package, we’d import as follows</p>
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">import</span> <span class="p">(</span>
+      <span class="s">"github.com/mattn/go-sqlite3"</span>
+  <span class="p">)</span>
+</code></pre></div>    </div>
+    <p>This looks like a URL but in reality, it’ll simply import the <em>go-sqlite3</em> package which it expects to find in <code class="highlighter-rouge">$GOPATH/src/github.com/mattn/go-sqlite3</code>.</p>
+
+    <p><strong>Note # :</strong> As you start writing more complex systems, you’re bound to run into cyclical imports. This happens when package A imports package B but package B imports package A (either directly or indirectly through another package). This is something the compiler won’t allow.</p>
+  </li>
+  <li>
+    <h4 id="dependency-management">Dependency Management</h4>
+    <p>As discussed above, If we <code class="highlighter-rouge">go get</code> with in a project, it’ll scan all the files, looking for imports to third-party libraries and will download them. In a way, our own source code becomes a <code class="highlighter-rouge">Gemfile or package.json</code>. If you call <code class="highlighter-rouge">go get -u</code> it’ll update the packages (or you can update a specific package via <code class="highlighter-rouge">go get -u FULL_PACKAGE_NAME</code>). Eventually, you might find go get inadequate. For one thing, there’s no way to specify a revision, it always points to the <code class="highlighter-rouge">master/head/trunk/default</code>. This is an even larger problem if you have two projects needing different versions of the same library.</p>
+  </li>
+  <li>
+    <h4 id="project-layout">Project Layout</h4>
+  </li>
+</ul>
 
   </div>
 

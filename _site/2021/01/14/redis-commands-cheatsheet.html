@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Redis Commands CheatSheet | Ayrus’s Lore</title>
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Redis Commands CheatSheet" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Cluster" />
+<meta property="og:description" content="Cluster" />
+<link rel="canonical" href="http://localhost:4000/2021/01/14/redis-commands-cheatsheet.html" />
+<meta property="og:url" content="http://localhost:4000/2021/01/14/redis-commands-cheatsheet.html" />
+<meta property="og:site_name" content="Ayrus’s Lore" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-14T19:18:26+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Redis Commands CheatSheet" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Redis Commands CheatSheet","dateModified":"2021-01-14T19:18:26+05:30","datePublished":"2021-01-14T19:18:26+05:30","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/01/14/redis-commands-cheatsheet.html"},"description":"Cluster","url":"http://localhost:4000/2021/01/14/redis-commands-cheatsheet.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Ayrus's Lore" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Ayrus&#39;s Lore</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/posts/">Posts</a><a class="page-link" href="/golang/">GoLang</a><a class="page-link" href="/js/">Javascript</a><a class="page-link" href="/python/">Python</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Redis Commands CheatSheet</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-01-14T19:18:26+05:30" itemprop="datePublished">Jan 14, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ol>
+  <li>
+    <h1 id="cluster">Cluster</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-addslots"><strong>CLUSTER ADDSLOTS</strong> slot [slot …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the total number of hash slot arguments</td>
+          <td>Assign new hash slots to receiving node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-bumpepoch"><strong>CLUSTER BUMPEPOCH</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Advance the cluster config epoch</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-count-failure-reports"><strong>CLUSTER COUNT-FAILURE-REPORTS</strong> node-id</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of failure reports</td>
+          <td>Return the number of failure reports active for a given node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-countkeysinslot"><strong>CLUSTER COUNTKEYSINSLOT</strong> slot</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Return the number of local keys in the specified hash slot</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-delslots"><strong>CLUSTER DELSLOTS</strong> slot [slot …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the total number of hash slot arguments</td>
+          <td>Set hash slots as unbound in receiving node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-failover"><strong>CLUSTER FAILOVER</strong> [FORCE/TAKEOVER]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Forces a replica to perform a manual failover of its master</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-flushslots"><strong>CLUSTER FLUSHSLOTS</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Delete a node’s own slots information</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-forget"><strong>CLUSTER FORGET</strong> node-id</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Remove a node from the nodes table</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-getkeysinslot"><strong>CLUSTER GETKEYSINSLOT</strong> slot count</a></td>
+          <td><strong><em>O(log(N))</em></strong> where N is the number of requested keys</td>
+          <td>Return local key names in the specified hash slot</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-info"><strong>CLUSTER INFO</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Provides info about Redis Cluster node state</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-keyslot"><strong>CLUSTER KEYSLOT</strong> key</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of bytes in the key</td>
+          <td>Returns the hash slot of the specified key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-meet"><strong>CLUSTER MEET</strong> ip port</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Force a node cluster to handshake with another node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-myid"><strong>CLUSTER MYID</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Return the node id</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-nodes"><strong>CLUSTER NODES</strong></a></td>
+          <td><strong><em>O(N)</em></strong> where N is the total number of Cluster nodes</td>
+          <td>Get Cluster config for the node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-replicate"><strong>CLUSTER REPLICATE</strong> node-id</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Reconfigure a node as a replica of the specified master node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-reset"><strong>CLUSTER RESET</strong> [HARD|SOFT]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of known nodes. The command may execute a FLUSHALL as a side effect</td>
+          <td>Reset a Redis Cluster node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-saveconfig"><strong>CLUSTER SAVECONFIG</strong></a></td>
+          <td><strong><em>O(1</em></strong>)</td>
+          <td>Forces the node to save cluster state on disk</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-set-config-epoch"><strong>CLUSTER SET-CONFIG-EPOCH</strong> config-epoch</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the configuration epoch in a new node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-setslot"><strong>CLUSTER SETSLOT</strong> slot IMPORTING|MIGRATING|STABLE|NODE [node-id]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Bind a hash slot to a specific node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-slaves"><strong>CLUSTER SLAVES</strong> node-id</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>List replica nodes of the specified master node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-replicas"><strong>CLUSTER REPLICAS</strong> node-id</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>List replica nodes of the specified master node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/cluster-slots"><strong>CLUSTER SLOTS</strong></a></td>
+          <td><strong><em>O(N)</em></strong> where N is the total number of Cluster nodes</td>
+          <td>Get array of Cluster slot to node mappings</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/readonly"><strong>READONLY</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Enables read queries for a connection to a cluster replica node</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/readwrite"><strong>READWRITE</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Disables read queries for a connection to a cluster replica node</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="connection">Connection</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/auth"><strong>AUTH</strong> [username] password</a></td>
+          <td>-</td>
+          <td>Authenticate to the server</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-caching"><strong>CLIENT CACHING</strong> YES|NO</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Instruct the server about tracking or not keys in the next request</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-id"><strong>CLIENT ID</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Returns the client ID for the current connection</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-info"><strong>CLIENT INFO</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Returns information about the current client connection</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-kill"><strong>CLIENT KILL</strong> [ip:port] [ID client-id] [TYPE normal|master|slave|pubsub] [USER username] [ADDR ip:port] [SKIPME yes|no]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of client connections</td>
+          <td>Kill the connection of a client</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-list"><strong>CLIENT LIST</strong> [TYPE normal|master|replica|pubsub] [ID client-id [client-id …]]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of client connections</td>
+          <td>Get the list of client connections</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-getname"><strong>CLIENT GETNAME</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the current connection name</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-getredir"><strong>CLIENT GETREDIR</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get tracking notifications redirection client ID if any</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-unpause"><strong>CLIENT UNPAUSE</strong></a></td>
+          <td><strong><em>O(N)</em></strong> Where N is the number of paused clients</td>
+          <td>Resume processing of clients that were paused</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-pause"><strong>CLIENT PAUSE</strong> timeout [WRITE|ALL]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Stop processing commands from clients for some time</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-reply"><strong>CLIENT REPLY</strong> ON|OFF|SKIP</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Instruct the server whether to reply to commands</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-setname"><strong>CLIENT SETNAME</strong> connection-name</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the current connection name</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-tracking"><strong>CLIENT TRACKING</strong> ON|OFF [REDIRECT client-id] [PREFIX prefix [PREFIX prefix …]] [BCAST] [OPTIN] [OPTOUT] [NOLOOP]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Enable or disable server assisted client side caching support</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-trackinginfo"><strong>CLIENT TRACKINGINFO</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Return information about server assisted client side caching for the current connection</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/client-unblock"><strong>CLIENT UNBLOCK</strong> client-id [TIMEOUT|ERROR]</a></td>
+          <td><strong><em>O(log N)</em></strong> where N is the number of client connections</td>
+          <td>Unblock a client blocked in a blocking command from a different connection</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/echo"><strong>ECHO</strong> message</a></td>
+          <td>-</td>
+          <td>Echo the given string</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hello"><strong>HELLO</strong> [protover [AUTH username password] [SETNAME clientname]]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Handshake with Redis</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/ping"><strong>PING</strong> [message]</a></td>
+          <td>-</td>
+          <td>Ping the server</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/quit"><strong>QUIT</strong></a></td>
+          <td>-</td>
+          <td>Close the connection</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/reset"><strong>RESET</strong></a></td>
+          <td>-</td>
+          <td>Reset the connection</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/select"><strong>SELECT</strong> index</a></td>
+          <td>-</td>
+          <td>Change the selected database for the current connection</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="geo">Geo</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/geoadd"><strong>GEOADD</strong> key [NX|XX] [CH] longitude latitude member [longitude latitude member …]</a></td>
+          <td><strong><em>O(log(N))</em></strong> for each item added, where N is the number of elements in the sorted set</td>
+          <td>Add one or more geospatial items in the geospatial index represented using a sorted set</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/geohash"><strong>GEOHASH</strong> key member [member …]</a></td>
+          <td><strong><em>O(log(N))</em></strong> for each member requested, where N is the number of elements in the sorted set</td>
+          <td>Returns members of a geospatial index as standard geohash strings</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/geopos"><strong>GEOPOS</strong> key member [member …]</a></td>
+          <td><strong><em>O(log(N))</em></strong> for each member requested, where N is the number of elements in the sorted set</td>
+          <td>Returns longitude and latitude of members of a geospatial index</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/geodist"><strong>GEODIST</strong> key member1 member2 [m|km|ft|mi]</a></td>
+          <td><strong><em>O(log(N))</em></strong></td>
+          <td>Returns the distance between two members of a geospatial index</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/georadius"><strong>GEORADIUS</strong> key longitude latitude radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count [ANY]] [ASC|DESC] [STORE key] [STOREDIST key]</a></td>
+          <td><strong><em>O(N+log(M))</em></strong> where N is the number of elements inside the bounding box of the circular area delimited by center and radius and M is the number of items inside the index</td>
+          <td>Query a sorted set representing a geospatial index to fetch members matching a given maximum distance from a point</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/georadiusbymember"><strong>GEORADIUSBYMEMBER</strong> key member radius m/|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count [ANY]] [ASC|DESC] [STORE key] [STOREDIST key]</a></td>
+          <td><strong><em>O(N+log(M))</em></strong>*__ where N is the number of elements inside the bounding box of the circular area delimited by center and radius and M is the number of items inside the index</td>
+          <td>Query a sorted set representing a geospatial index to fetch members matching a given maximum distance from a member</td>
+          <td> </td>
+        </tr>
+        <tr>
+          <td>[<strong>GEOSEARCH</strong> key [FROMMEMBER member] [FROMLONLAT longitude latitude] [BYRADIUS radius m|km/</td>
+          <td>ft|mi] [BYBOX width height m|km|ft|mi] [ASC|DESC] [COUNT count [ANY]] [WITHCOORD] [WITHDIST] [WITHHASH]](https://redis.io/commands/geosearch)</td>
+          <td><strong><em>O(N+log(M))</em></strong> where N is the number of elements in the grid-aligned bounding box area around the shape provided as the filter and M is the number of items inside the shape</td>
+          <td>Query a sorted set representing a geospatial index to fetch members inside an area of a box or a circle</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/geosearchstore"><strong>GEOSEARCHSTORE</strong> destination source [FROMMEMBER member] [FROMLONLAT longitude latitude] [BYRADIUS radius m|km|ft|mi] [BYBOX width height m|km|ft|mi] [ASC|DESC] [COUNT count [ANY]] [WITHCOORD] [WITHDIST] [WITHHASH] [STOREDIST]</a></td>
+          <td><strong><em>O(N+log(M))</em></strong> where N is the number of elements in the grid-aligned bounding box area around the shape provided as the filter and M is the number of items inside the shape</td>
+          <td>Query a sorted set representing a geospatial index to fetch members inside an area of a box or a circle, and store the result in another key</td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="hashes">Hashes</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/hdel"><strong>HDEL</strong> key field [field …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of fields to be removed</td>
+          <td>Delete one or more hash fields</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hexists"><strong>HEXISTS</strong> key field</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Determine if a hash field exists</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hget"><strong>HGET</strong> key field</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the value of a hash field</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hgetall"><strong>HGETALL</strong> key</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the size of the hash</td>
+          <td>Get all the fields and values in a hash</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hincrby"><strong>HINCRBY</strong> key field increment</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Increment the integer value of a hash field by the given number</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hincrbyfloat"><strong>HINCRBYFLOAT</strong> key field increment</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Increment the float value of a hash field by the given amount</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hkeys"><strong>HKEYS</strong> key</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the size of the hash</td>
+          <td>Get all the fields in a hash</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hlen"><strong>HLEN</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the number of fields in a hash</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hmget"><strong>HMGET</strong> key field [field …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of fields being requested</td>
+          <td>Get the values of all the given hash fields</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hmset"><strong>HMSET</strong> key field value [field value …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of fields being set</td>
+          <td>Set multiple hash fields to multiple values</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hset"><strong>HSET</strong> key field value [field value …]</a></td>
+          <td><strong><em>O(1)</em></strong> for each field/value pair added, so <strong><em>O(N)</em></strong> to add N field/value pairs when the command is called with multiple field/value pairs</td>
+          <td>Set the string value of a hash field</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hsetnx"><strong>HSETNX</strong> key field value</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the value of a hash field, only if the field does not exist</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hstrlen"><strong>HSTRLEN</strong> key field</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the length of the value of a hash field</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hvals"><strong>HVALS</strong> key</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the size of the hash</td>
+          <td>Get all the values in a hash</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/hscan"><strong>HSCAN</strong> key cursor [MATCH pattern] [COUNT count]</a></td>
+          <td><strong><em>O(1)</em></strong> for every call. <strong><em>O(N)</em></strong> for a complete iteration, including enough command calls for the cursor to return back to 0. N is the number of elements inside the collection</td>
+          <td>Incrementally iterate hash fields and associated values</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="hyperloglog">HyperLogLog</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/pfadd"><strong>PFADD</strong> key element [element …]</a></td>
+          <td><strong><em>O(1)</em></strong> to add every element</td>
+          <td>Adds the specified elements to the specified HyperLogLog</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/pfcount"><strong>PFCOUNT</strong> key [key …]</a></td>
+          <td><strong><em>O(1)</em></strong> with a very small average constant time when called with a single key. <strong><em>O(N)</em></strong> with N being the number of keys, and much bigger constant times, when called with multiple keys</td>
+          <td>Return the approximated cardinality of the set(s) observed by the HyperLogLog at key(s)</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/pfmerge"><strong>PFMERGE</strong> destkey sourcekey [sourcekey …]</a></td>
+          <td><strong><em>O(N)</em></strong> to merge N HyperLogLogs, but with high constant times</td>
+          <td>Merge N different HyperLogLogs into a single one</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="keys">Keys</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/copy"><strong>COPY</strong> source destination [DB destination-db] [REPLACE]</a></td>
+          <td><strong><em>O(N)</em></strong> worst case for collections, where N is the number of nested items. <strong><em>O(1)</em></strong> for string values</td>
+          <td>Copy a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/del"><strong>DEL</strong> key [key …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of keys that will be removed. When a key to remove holds a value other than a string, the individual complexity for this key is <strong><em>O(M)</em></strong> where M is the number of elements in the list, set, sorted set or hash. Removing a single key that holds a string value is <strong><em>O(1)</em></strong></td>
+          <td>Delete a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/dump"><strong>DUMP</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong> to access the key and additional <strong><em>O(NM)</em></strong> to serialize it, where N is the number of Redis objects composing the value and M their average size. For small string values the time complexity is thus <strong><em>O(1)+O(M)</em></strong> where M is small, so simply <strong><em>O(1)</em></strong></td>
+          <td>Return a serialized version of the value stored at the specified key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/exists"><strong>EXISTS</strong> key [key …]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Determine if a key exists</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/expire"><strong>EXPIRE</strong> key seconds</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set a key’s time to live in seconds</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/expireat"><strong>EXPIREAT</strong> key timestamp</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the expiration for a key as a UNIX timestamp</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/keys"><strong>KEYS</strong> pattern</a></td>
+          <td><strong><em>O(N)</em></strong> with N being the number of keys in the database, under the assumption that the key names in the database and the given pattern have limited length</td>
+          <td>Find all keys matching the given pattern</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/migrate"><strong>MIGRATE</strong> host port key|”” destination-db timeout [COPY] [REPLACE] [AUTH password] [AUTH2 username password] [KEYS key [key …]]</a></td>
+          <td>This command actually executes a DUMP+DEL in the source instance, and a RESTORE in the target instance. See the pages of these commands for time complexity. Also an <strong><em>O(N)</em></strong> data transfer between the two instances is performed</td>
+          <td>Atomically transfer a key from a Redis instance to another one</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/move"><strong>MOVE</strong> key db</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Move a key to another database</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/object"><strong>OBJECT</strong> subcommand [arguments [arguments …]]</a></td>
+          <td><strong><em>O(1)</em></strong> for all the currently implemented subcommands</td>
+          <td>Inspect the internals of Redis objects</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/persist"><strong>PERSIST</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Remove the expiration from a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/pexpire"><strong>PEXPIRE</strong> key milliseconds</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set a key’s time to live in milliseconds</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/pexpireat"><strong>PEXPIREAT</strong> key milliseconds-timestamp</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the expiration for a key as a UNIX timestamp specified in milliseconds</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/pttl"><strong>PTTL</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the time to live for a key in milliseconds</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/randomkey"><strong>RANDOMKEY</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Return a random key from the keyspace</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/rename"><strong>RENAME</strong> key newkey</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Rename a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/renamenx"><strong>RENAMENX</strong> key newkey</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Rename a key, only if the new key does not exist</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/restore"><strong>RESTORE</strong> key ttl serialized-value [REPLACE] [ABSTTL] [IDLETIME seconds] [FREQ frequency]</a></td>
+          <td><strong><em>O(1)</em></strong> to create the new key and additional <strong><em>O(NM)</em></strong> to reconstruct the serialized value, where N is the number of Redis objects composing the value and M their average size. For small string values the time complexity is thus <strong><em>O(1)+O(M)</em></strong> where M is small, so simply <strong><em>O(1)</em></strong>. However for sorted set values the complexity is <strong><em>O(NMlog(N))</em></strong> because inserting values into sorted sets is <strong><em>O(log(N))</em></strong></td>
+          <td>Create a key using the provided serialized value, previously obtained using DUMP</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sort"><strong>SORT</strong> key [BY pattern] [LIMIT offset count] [GET pattern [GET pattern …]] [ASC|DESC] [ALPHA] [STORE destination]</a></td>
+          <td><strong><em>O(N+Mlog(M))</em></strong> where N is the number of elements in the list or set to sort, and M the number of returned elements. When the elements are not sorted, complexity is currently <strong><em>O(N)</em></strong> as there is a copy step that will be avoided in next releases</td>
+          <td>Sort the elements in a list, set or sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/touch"><strong>TOUCH</strong> key [key …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of keys that will be touched</td>
+          <td>Alters the last access time of a key(s). Returns the number of existing keys specified</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/ttl"><strong>TTL</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the time to live for a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/type"><strong>TYPE</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Determine the type stored at key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/unlink"><strong>UNLINK</strong> key [key …]</a></td>
+          <td><strong><em>O(1)</em></strong> for each key removed regardless of its size. Then the command does <strong><em>O(N)</em></strong> work in a different thread in order to reclaim memory, where N is the number of allocations the deleted objects where composed of</td>
+          <td>Delete a key asynchronously in another thread. Otherwise it is just as DEL, but non blocking</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/wait"><strong>WAIT</strong> numreplicas timeout</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Wait for the synchronous replication of all the write commands sent in the context of the current connection</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/scan"><strong>SCAN</strong> cursor [MATCH pattern] [COUNT count] [TYPE type]</a></td>
+          <td><strong><em>O(1)</em></strong> for every call. <strong><em>O(N)</em></strong> for a complete iteration, including enough command calls for the cursor to return back to 0. N is the number of elements inside the collection</td>
+          <td>Incrementally iterate the keys space</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="lists">Lists</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/blpop"><strong>BLPOP</strong> key [key …] timeout</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Remove and get the first element in a list, or block until one is available</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/brpop"><strong>BRPOP</strong> key [key …] timeout</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Remove and get the last element in a list, or block until one is available</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/brpoplpush"><strong>BRPOPLPUSH</strong> source destination timeout</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Pop an element from a list, push it to another list and return it; or block until one is available</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/blmove"><strong>BLMOVE</strong> source destination LEFT|RIGHT LEFT|RIGHT timeout</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Pop an element from a list, push it to another list and return it; or block until one is available</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lindex"><strong>LINDEX</strong> key index</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of elements to traverse to get to the element at index. This makes asking for the first or the last element of the list O(1)</td>
+          <td>Get an element from a list by its index</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/linsert"><strong>LINSERT</strong> key BEFORE|AFTER pivot element</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of elements to traverse before seeing the value pivot. This means that inserting somewhere on the left end on the list (head) can be considered <strong><em>O(1)</em></strong> and inserting somewhere on the right end (tail) is <strong><em>O(N)</em></strong></td>
+          <td>Insert an element before or after another element in a list</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/llen"><strong>LLEN</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the length of a list</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lpop"><strong>LPOP</strong> key [count]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of elements returned</td>
+          <td>Remove and get the first elements in a list</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lpos"><strong>LPOS</strong> key element [RANK rank] [COUNT num-matches] [MAXLEN len]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of elements in the list, for the average case. When searching for elements near the head or the tail of the list, or when the MAXLEN option is provided, the command may run in constant time</td>
+          <td>Return the index of matching elements on a list</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lpush"><strong>LPUSH</strong> key element [element …]</a></td>
+          <td><strong><em>O(1)</em></strong> for each element added, so <strong><em>O(N)</em></strong> to add N elements when the command is called with multiple arguments</td>
+          <td>Prepend one or multiple elements to a list</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lpushx"><strong>LPUSHX</strong> key element [element …]</a></td>
+          <td><strong><em>O(1)</em></strong> for each element added, so <strong><em>O(N)</em></strong> to add N elements when the command is called with multiple arguments</td>
+          <td>Prepend an element to a list, only if the list exists</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lrange"><strong>LRANGE</strong> key start stop</a></td>
+          <td><strong><em>O(S+N)</em></strong> where S is the distance of start offset from HEAD for small lists, from nearest end (HEAD or TAIL) for large lists; and N is the number of elements in the specified range</td>
+          <td>Get a range of elements from a list</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lrem"><strong>LREM</strong> key count element</a></td>
+          <td><strong><em>O(N+M)</em></strong> where N is the length of the list and M is the number of elements removed</td>
+          <td>Remove elements from a list</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lset"><strong>LSET</strong> key index element</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the length of the list. Setting either the first or the last element of the list is <strong><em>O(1)</em></strong></td>
+          <td>Set the value of an element in a list by its index</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/ltrim"><strong>LTRIM</strong> key start stop</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of elements to be removed by the operation</td>
+          <td>Trim a list to the specified range</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/rpop"><strong>RPOP</strong> key [count]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of elements returned</td>
+          <td>Remove and get the last elements in a list</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/rpoplpush"><strong>RPOPLPUSH</strong> source destination</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Remove the last element in a list, prepend it to another list and return it</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lmove"><strong>LMOVE</strong> source destination LEFT|RIGHT LEFT|RIGHT</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Pop an element from a list, push it to another list and return it</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/rpush"><strong>RPUSH</strong> key element [element …]</a></td>
+          <td><strong><em>O(1)</em></strong> for each element added, so <strong><em>O(N)</em></strong> to add N elements when the command is called with multiple arguments</td>
+          <td>Append one or multiple elements to a list</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/rpushx"><strong>RPUSHX</strong> key element [element …]</a></td>
+          <td><strong><em>O(1)</em></strong> for each element added, so <strong><em>O(N)</em></strong> to add N elements when the command is called with multiple arguments</td>
+          <td>Append an element to a list, only if the list exists</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="pubsub">Pub/Sub</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/psubscribe"><strong>PSUBSCRIBE</strong> pattern [pattern …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of patterns the client is already subscribed to</td>
+          <td>Listen for messages published to channels matching the given patterns</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/pubsub"><strong>PUBSUB</strong> subcommand [argument [argument …]]</a></td>
+          <td><strong><em>O(N)</em></strong> for the CHANNELS subcommand, where N is the number of active channels, and assuming constant time pattern matching (relatively short channels and patterns). <strong><em>O(N)</em></strong> for the NUMSUB subcommand, where N is the number of requested channels. <strong><em>O(1)</em></strong> for the NUMPAT subcommand</td>
+          <td>Inspect the state of the Pub/Sub subsystem</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/publish"><strong>PUBLISH</strong> channel message</a></td>
+          <td><strong><em>O(N+M)</em></strong> where N is the number of clients subscribed to the receiving channel and M is the total number of subscribed patterns (by any client)</td>
+          <td>Post a message to a channel</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/punsubscribe"><strong>PUNSUBSCRIBE</strong> [pattern [pattern …]]</a></td>
+          <td><strong><em>O(N+M)</em></strong> where N is the number of patterns the client is already subscribed and M is the number of total patterns subscribed in the system (by any client)</td>
+          <td>Stop listening for messages posted to channels matching the given patterns</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/subscribe"><strong>SUBSCRIBE</strong> channel [channel …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of channels to subscribe to</td>
+          <td>Listen for messages published to the given channels</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/unsubscribe"><strong>UNSUBSCRIBE</strong> [channel [channel …]]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of clients already subscribed to a channel</td>
+          <td>Stop listening for messages posted to the given channels</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="scripting">Scripting</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/eval"><strong>EVAL</strong> script numkeys key [key …] arg [arg …]</a></td>
+          <td>Depends on the script executed</td>
+          <td>Execute a Lua script server side</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/evalsha"><strong>EVALSHA</strong> sha1 numkeys key [key …] arg [arg …]</a></td>
+          <td>Depends on the script executed</td>
+          <td>Execute a Lua script server side</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/script-debug"><strong>SCRIPT</strong> DEBUG YES|SYNC|NO</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the debug mode for executed scripts</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/script-exists"><strong>SCRIPT</strong> EXISTS sha1 [sha1 …]</a></td>
+          <td><strong><em>O(N)</em></strong> - N number of scripts to check</td>
+          <td>Check existence of scripts in the script cache</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/script-flush"><strong>SCRIPT</strong> FLUSH</a></td>
+          <td><strong><em>O(N)</em></strong> with N being the number of scripts in cache</td>
+          <td>Remove all the scripts from the script cache</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/script-kill"><strong>SCRIPT</strong> KILL</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Kill the script currently in execution</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/script-load"><strong>SCRIPT</strong> LOAD script</a></td>
+          <td><strong><em>O(N)</em></strong> with N being the length in bytes of the script body</td>
+          <td>Load the specified Lua script into the script cache</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="server">Server</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-load"><strong>ACL LOAD</strong></a></td>
+          <td><strong><em>O(N)</em></strong>. Where N is the number of configured users</td>
+          <td>Reload the ACLs from the configured ACL file</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-save"><strong>ACL SAVE</strong></a></td>
+          <td><strong><em>O(N)</em></strong>. Where N is the number of configured users</td>
+          <td>Save the current ACL rules in the configured ACL file</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-list"><strong>ACL LIST</strong></a></td>
+          <td><strong><em>O(N)</em></strong>. Where N is the number of configured users</td>
+          <td>List the current ACL rules in ACL config file format</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-users"><strong>ACL USERS</strong></a></td>
+          <td><strong><em>O(N)</em></strong>. Where N is the number of configured users</td>
+          <td>List the username of all the configured ACL rules</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-getuser"><strong>ACL GETUSER</strong> username</a></td>
+          <td><strong><em>O(N)</em></strong>. Where N is the number of password, command and pattern rules that the user has</td>
+          <td>Get the rules for a specific ACL user</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-setuser"><strong>ACL SETUSER</strong> username [rule [rule …]]</a></td>
+          <td><strong><em>O(N)</em></strong>. Where N is the number of rules provided</td>
+          <td>Modify or create the rules for a specific ACL user</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-deluser"><strong>ACL DELUSER</strong> username [username …]</a></td>
+          <td><strong><em>O(1)</em></strong> amortized time considering the typical user</td>
+          <td>Remove the specified ACL users and the associated rules</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-cat"><strong>ACL CAT</strong> [categoryname]</a></td>
+          <td><strong><em>O(1)</em></strong> since the categories and commands are a fixed set</td>
+          <td>List the ACL categories or the commands inside a category</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-genpass"><strong>ACL GENPASS</strong> [bits]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Generate a pseudorandom secure password to use for ACL users</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-whoami"><strong>ACL WHOAMI</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Return the name of the user associated to the current connection</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-log"><strong>ACL LOG</strong> [count or RESET]</a></td>
+          <td><strong><em>O(N)</em></strong> with N being the number of entries shown</td>
+          <td>List latest events denied because of ACLs in place</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/acl-help"><strong>ACL HELP</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Show helpful text about the different subcommands</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/bgrewriteaof"><strong>BGREWRITEAOF</strong></a></td>
+          <td>-</td>
+          <td>Asynchronously rewrite the append-only file</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/bgsave"><strong>BGSAVE</strong> [SCHEDULE]</a></td>
+          <td>-</td>
+          <td>Asynchronously save the dataset to disk</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/command"><strong>COMMAND</strong></a></td>
+          <td><strong><em>O(N)</em></strong> where N is the total number of Redis commands</td>
+          <td>Get array of Redis command details</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/command-count"><strong>COMMAND COUNT</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get total number of Redis commands</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/command-getkeys"><strong>COMMAND GETKEYS</strong></a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of arguments to the command</td>
+          <td>Extract keys given a full Redis command</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/command-info"><strong>COMMAND INFO</strong> command-name [command-name …]</a></td>
+          <td><strong><em>O(N)</em></strong> when N is number of commands to look up</td>
+          <td>Get array of specific Redis command details</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/config-get"><strong>CONFIG GET</strong> parameter</a></td>
+          <td>-</td>
+          <td>Get the value of a configuration parameter</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/config-rewrite"><strong>CONFIG REWRITE</strong></a></td>
+          <td>-</td>
+          <td>Rewrite the configuration file with the in memory configuration</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/config-set"><strong>CONFIG SET</strong> parameter value</a></td>
+          <td>-</td>
+          <td>Set a configuration parameter to the given value</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/config-resetstat"><strong>CONFIG RESETSTAT</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Reset the stats returned by INFO</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/dbsize"><strong>DBSIZE</strong></a></td>
+          <td>-</td>
+          <td>Return the number of keys in the selected database</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/debug-object"><strong>DEBUG OBJECT</strong> key</a></td>
+          <td>-</td>
+          <td>Get debugging information about a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/debug-segfault"><strong>DEBUG SEGFAULT</strong></a></td>
+          <td>-</td>
+          <td>Make the server crash</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/flushall"><strong>FLUSHALL</strong> [ASYNC]</a></td>
+          <td>-</td>
+          <td>Remove all keys from all databases</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/flushdb"><strong>FLUSHDB</strong> [ASYNC]</a></td>
+          <td>-</td>
+          <td>Remove all keys from the current database</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/info"><strong>INFO</strong> [section]</a></td>
+          <td>-</td>
+          <td>Get information and statistics about the server</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lolwut"><strong>LOLWUT</strong> [VERSION version]</a></td>
+          <td>-</td>
+          <td>Display some computer art and the Redis version</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/lastsave"><strong>LASTSAVE</strong></a></td>
+          <td>-</td>
+          <td>Get the UNIX time stamp of the last successful save to disk</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/memory-doctor"><strong>MEMORY DOCTOR</strong></a></td>
+          <td>-</td>
+          <td>Outputs memory problems report</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/memory-help"><strong>MEMORY HELP</strong></a></td>
+          <td>-</td>
+          <td>Show helpful text about the different subcommands</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/memory-malloc-stats"><strong>MEMORY MALLOC-STATS</strong></a></td>
+          <td>-</td>
+          <td>Show allocator internal stats</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/memory-purge"><strong>MEMORY PURGE</strong></a></td>
+          <td>-</td>
+          <td>Ask the allocator to release memory</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/memory-stats"><strong>MEMORY STATS</strong></a></td>
+          <td>-</td>
+          <td>Show memory usage details</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/memory-usage"><strong>MEMORY USAGE</strong> key [SAMPLES count]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of samples</td>
+          <td>Estimate the memory usage of a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/module-list"><strong>MODULE LIST</strong></a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of loaded modules</td>
+          <td>List all modules loaded by the server</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/module-load"><strong>MODULE LOAD</strong> path [ arg [arg …]]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Load a module</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/module-unload"><strong>MODULE UNLOAD</strong> name</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Unload a module</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/monitor"><strong>MONITOR</strong></a></td>
+          <td>-</td>
+          <td>Listen for all requests received by the server in real time</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/role"><strong>ROLE</strong></a></td>
+          <td>-</td>
+          <td>Return the role of the instance in the context of replication</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/save"><strong>SAVE</strong></a></td>
+          <td>-</td>
+          <td>Synchronously save the dataset to disk</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/shutdown"><strong>SHUTDOWN</strong> [NOSAVE/SAVE]</a></td>
+          <td>-</td>
+          <td>Synchronously save the dataset to disk and then shut down the server</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/slaveof"><strong>SLAVEOF</strong> host port</a></td>
+          <td>-</td>
+          <td>Make the server a replica of another instance, or promote it as master. Deprecated starting with Redis 5. Use REPLICAOF instead</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/replicaof"><strong>REPLICAOF</strong> host port</a></td>
+          <td>-</td>
+          <td>Make the server a replica of another instance, or promote it as master</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/slowlog"><strong>SLOWLOG</strong> subcommand [argument]</a></td>
+          <td>-</td>
+          <td>Manages the Redis slow queries log</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/swapdb"><strong>SWAPDB</strong> index1 index2</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the count of clients watching or blocking on keys from both databases</td>
+          <td>Swaps two Redis databases</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sync"><strong>SYNC</strong></a></td>
+          <td>-</td>
+          <td>Internal command used for replication</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/psync"><strong>PSYNC</strong> replicationid offset</a></td>
+          <td>-</td>
+          <td>Internal command used for replication</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/time"><strong>TIME</strong></a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Return the current server time</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/latency-doctor"><strong>LATENCY DOCTOR</strong></a></td>
+          <td>-</td>
+          <td>Return a human readable latency analysis report</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/latency-graph"><strong>LATENCY GRAPH</strong> event</a></td>
+          <td>-</td>
+          <td>Return a latency graph for the event</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/latency-history"><strong>LATENCY HISTORY</strong> event</a></td>
+          <td>-</td>
+          <td>Return timestamp-latency samples for the event</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/latency-latest"><strong>LATENCY LATEST</strong></a></td>
+          <td>-</td>
+          <td>Return the latest latency samples for all events</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/latency-reset"><strong>LATENCY RESET</strong> [event [event …]]</a></td>
+          <td>-</td>
+          <td>Reset latency data for one or more events</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/latency-help"><strong>LATENCY HELP</strong></a></td>
+          <td>-</td>
+          <td>Show helpful text about the different subcommands</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="sets">Sets</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/sadd"><strong>SADD</strong> key member [member …]</a></td>
+          <td><strong><em>O(1)</em></strong> for each element added, so <strong><em>O(N)</em></strong> to add N elements when the command is called with multiple arguments</td>
+          <td>Add one or more members to a set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/scard"><strong>SCARD</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the number of members in a set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sdiff"><strong>SDIFF</strong> key [key …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the total number of elements in all given sets</td>
+          <td>Subtract multiple sets</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sdiffstore"><strong>SDIFFSTORE</strong> destination key [key …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the total number of elements in all given sets</td>
+          <td>Subtract multiple sets and store the resulting set in a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sinter"><strong>SINTER</strong> key [key …]</a></td>
+          <td><strong><em>O(NM)</em></strong> worst case where N is the cardinality of the smallest set and M is the number of sets</td>
+          <td>Intersect multiple sets</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sinterstore"><strong>SINTERSTORE</strong> destination key [key …]</a></td>
+          <td><strong><em>O(NM)</em></strong> worst case where N is the cardinality of the smallest set and M is the number of sets</td>
+          <td>Intersect multiple sets and store the resulting set in a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sismember"><strong>SISMEMBER</strong> key member</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Determine if a given value is a member of a set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/smismember"><strong>SMISMEMBER</strong> key member [member …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of elements being checked for membership</td>
+          <td>Returns the membership associated with the given elements for a set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/smembers"><strong>SMEMBERS</strong> key</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the set cardinality</td>
+          <td>Get all the members in a set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/smove"><strong>SMOVE</strong> source destination member</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Move a member from one set to another</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/spop"><strong>SPOP</strong> key [count]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Remove and return one or multiple random members from a set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/srandmember"><strong>SRANDMEMBER</strong> key [count]</a></td>
+          <td>Without the count argument <strong><em>O(1)</em></strong>, otherwise <strong><em>O(N)</em></strong> where N is the absolute value of the passed count</td>
+          <td>Get one or multiple random members from a set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/srem"><strong>SREM</strong> key member [member …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of members to be removed</td>
+          <td>Remove one or more members from a set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sunion"><strong>SUNION</strong> key [key …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the total number of elements in all given sets</td>
+          <td>Add multiple sets</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sunionstore"><strong>SUNIONSTORE</strong> destination key [key …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the total number of elements in all given sets</td>
+          <td>Add multiple sets and store the resulting set in a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/sscan"><strong>SSCAN</strong> key cursor [MATCH pattern] [COUNT count]</a></td>
+          <td><strong><em>O(1)</em></strong> for every call. <strong><em>O(N)</em></strong> for a complete iteration, including enough command calls for the cursor to return back to 0. N is the number of elements inside the collection</td>
+          <td>Incrementally iterate Set elements</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="sorted-sets">Sorted Sets</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/bzpopmin"><strong>BZPOPMIN</strong> key [key …] timeout</a></td>
+          <td><strong><em>O(log(N))</em></strong> with N being the number of elements in the sorted set</td>
+          <td>Remove and return the member with the lowest score from one or more sorted sets, or block until one is available</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/bzpopmax"><strong>BZPOPMAX</strong> key [key …] timeout</a></td>
+          <td><strong><em>O(log(N))</em></strong> with N being the number of elements in the sorted set</td>
+          <td>Remove and return the member with the highest score from one or more sorted sets, or block until one is available</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zadd"><strong>ZADD</strong> key [NX|XX] [GT|LT] [CH] [INCR] score member [score member …]</a></td>
+          <td><strong><em>O(log(N))</em></strong> for each item added, where N is the number of elements in the sorted set</td>
+          <td>Add one or more members to a sorted set, or update its score if it already exists</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zcard"><strong>ZCARD</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the number of members in a sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zcount"><strong>ZCOUNT</strong> key min max</a></td>
+          <td><strong><em>O(log(N))</em></strong> with N being the number of elements in the sorted set</td>
+          <td>Count the members in a sorted set with scores within the given values</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zdiff"><strong>ZDIFF</strong> numkeys key [key …] [WITHSCORES]</a></td>
+          <td><strong><em>O(L + (N-K)log(N))</em></strong> worst case where L is the total number of elements in all the sets, N is the size of the first set, and K is the size of the result set</td>
+          <td>Subtract multiple sorted sets</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zdiffstore"><strong>ZDIFFSTORE</strong> destination numkeys key [key …]</a></td>
+          <td><strong><em>O(L + (N-K)log(N))</em></strong> worst case where L is the total number of elements in all the sets, N is the size of the first set, and K is the size of the result set</td>
+          <td>Subtract multiple sorted sets and store the resulting sorted set in a new key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zincrby"><strong>ZINCRBY</strong> key increment member</a></td>
+          <td><strong><em>O(log(N))</em></strong> where N is the number of elements in the sorted set</td>
+          <td>Increment the score of a member in a sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zinter"><strong>ZINTER</strong> numkeys key [key …] [WEIGHTS weight [weight …]] [AGGREGATE SUM|MIN|MAX] [WITHSCORES]</a></td>
+          <td><strong><em>O(NK)+O(Mlog(M))</em></strong> worst case with N being the smallest input sorted set, K being the number of input sorted sets and M being the number of elements in the resulting sorted set</td>
+          <td>Intersect multiple sorted sets</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zinterstore"><strong>ZINTERSTORE</strong> destination numkeys key [key …] [WEIGHTS weight [weight …]] [AGGREGATE SUM|MIN|MAX]</a></td>
+          <td>*<strong>O(NK)+O(Mlog(M))*</strong> worst case with N being the smallest input sorted set, K being the number of input sorted sets and M being the number of elements in the resulting sorted set</td>
+          <td>Intersect multiple sorted sets and store the resulting sorted set in a new key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zlexcount"><strong>ZLEXCOUNT</strong> key min max</a></td>
+          <td><strong><em>O(log(N))</em></strong> with N being the number of elements in the sorted set</td>
+          <td>Count the number of members in a sorted set between a given lexicographical range</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zpopmax"><strong>ZPOPMAX</strong> key [count]</a></td>
+          <td><strong><em>O(Mlog(N))</em></strong> with N being the number of elements in the sorted set, and M being the number of elements popped</td>
+          <td>Remove and return members with the highest scores in a sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zpopmin"><strong>ZPOPMIN</strong> key [count]</a></td>
+          <td><strong><em>O(Mlog(N))</em></strong> with N being the number of elements in the sorted set, and M being the number of elements popped</td>
+          <td>Remove and return members with the lowest scores in a sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrangestore"><strong>ZRANGESTORE</strong> dst src min max [BYSCORE/BYLEX] [REV] [LIMIT offset count]</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements stored into the destination key</td>
+          <td>Store a range of members from sorted set into another key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrange"><strong>ZRANGE</strong> key min max [BYSCORE|BYLEX] [REV] [LIMIT offset count] [WITHSCORES]</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements returned</td>
+          <td>Return a range of members in a sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrangebylex"><strong>ZRANGEBYLEX</strong> key min max [LIMIT offset count]</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements being returned. If M is constant (e.g. always asking for the first 10 elements with LIMIT), you can consider it <strong><em>O(log(N))</em></strong></td>
+          <td>Return a range of members in a sorted set, by lexicographical range</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrevrangebylex"><strong>ZREVRANGEBYLEX</strong> key max min [LIMIT offset count]</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements being returned. If M is constant (e.g. always asking for the first 10 elements with LIMIT), you can consider it <strong><em>O(log(N))</em></strong></td>
+          <td>Return a range of members in a sorted set, by lexicographical range, ordered from higher to lower strings</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrangebyscore"><strong>ZRANGEBYSCORE</strong> key min max [WITHSCORES] [LIMIT offset count]</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements being returned. If M is constant (e.g. always asking for the first 10 elements with LIMIT), you can consider it <strong><em>O(log(N))</em></strong></td>
+          <td>Return a range of members in a sorted set, by score</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrank"><strong>ZRANK</strong> key member</a></td>
+          <td><strong><em>O(log(N))</em></strong></td>
+          <td>Determine the index of a member in a sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrem"><strong>ZREM</strong> key member [member …]</a></td>
+          <td><strong><em>O(Mlog(N))</em></strong> with N being the number of elements in the sorted set and M the number of elements to be removed</td>
+          <td>Remove one or more members from a sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zremrangebylex"><strong>ZREMRANGEBYLEX</strong> key min max</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements removed by the operation</td>
+          <td>Remove all members in a sorted set between the given lexicographical range</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zremrangebyrank"><strong>ZREMRANGEBYRANK</strong> key start stop</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements removed by the operation</td>
+          <td>Remove all members in a sorted set within the given indexes</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zremrangebyscore"><strong>ZREMRANGEBYSCORE</strong> key min max</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements removed by the operation.</td>
+          <td>Remove all members in a sorted set within the given scores</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrevrange"><strong>ZREVRANGE</strong> key start stop [WITHSCORES]</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements returned</td>
+          <td>Return a range of members in a sorted set, by index, with scores ordered from high to low</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrevrangebyscore"><strong>ZREVRANGEBYSCORE</strong> key max min [WITHSCORES] [LIMIT offset count]</a></td>
+          <td><strong><em>O(log(N)+M)</em></strong> with N being the number of elements in the sorted set and M the number of elements being returned. If M is constant (e.g. always asking for the first 10 elements with LIMIT), you can consider it <strong><em>O(log(N))</em></strong></td>
+          <td>Return a range of members in a sorted set, by score, with scores ordered from high to low</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zrevrank"><strong>ZREVRANK</strong> key member</a></td>
+          <td><strong><em>O(log(N))</em></strong></td>
+          <td>Determine the index of a member in a sorted set, with scores ordered from high to low</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zscore"><strong>ZSCORE</strong> key member</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the score associated with the given member in a sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zunion"><strong>ZUNION</strong> numkeys key [key …] [WEIGHTS weight [weight …]] [AGGREGATE SUM|MIN|MAX] [WITHSCORES]</a></td>
+          <td>*<strong>O(N)+O(Mlog(M))*</strong> with N being the sum of the sizes of the input sorted sets, and M being the number of elements in the resulting sorted set</td>
+          <td>Add multiple sorted sets</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zmscore"><strong>ZMSCORE</strong> key member [member …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the number of members being requested</td>
+          <td>Get the score associated with the given members in a sorted set</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zunionstore"><strong>ZUNIONSTORE</strong> destination numkeys key [key …] [WEIGHTS weight [weight …]] [AGGREGATE SUM|MIN|MAX]</a></td>
+          <td><strong><em>O(N)+O(M log(M))</em></strong> with N being the sum of the sizes of the input sorted sets, and M being the number of elements in the resulting sorted set</td>
+          <td>Add multiple sorted sets and store the resulting sorted set in a new key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/zscan"><strong>ZSCAN</strong> key cursor [MATCH pattern] [COUNT count]</a></td>
+          <td><strong><em>O(1)</em></strong> for every call. <strong><em>O(N)</em></strong> for a complete iteration, including enough command calls for the cursor to return back to 0. N is the number of elements inside the collection</td>
+          <td>Incrementally iterate sorted sets elements and associated scores</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="streams">Streams</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/xinfo"><strong>XINFO</strong> [CONSUMERS key groupname] [GROUPS key] [STREAM key] [HELP]</a></td>
+          <td><strong><em>O(N)</em></strong> with N being the number of returned items for the subcommands CONSUMERS and GROUPS. The STREAM subcommand is <strong><em>O(log N)</em></strong> with N being the number of items in the stream</td>
+          <td>Get information on streams and consumer groups</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xadd"><strong>XADD</strong> key [NOMKSTREAM] [MAXLEN|MINID [=|~] threshold [LIMIT count]] *|ID field value [field value …]</a></td>
+          <td><strong><em>O(1)</em></strong> when adding a new entry, <strong><em>O(N)</em></strong> when trimming where N being the number of entires evicted</td>
+          <td>Appends a new entry to a stream</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xtrim"><strong>XTRIM</strong> key MAXLEN|MINID [=|~] threshold [LIMIT count]</a></td>
+          <td><strong><em>O(N)</em></strong>, with N being the number of evicted entries</td>
+          <td>Trims the stream to (approximately if ‘~’ is passed) a certain size</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xdel"><strong>XDEL</strong> key ID [ID …]</a></td>
+          <td><strong><em>O(1)</em></strong> for each single item to delete in the stream, regardless of the stream size</td>
+          <td>Removes the specified entries from the stream. Returns the number of items actually deleted, that may be different from the number of IDs passed in case certain IDs do not exist</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xrange"><strong>XRANGE</strong> key start end [COUNT count]</a></td>
+          <td><strong><em>O(N)</em></strong> with N being the number of elements being returned</td>
+          <td>Return a range of elements in a stream, with IDs matching the specified IDs interval</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xrevrange"><strong>XREVRANGE</strong> key end start [COUNT count]</a></td>
+          <td><strong><em>O(N)</em></strong> with N being the number of elements being returned</td>
+          <td>Return a range of elements in a stream, with IDs matching the specified IDs interval, in reverse order (from greater to smaller IDs compared to XRANGE</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xlen"><strong>XLEN</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Return the number of entries in a stream</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xread"><strong>XREAD</strong> [COUNT count] [BLOCK milliseconds] STREAMS key [key …] ID [ID …]</a></td>
+          <td>For each stream mentioned: <strong><em>O(N)</em></strong> with N being the number of elements being returned, it means that XREAD-ing with a fixed COUNT is <strong><em>O(1)</em></strong>. Note that when the BLOCK option is used, XADD will pay <strong><em>O(M)</em></strong> time in order to serve the M clients blocked on the stream getting new data</td>
+          <td>Return never seen elements in multiple streams, with IDs greater than the ones reported by the caller for each stream. Can block</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xgroup"><strong>XGROUP</strong> [CREATE key groupname ID|$ [MKSTREAM]] [SETID key groupname ID|$] [DESTROY key groupname] [CREATECONSUMER key groupname consumername] [DELCONSUMER key groupname consumername]</a></td>
+          <td><strong><em>O(1)</em></strong> for all the subcommands, with the exception of the DESTROY subcommand which takes an additional <strong><em>O(M)</em></strong> time in order to delete the M entries inside the consumer group pending entries list (PEL)</td>
+          <td>Create, destroy, and manage consumer groups</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xreadgroup"><strong>XREADGROUP GROUP</strong> group consumer [COUNT count] [BLOCK milliseconds] [NOACK] STREAMS key [key …] ID [ID …]</a></td>
+          <td>For each stream mentioned: <strong><em>O(M)</em></strong> with M being the number of elements returned. If M is constant (e.g. always asking for the first 10 elements with COUNT), you can consider it <strong><em>O(1)</em></strong>. On the other side when XREADGROUP blocks, XADD will pay the <strong><em>O(N)</em></strong> time in order to serve the N clients blocked on the stream getting new data</td>
+          <td>Return new entries from a stream using a consumer group, or access the history of the pending entries for a given consumer. Can block</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xack"><strong>XACK</strong> key group ID [ID …]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Marks a pending message as correctly processed, effectively removing it from the pending entries list of the consumer group. Return value of the command is the number of messages successfully acknowledged, that is, the IDs we were actually able to resolve in the PEL</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xclaim"><strong>XCLAIM</strong> key group consumer min-idle-time ID [ID …] [IDLE ms] [TIME ms-unix-time] [RETRYCOUNT count] [FORCE] [JUSTID]</a></td>
+          <td><strong><em>O(log N)</em></strong></td>
+          <td>Changes (or acquires) ownership of a message in a consumer group, as if the message was delivered to the specified consumer</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xautoclaim"><strong>XAUTOCLAIM</strong> key group consumer min-idle-time start [COUNT count] [JUSTID]</a></td>
+          <td><strong><em>O(1)</em></strong> if COUNT is small</td>
+          <td>Changes (or acquires) ownership of messages in a consumer group, as if the messages were delivered to the specified consumer</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/xpending"><strong>XPENDING</strong> key group [[IDLE min-idle-time] start end count [consumer]]</a></td>
+          <td><strong><em>O(N)</em></strong> with N being the number of elements returned, so asking for a small fixed number of entries per call is <strong><em>O(1)</em></strong>. <strong><em>O(M)</em></strong>, where M is the total number of entries scanned when used with the IDLE filter. When the command returns just the summary and the list of consumers is small, it runs in <strong><em>O(1)</em></strong> time; otherwise, an additional <strong><em>O(N)</em></strong> time for iterating every consumer</td>
+          <td>Return information and entries from a stream consumer group pending entries list, that are messages fetched but never acknowledged</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="strings">Strings</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/append"><strong>APPEND</strong> key value</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Append a value to a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/bitcount"><strong>BITCOUNT</strong> key [start end]</a></td>
+          <td><strong><em>O(N)</em></strong></td>
+          <td>Count set bits in a string</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/bitfield"><strong>BITFIELD</strong> key [GET type offset] [SET type offset value] [INCRBY type offset increment] [OVERFLOW WRAP|SAT|FAIL]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Perform arbitrary bitfield integer operations on strings. Multiple operations, returns array</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/bitop"><strong>BITOP</strong> operation destkey key [key …]</a></td>
+          <td><strong><em>O(N)</em></strong></td>
+          <td>Perform bitwise operations between strings</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/bitpos"><strong>BITPOS</strong> key bit [start] [end]</a></td>
+          <td><strong><em>O(N)</em></strong></td>
+          <td>Find first bit set or clear in a string, start and end are interpreted as range of bytes</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/decr"><strong>DECR</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Decrement the integer value of a key by one. Limited to 64 bit signed integers</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/decrby"><strong>DECRBY</strong> key decrement</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Decrement the integer value of a key by the given number</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/get"><strong>GET</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the value of a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/getbit"><strong>GETBIT</strong> key offset</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Returns the bit value at offset in the string value stored at key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/getrange"><strong>GETRANGE</strong> key start end</a></td>
+          <td><strong><em>O(N)</em></strong>; <strong><em>O(1)</em></strong> for small strings</td>
+          <td>Get a substring of the string stored at a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/getset"><strong>GETSET</strong> key value</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the string value of a key and return its old value</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/incr"><strong>INCR</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Increment the integer value of a key by one</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/incrby"><strong>INCRBY</strong> key increment</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Increment the integer value of a key by the given amount</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/incrbyfloat"><strong>INCRBYFLOAT</strong> key increment</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Increment the float value of a key by the given amount</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/mget"><strong>MGET</strong> key [key …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the no. of keys to retrieve</td>
+          <td>Get the values of all the given keys</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/mset"><strong>MSET</strong> key value [key value …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the no. of keys to set</td>
+          <td>Set multiple keys to multiple values. It is atomic</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/msetnx"><strong>MSETNX</strong> key value [key value …]</a></td>
+          <td><strong><em>O(N)</em></strong> where N is the no. of keys to set</td>
+          <td>Set multiple keys to multiple values, only if none of the keys exist</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/psetex"><strong>PSETEX</strong> key milliseconds value</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the value and expiration in milliseconds of a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/set"><strong>SET</strong> key value [EX seconds|PX milliseconds|KEEPTTL] [NX|XX] [GET]</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the string value of a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/setbit"><strong>SETBIT</strong> key offset value</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Sets or clears the bit at offset in the string value stored at key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/setex"><strong>SETEX</strong> key seconds value</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the value and expiration of a key</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/setnx"><strong>SETNX</strong> key value</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Set the value of a key, only if the key does not exist</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/setrange"><strong>SETRANGE</strong> key offset</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Overwrite part of a string at key starting at the specified offset</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/stralgo"><strong>STRALGO</strong> LCS algo-specific-argument [algo-specific-argument …]</a></td>
+          <td><strong><em>O(strlen(s1).strlen(s2))</em></strong></td>
+          <td>Run algorithms (currently LCS) against strings. <code class="highlighter-rouge">STRALGO LCS [KEYS ...] [STRINGS ...] [LEN] [IDX] [MINMATCHLEN &lt;len&gt;] [WITHMATCHLEN]</code></td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/strlen"><strong>STRLEN</strong> key</a></td>
+          <td><strong><em>O(1)</em></strong></td>
+          <td>Get the length of the value stored in a key</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <h1 id="transactions">Transactions</h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://redis.io/commands/discard"><strong>DISCARD</strong></a></td>
+          <td>Discard all commands issued after MULTI</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/exec"><strong>EXEC</strong></a></td>
+          <td>Execute all commands issued after MULTI</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/multi"><strong>MULTI</strong></a></td>
+          <td>Mark the start of a transaction block</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/unwatch"><strong>UNWATCH</strong></a></td>
+          <td>Forget about all watched keys</td>
+        </tr>
+        <tr>
+          <td><a href="https://redis.io/commands/watch"><strong>WATCH</strong> key [key …]</a></td>
+          <td>Watch the given keys to determine execution of theMULTI/EXEC block</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+  </div><a class="u-url" href="/2021/01/14/redis-commands-cheatsheet.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Ayrus&#39;s Lore</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Ayrus&#39;s Lore</li><li><a class="u-email" href="mailto:suryasrikar1997@gmail.com">suryasrikar1997@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ayruslore"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ayruslore</span></a></li><li><a href="https://www.twitter.com/SuryaPeruri4"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">SuryaPeruri4</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This website is my lore which contains things that I learn in my  journey deep in to the ever growing software world. It contains  tutorials, how-tos, know-how and blog posts.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -2,27 +2,33 @@ package main
 
 import (
     "fmt"
+    "strconv"
 )
 
-type Person struct {
-    Name string
-    Age int
+type Parser interface {
+    Parse() string
+}
+
+type IntegerParser struct {
+    Message int
+}
+
+func (ip IntegerParser) Parse() string {
+    return strconv.Itoa(ip.Message)
+}
+
+type BooleanParser struct {
+    Message bool
+}
+
+func (ip BooleanParser) Parse() string {
+    return strconv.FormatBool(ip.Message)
 }
 
 func main() {
-    p1 := Person{"John", 20}
-    increaseAge(p1)
-    fmt.Println(p1)
+    var example Parser = IntegerParser{Message: 200}
+    fmt.Println(example.Parse())
 
-    p2 := Person{"John", 20}
-    increaseAge1(&p2)
-    fmt.Println(p2)
-}
-
-func increaseAge(p Person) {
-    p.Age += 1
-}
-
-func increaseAge1(p *Person) {
-    p.Age += 1
+    var example1 Parser = BooleanParser{Message: false}
+    fmt.Println(example1.Parse())
 }
