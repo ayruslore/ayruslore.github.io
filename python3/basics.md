@@ -124,7 +124,53 @@ The `type` function is used to find out the type of a variable. Let's take a loo
         >>> c_2.conjugate()
         (4-7j)
         ```
-        __Note :__ Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like `<`, `>`, `<=`, `>=` and it will throw a *TypeError*.
+        __Note 1:__ Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like `<`, `>`, `<=`, `>=` and it will throw a *TypeError*.
+        ```python
+        >>> c1 = 3+6j
+        >>> c2 = 4+7j
+        >>> c1 + c2  #addition
+        (7+13j)
+        >>> c1 - c2  #subtraction
+        (-1-1j)
+        >>> c1 * c2  #multiplication
+        (-30+45j)
+        >>> c1 / c2 #division
+        (0.8307692307692309+0.046153846153846136j)
+        >>> 
+        >>> c1 > c2
+        Traceback (most recent call last):
+          File "<stdin>", line 1, in <module>
+        TypeError: '>' not supported between instances of 'complex' and 'complex'
+        ```
+        __Note 2:__ To convert int to float or complex use the `int()`, `float()` and `complex()` functions.
+        ```python
+        >>> x = 5.0
+        >>> type(x)
+        <class 'float'>
+        >>> int(x)
+        5
+        >>> complex(x)
+        (5+0j)
+        >>> float(5)
+        5.0
+        ```
+        __Note 3:__ To convert integer decimal to binary, octal, hexadecimal, use the following example for reference.
+        ```python
+        >>> int(25)
+        25
+        >>> bin(25)  # convert decimal 25 to binary
+        '0b11001'
+        >>> oct(25)  # convert decimal 25 to octal
+        '0o31'
+        >>> hex(25)  # convert decimal 25 to hexadecimal
+        '0x19'
+        >>> int('11001', 2)  # convert binary 11001 to decimal
+        25
+        >>> int('31', 8)  # convert octal 31 to decimal
+        25
+        >>> int('19', 16)  # convert hexadecimal 19 to decimal
+        25
+        ```
 
 * #### Strings
     They are defined either with a single quote or a double quotes. Use the following code as reference to define a string. It's type is known as `str`
@@ -238,6 +284,14 @@ The `type` function is used to find out the type of a variable. Let's take a loo
     >>> rollbook[3] = "arjun"
     >>> rollbook[4] = "lakshman"
     >>> #iterate through the dictionaries
+    >>> rollbook = {1:'sweety', 2:'preeti', 3:'arjun', 4:'lakshman'}
+    >>> for key in rollbook.keys():
+    ...     print(str(key) + ' :- ' + rollbook[key])
+    ... 
+    1 :- sweety
+    2 :- preeti
+    3 :- arjun
+    4 :- lakshman
     >>> for roll, name in rollbook.items():
     ...     print("roll number %d is %s" % (roll, name))
     roll number 1 is sweety

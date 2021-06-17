@@ -186,7 +186,50 @@
   <span class="o">&gt;&gt;&gt;</span> <span class="n">c_2</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
   <span class="p">(</span><span class="mi">4</span><span class="o">-</span><span class="mf">7j</span><span class="p">)</span>
 </code></pre></div>        </div>
-        <p><strong>Note :</strong> Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like <code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&gt;</code>, <code class="highlighter-rouge">&lt;=</code>, <code class="highlighter-rouge">&gt;=</code> and it will throw a <em>TypeError</em>.</p>
+        <p><strong>Note 1:</strong> Normal addition, subtraction, multiplication and division of complex numbers is supported, but they do not support comparison operators like <code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&gt;</code>, <code class="highlighter-rouge">&lt;=</code>, <code class="highlighter-rouge">&gt;=</code> and it will throw a <em>TypeError</em>.</p>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">+</span><span class="mf">6j</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span> <span class="o">=</span> <span class="mi">4</span><span class="o">+</span><span class="mf">7j</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span>  <span class="c1">#addition
+</span>  <span class="p">(</span><span class="mi">7</span><span class="o">+</span><span class="mf">13j</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">-</span> <span class="n">c2</span>  <span class="c1">#subtraction
+</span>  <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">1j</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">c2</span>  <span class="c1">#multiplication
+</span>  <span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="o">+</span><span class="mf">45j</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">/</span> <span class="n">c2</span> <span class="c1">#division
+</span>  <span class="p">(</span><span class="mf">0.8307692307692309</span><span class="o">+</span><span class="mf">0.046153846153846136j</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> 
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">&gt;</span> <span class="n">c2</span>
+  <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+    <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+  <span class="nb">TypeError</span><span class="p">:</span> <span class="s">'&gt;'</span> <span class="ow">not</span> <span class="n">supported</span> <span class="n">between</span> <span class="n">instances</span> <span class="n">of</span> <span class="s">'complex'</span> <span class="ow">and</span> <span class="s">'complex'</span>
+</code></pre></div>        </div>
+        <p><strong>Note 2:</strong> To convert int to float or complex use the <code class="highlighter-rouge">int()</code>, <code class="highlighter-rouge">float()</code> and <code class="highlighter-rouge">complex()</code> functions.</p>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">5.0</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="o">&lt;</span><span class="k">class</span> <span class="err">'</span><span class="nc">float</span><span class="s">'&gt;</span><span class="err">
+</span><span class="s">  &gt;&gt;&gt; int(x)</span><span class="err">
+</span><span class="s">  5</span><span class="err">
+</span><span class="s">  &gt;&gt;&gt; complex(x)</span><span class="err">
+</span><span class="s">  (5+0j)</span><span class="err">
+</span><span class="s">  &gt;&gt;&gt; float(5)</span><span class="err">
+</span><span class="s">  5.0</span><span class="err">
+</span></code></pre></div>        </div>
+        <p><strong>Note 3:</strong> To convert integer decimal to binary, octal, hexadecimal, use the following example for reference.</p>
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+  <span class="mi">25</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">bin</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>  <span class="c1"># convert decimal 25 to binary
+</span>  <span class="s">'0b11001'</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">oct</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>  <span class="c1"># convert decimal 25 to octal
+</span>  <span class="s">'0o31'</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>  <span class="c1"># convert decimal 25 to hexadecimal
+</span>  <span class="s">'0x19'</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="s">'11001'</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># convert binary 11001 to decimal
+</span>  <span class="mi">25</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="s">'31'</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1"># convert octal 31 to decimal
+</span>  <span class="mi">25</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="s">'19'</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>  <span class="c1"># convert hexadecimal 19 to decimal
+</span>  <span class="mi">25</span>
+</code></pre></div>        </div>
       </li>
     </ul>
   </li>
@@ -301,7 +344,15 @@
 </span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">rollbook</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s">"arjun"</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="n">rollbook</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s">"lakshman"</span>
   <span class="o">&gt;&gt;&gt;</span> <span class="c1">#iterate through the dictionaries
-</span>  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">roll</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">rollbook</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span>  <span class="o">&gt;&gt;&gt;</span> <span class="n">rollbook</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s">'sweety'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="s">'preeti'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s">'arjun'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="s">'lakshman'</span><span class="p">}</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">rollbook</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+  <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s">' :- '</span> <span class="o">+</span> <span class="n">rollbook</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+  <span class="o">...</span> 
+  <span class="mi">1</span> <span class="p">:</span><span class="o">-</span> <span class="n">sweety</span>
+  <span class="mi">2</span> <span class="p">:</span><span class="o">-</span> <span class="n">preeti</span>
+  <span class="mi">3</span> <span class="p">:</span><span class="o">-</span> <span class="n">arjun</span>
+  <span class="mi">4</span> <span class="p">:</span><span class="o">-</span> <span class="n">lakshman</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">roll</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">rollbook</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
   <span class="o">...</span>     <span class="k">print</span><span class="p">(</span><span class="s">"roll number </span><span class="si">%</span><span class="s">d is </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">roll</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
   <span class="n">roll</span> <span class="n">number</span> <span class="mi">1</span> <span class="ow">is</span> <span class="n">sweety</span>
   <span class="n">roll</span> <span class="n">number</span> <span class="mi">2</span> <span class="ow">is</span> <span class="n">preeti</span>

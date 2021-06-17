@@ -24,7 +24,6 @@ __Delimiter__ - There's no delimiter used to end a line, but we can use semicolo
 ## Contents
 * [Basics Tutorial](/python/basics)
 * [Advanced Tutorial](/python/advanced)
-* Data Science Packages
 
 <br>
 
